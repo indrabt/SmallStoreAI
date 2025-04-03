@@ -1,0 +1,380 @@
+{
+  "routes": [
+    {
+      "id": "R-1",
+      "vehicle": "Van #1",
+      "driver": "Mike Smith",
+      "estimated_time": 79,
+      "total_distance": 19.8,
+      "stop_count": 4,
+      "stops": [
+        {
+          "name": "Kingswood",
+          "address": "The Northern Rd, Kingswood NSW 2747",
+          "coordinates": {
+            "lat": -33.76,
+            "lon": 150.722
+          },
+          "delivery_window": "2:00 PM - 3:00 PM"
+        },
+        {
+          "name": "Emu Plains",
+          "address": "Great Western Hwy, Emu Plains NSW 2750",
+          "coordinates": {
+            "lat": -33.747,
+            "lon": 150.661
+          },
+          "delivery_window": "9:00 AM - 11:00 PM"
+        },
+        {
+          "name": "Glenmore Park",
+          "address": "Glenmore Pkwy, Glenmore Park NSW 2745",
+          "coordinates": {
+            "lat": -33.784,
+            "lon": 150.67
+          },
+          "delivery_window": "3:00 PM - 4:00 PM"
+        },
+        {
+          "name": "South Penrith",
+          "address": "York Rd, South Penrith NSW 2750",
+          "coordinates": {
+            "lat": -33.764,
+            "lon": 150.698
+          },
+          "delivery_window": "11:00 AM - 12:00 PM"
+        }
+      ],
+      "status": "planned",
+      "created_at": "2025-04-03T04:54:56.167370",
+      "optimized": true,
+      "distance_saved": 2.7,
+      "optimization_score": 9.1
+    },
+    {
+      "id": "R-2",
+      "vehicle": "Van #2",
+      "driver": "Sarah Johnson",
+      "estimated_time": 86,
+      "total_distance": 22.9,
+      "stop_count": 5,
+      "stops": [
+        {
+          "name": "Emu Plains",
+          "address": "Great Western Hwy, Emu Plains NSW 2750",
+          "coordinates": {
+            "lat": -33.747,
+            "lon": 150.661
+          },
+          "delivery_window": "9:00 AM - 11:00 PM"
+        },
+        {
+          "name": "Cranebrook",
+          "address": "Borrowdale Way, Cranebrook NSW 2749",
+          "coordinates": {
+            "lat": -33.724,
+            "lon": 150.71
+          },
+          "delivery_window": "2:00 PM - 3:00 PM"
+        },
+        {
+          "name": "Cambridge Park",
+          "address": "Oxford St, Cambridge Park NSW 2747",
+          "coordinates": {
+            "lat": -33.742,
+            "lon": 150.734
+          },
+          "delivery_window": "4:00 PM - 6:00 PM"
+        },
+        {
+          "name": "South Penrith",
+          "address": "York Rd, South Penrith NSW 2750",
+          "coordinates": {
+            "lat": -33.764,
+            "lon": 150.698
+          },
+          "delivery_window": "11:00 AM - 12:00 PM"
+        },
+        {
+          "name": "Penrith CBD",
+          "address": "High St, Penrith NSW 2750",
+          "coordinates": {
+            "lat": -33.751,
+            "lon": 150.694
+          },
+          "delivery_window": "3:00 PM - 5:00 PM"
+        }
+      ],
+      "status": "planned",
+      "created_at": "2025-04-03T08:54:56.167609",
+      "optimized": true,
+      "distance_saved": 2.2,
+      "optimization_score": 7.6
+    },
+    {
+      "id": "R-3",
+      "vehicle": "Truck #1",
+      "driver": "David Chen",
+      "estimated_time": 63,
+      "total_distance": 18.4,
+      "stop_count": 4,
+      "stops": [
+        {
+          "name": "South Penrith",
+          "address": "York Rd, South Penrith NSW 2750",
+          "coordinates": {
+            "lat": -33.764,
+            "lon": 150.698
+          },
+          "delivery_window": "11:00 AM - 12:00 PM"
+        },
+        {
+          "name": "Glenmore Park",
+          "address": "Glenmore Pkwy, Glenmore Park NSW 2745",
+          "coordinates": {
+            "lat": -33.784,
+            "lon": 150.67
+          },
+          "delivery_window": "3:00 PM - 4:00 PM"
+        },
+        {
+          "name": "Cranebrook",
+          "address": "Borrowdale Way, Cranebrook NSW 2749",
+          "coordinates": {
+            "lat": -33.724,
+            "lon": 150.71
+          },
+          "delivery_window": "2:00 PM - 3:00 PM"
+        },
+        {
+          "name": "Penrith CBD",
+          "address": "High St, Penrith NSW 2750",
+          "coordinates": {
+            "lat": -33.751,
+            "lon": 150.694
+          },
+          "delivery_window": "3:00 PM - 5:00 PM"
+        }
+      ],
+      "status": "planned",
+      "created_at": "2025-04-03T02:54:56.167938",
+      "optimized": true,
+      "distance_saved": 1.8,
+      "optimization_score": 7.9
+    }
+  ],
+  "resilience_data": {
+    "last_updated": "2025-04-03T22:54:56.167976",
+    "overall_risk_score": 6.2,
+    "high_risk_suppliers": 1,
+    "medium_risk_suppliers": 2,
+    "risk_mitigations": 10,
+    "risk_factors": [
+      {
+        "factor": "Weather Disruption",
+        "severity": "Medium",
+        "description": "Potential heavy rainfall forecasted for next week that may affect local deliveries",
+        "probability": 0.6,
+        "impact_score": 7,
+        "mitigation_strategies": [
+          "Pre-stock high-demand items",
+          "Schedule deliveries earlier in the week",
+          "Ensure backup transport options"
+        ]
+      },
+      {
+        "factor": "Supplier Capacity",
+        "severity": "Low",
+        "description": "Minor capacity constraints with dairy supplier due to seasonal fluctuations",
+        "probability": 0.3,
+        "impact_score": 4,
+        "mitigation_strategies": [
+          "Increase order frequency with smaller volumes",
+          "Temporarily diversify dairy sourcing"
+        ]
+      },
+      {
+        "factor": "Transport Cost Increase",
+        "severity": "High",
+        "description": "Expected fuel price increase of 10% next month affecting delivery costs",
+        "probability": 0.9,
+        "impact_score": 8,
+        "mitigation_strategies": [
+          "Optimize delivery routes further",
+          "Consider shared logistics with nearby businesses",
+          "Temporarily increase local sourcing"
+        ]
+      },
+      {
+        "factor": "Labor Shortage",
+        "severity": "Medium",
+        "description": "Seasonal labor shortages expected during upcoming holiday period",
+        "probability": 0.7,
+        "impact_score": 6,
+        "mitigation_strategies": [
+          "Pre-arrange temporary staff",
+          "Schedule deliveries during off-peak hours",
+          "Simplify receiving processes"
+        ]
+      }
+    ],
+    "backup_suppliers": {
+      "Penrith Dairy Co-op": [
+        {
+          "name": "Western Sydney Dairy",
+          "distance": 15.2,
+          "reliability_score": 8.5,
+          "cost_difference": "+5%"
+        },
+        {
+          "name": "Blue Mountains Dairy",
+          "distance": 22.8,
+          "reliability_score": 9.2,
+          "cost_difference": "+8%"
+        }
+      ],
+      "Local Organic Farms": [
+        {
+          "name": "Richmond Fresh Produce",
+          "distance": 18.5,
+          "reliability_score": 8.8,
+          "cost_difference": "+3%"
+        },
+        {
+          "name": "Hawkesbury Valley Farms",
+          "distance": 25.3,
+          "reliability_score": 9.0,
+          "cost_difference": "+7%"
+        }
+      ],
+      "NSW Poultry": [
+        {
+          "name": "Windsor Poultry Farms",
+          "distance": 30.2,
+          "reliability_score": 8.6,
+          "cost_difference": "+2%"
+        }
+      ]
+    }
+  },
+  "logistics_options": [
+    {
+      "id": "option-1",
+      "name": "Standard Delivery",
+      "type": "road",
+      "cost": 250.0,
+      "time": 48,
+      "carbon_footprint": 180,
+      "reliability_score": 8.5,
+      "details": "Standard road delivery using existing contracted carriers",
+      "suitable_for": [
+        "Regular restocking",
+        "Non-perishable goods"
+      ]
+    },
+    {
+      "id": "option-2",
+      "name": "Express Delivery",
+      "type": "road",
+      "cost": 350.0,
+      "time": 24,
+      "carbon_footprint": 200,
+      "reliability_score": 9.0,
+      "details": "Priority road delivery for urgent restocking needs",
+      "suitable_for": [
+        "Urgent orders",
+        "Perishable goods"
+      ]
+    },
+    {
+      "id": "option-3",
+      "name": "Multi-Modal Delivery",
+      "type": "multi-modal",
+      "cost": 300.0,
+      "time": 36,
+      "carbon_footprint": 140,
+      "reliability_score": 8.8,
+      "details": "Combination of rail and last-mile delivery for reduced emissions",
+      "suitable_for": [
+        "Large orders",
+        "Environmental focus"
+      ]
+    },
+    {
+      "id": "option-4",
+      "name": "Local Courier Network",
+      "type": "local",
+      "cost": 275.0,
+      "time": 30,
+      "carbon_footprint": 120,
+      "reliability_score": 8.2,
+      "details": "Delivery through local courier partners for medium-sized orders",
+      "suitable_for": [
+        "Medium orders",
+        "Supporting local businesses"
+      ]
+    },
+    {
+      "id": "option-5",
+      "name": "Green Delivery",
+      "type": "green",
+      "cost": 320.0,
+      "time": 40,
+      "carbon_footprint": 90,
+      "reliability_score": 8.0,
+      "details": "Low-emission vehicles and optimized routes for minimal environmental impact",
+      "suitable_for": [
+        "Environmental focus",
+        "Regular restocking"
+      ]
+    }
+  ],
+  "partnerships": [
+    {
+      "id": "partner-1",
+      "name": "Western Sydney Logistics",
+      "type": "Transport Provider",
+      "services": "Road freight, storage, cross-docking",
+      "integration_status": "Active",
+      "contact": "John Smith | john@wsl.com.au | +61 2 5555 1234",
+      "partnership_since": "2024-10-05T22:54:56.167988",
+      "service_level": 9.2,
+      "cost_savings": "12%"
+    },
+    {
+      "id": "partner-2",
+      "name": "EcoDelivery Sydney",
+      "type": "Green Logistics",
+      "services": "Electric vehicle delivery, carbon offset logistics",
+      "integration_status": "Pending",
+      "contact": "Emma Green | emma@ecodelivery.com.au | +61 2 5555 4321",
+      "partnership_since": null,
+      "service_level": null,
+      "cost_savings": "Estimated 5%"
+    },
+    {
+      "id": "partner-3",
+      "name": "Penrith Courier Collective",
+      "type": "Last-Mile Delivery",
+      "services": "Rapid local delivery, returns management",
+      "integration_status": "Active",
+      "contact": "Michael Wong | operations@penrithcouriers.com.au | +61 2 5555 5678",
+      "partnership_since": "2025-01-03T22:54:56.167995",
+      "service_level": 8.8,
+      "cost_savings": "8%"
+    },
+    {
+      "id": "partner-4",
+      "name": "NSW Cold Chain Solutions",
+      "type": "Temperature-Controlled Logistics",
+      "services": "Refrigerated transport, cold storage",
+      "integration_status": "Not Integrated",
+      "contact": "Sarah Johnson | sarah@nswcoldchain.com.au | +61 2 5555 8765",
+      "partnership_since": null,
+      "service_level": null,
+      "cost_savings": "Estimated 15%"
+    }
+  ],
+  "dashboard_data": {},
+  "history": []
+}

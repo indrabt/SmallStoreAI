@@ -1,0 +1,208 @@
+{
+  "competitor_prices": [
+    {
+      "product_id": "6d3d30fe-6847-433a-a31c-9ce720195521",
+      "product_name": "Apples - Royal Gala",
+      "category": "Fruits & Vegetables",
+      "competitor": "BigMart Supermarket",
+      "price": 2.7,
+      "last_updated": "2025-03-30T22:54:56.161257"
+    },
+    {
+      "product_id": "6d3d30fe-6847-433a-a31c-9ce720195521",
+      "product_name": "Apples - Royal Gala",
+      "category": "Fruits & Vegetables",
+      "competitor": "FreshValue Grocers",
+      "price": 2.72,
+      "last_updated": "2025-03-31T22:54:56.161336"
+    },
+    {
+      "product_id": "6d3d30fe-6847-433a-a31c-9ce720195521",
+      "product_name": "Apples - Royal Gala",
+      "category": "Fruits & Vegetables",
+      "competitor": "SaveMore Foods",
+      "price": 2.74,
+      "last_updated": "2025-03-31T22:54:56.161369"
+    },
+    {
+      "product_id": "47cf6027-24e6-4e03-80ea-842caa7f4669",
+      "product_name": "Milk - Full Cream 2L",
+      "category": "Dairy & Eggs",
+      "competitor": "BigMart Supermarket",
+      "price": 3.9,
+      "last_updated": "2025-04-02T22:54:56.161418"
+    },
+    {
+      "product_id": "47cf6027-24e6-4e03-80ea-842caa7f4669",
+      "product_name": "Milk - Full Cream 2L",
+      "category": "Dairy & Eggs",
+      "competitor": "FreshValue Grocers",
+      "price": 4.31,
+      "last_updated": "2025-03-29T22:54:56.161450"
+    },
+    {
+      "product_id": "47cf6027-24e6-4e03-80ea-842caa7f4669",
+      "product_name": "Milk - Full Cream 2L",
+      "category": "Dairy & Eggs",
+      "competitor": "SaveMore Foods",
+      "price": 3.97,
+      "last_updated": "2025-04-02T22:54:56.161482"
+    },
+    {
+      "product_id": "595bde8a-e532-4f72-8f0d-e2b5c1ac8694",
+      "product_name": "Bread - Multigrain Loaf",
+      "category": "Bakery",
+      "competitor": "BigMart Supermarket",
+      "price": 3.88,
+      "last_updated": "2025-03-30T22:54:56.161519"
+    },
+    {
+      "product_id": "595bde8a-e532-4f72-8f0d-e2b5c1ac8694",
+      "product_name": "Bread - Multigrain Loaf",
+      "category": "Bakery",
+      "competitor": "FreshValue Grocers",
+      "price": 4.2,
+      "last_updated": "2025-03-30T22:54:56.161547"
+    },
+    {
+      "product_id": "595bde8a-e532-4f72-8f0d-e2b5c1ac8694",
+      "product_name": "Bread - Multigrain Loaf",
+      "category": "Bakery",
+      "competitor": "SaveMore Foods",
+      "price": 4.59,
+      "last_updated": "2025-03-31T22:54:56.161577"
+    },
+    {
+      "product_id": "cbcfb0a4-308c-4d7a-b47e-a524e6c9cb9a",
+      "product_name": "Eggs - Free Range Dozen",
+      "category": "Dairy & Eggs",
+      "competitor": "BigMart Supermarket",
+      "price": 7.98,
+      "last_updated": "2025-03-30T22:54:56.161603"
+    },
+    {
+      "product_id": "cbcfb0a4-308c-4d7a-b47e-a524e6c9cb9a",
+      "product_name": "Eggs - Free Range Dozen",
+      "category": "Dairy & Eggs",
+      "competitor": "FreshValue Grocers",
+      "price": 7.23,
+      "last_updated": "2025-03-31T22:54:56.161626"
+    },
+    {
+      "product_id": "cbcfb0a4-308c-4d7a-b47e-a524e6c9cb9a",
+      "product_name": "Eggs - Free Range Dozen",
+      "category": "Dairy & Eggs",
+      "competitor": "SaveMore Foods",
+      "price": 5.98,
+      "last_updated": "2025-03-31T22:54:56.161649"
+    },
+    {
+      "product_id": "eace95e6-127b-4fd2-aa83-ca5e15964d11",
+      "product_name": "Bananas",
+      "category": "Fruits & Vegetables",
+      "competitor": "BigMart Supermarket",
+      "price": 2.08,
+      "last_updated": "2025-04-01T22:54:56.161673"
+    },
+    {
+      "product_id": "eace95e6-127b-4fd2-aa83-ca5e15964d11",
+      "product_name": "Bananas",
+      "category": "Fruits & Vegetables",
+      "competitor": "FreshValue Grocers",
+      "price": 2.23,
+      "last_updated": "2025-04-02T22:54:56.161698"
+    },
+    {
+      "product_id": "eace95e6-127b-4fd2-aa83-ca5e15964d11",
+      "product_name": "Bananas",
+      "category": "Fruits & Vegetables",
+      "competitor": "SaveMore Foods",
+      "price": 2.02,
+      "last_updated": "2025-04-01T22:54:56.161721"
+    },
+    {
+      "product_id": "dd58b709-668c-4642-b9d3-21f0419f2222",
+      "product_name": "Bottled Water 24-Pack",
+      "category": "Beverages",
+      "competitor": "BigMart Supermarket",
+      "price": 9.87,
+      "last_updated": "2025-03-31T22:54:56.161745"
+    },
+    {
+      "product_id": "dd58b709-668c-4642-b9d3-21f0419f2222",
+      "product_name": "Bottled Water 24-Pack",
+      "category": "Beverages",
+      "competitor": "FreshValue Grocers",
+      "price": 9.73,
+      "last_updated": "2025-03-30T22:54:56.161771"
+    },
+    {
+      "product_id": "dd58b709-668c-4642-b9d3-21f0419f2222",
+      "product_name": "Bottled Water 24-Pack",
+      "category": "Beverages",
+      "competitor": "SaveMore Foods",
+      "price": 10.41,
+      "last_updated": "2025-04-02T22:54:56.161797"
+    },
+    {
+      "product_id": "f95928db-e60c-44d2-b80a-3d7b13f48083",
+      "product_name": "Chicken Breast - 500g",
+      "category": "Meat & Seafood",
+      "competitor": "BigMart Supermarket",
+      "price": 14.81,
+      "last_updated": "2025-03-30T22:54:56.161869"
+    },
+    {
+      "product_id": "f95928db-e60c-44d2-b80a-3d7b13f48083",
+      "product_name": "Chicken Breast - 500g",
+      "category": "Meat & Seafood",
+      "competitor": "FreshValue Grocers",
+      "price": 11.3,
+      "last_updated": "2025-03-28T22:54:56.161959"
+    },
+    {
+      "product_id": "f95928db-e60c-44d2-b80a-3d7b13f48083",
+      "product_name": "Chicken Breast - 500g",
+      "category": "Meat & Seafood",
+      "competitor": "SaveMore Foods",
+      "price": 11.94,
+      "last_updated": "2025-04-02T22:54:56.161987"
+    },
+    {
+      "product_id": "96040a46-4f95-4a6e-8a1f-39adab82f789",
+      "product_name": "Pasta Sauce - Tomato & Basil",
+      "category": "Canned & Packaged",
+      "competitor": "BigMart Supermarket",
+      "price": 3.01,
+      "last_updated": "2025-03-28T22:54:56.162015"
+    },
+    {
+      "product_id": "96040a46-4f95-4a6e-8a1f-39adab82f789",
+      "product_name": "Pasta Sauce - Tomato & Basil",
+      "category": "Canned & Packaged",
+      "competitor": "FreshValue Grocers",
+      "price": 3.94,
+      "last_updated": "2025-03-28T22:54:56.162043"
+    },
+    {
+      "product_id": "96040a46-4f95-4a6e-8a1f-39adab82f789",
+      "product_name": "Pasta Sauce - Tomato & Basil",
+      "category": "Canned & Packaged",
+      "competitor": "SaveMore Foods",
+      "price": 3.08,
+      "last_updated": "2025-03-28T22:54:56.162070"
+    }
+  ],
+  "price_history": [],
+  "margin_targets": {
+    "Fruits & Vegetables": 25.0,
+    "Dairy & Eggs": 22.0,
+    "Meat & Seafood": 18.0,
+    "Bakery": 35.0,
+    "Beverages": 40.0,
+    "Snacks & Confectionery": 45.0,
+    "Canned & Packaged": 30.0,
+    "Frozen Foods": 28.0,
+    "Household & Cleaning": 35.0
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "suppliers": [
+    {
+      "id": "29056d46-c9b5-4465-a6e5-1bd5274bed49",
+      "name": "Local Organic Farms",
+      "contact_name": "Sarah Johnson",
+      "phone": "+61 2 5555 1234",
+      "email": "info@localorganicfarms.com.au",
+      "address": "123 Farm Rd, Penrith, NSW 2750",
+      "distance": 5.2,
+      "categories": [
+        "Fruits & Vegetables",
+        "Organic"
+      ],
+      "delivery_schedule": "Twice a week",
+      "min_order": 50.0,
+      "is_local": true,
+      "reliability_score": 9.2,
+      "sustainability_score": 9.7,
+      "date_added": "2024-12-04T22:54:56.162813",
+      "last_order_date": "2025-03-31T22:54:56.162821",
+      "coordinates": {
+        "latitude": -33.751,
+        "longitude": 150.694
+      },
+      "products": [
+        {
+          "name": "Organic Apples",
+          "price": 1.2,
+          "unit": "kg"
+        },
+        {
+          "name": "Fresh Carrots",
+          "price": 0.9,
+          "unit": "kg"
+        },
+        {
+          "name": "Mixed Salad Greens",
+          "price": 2.5,
+          "unit": "bunch"
+        }
+      ]
+    },
+    {
+      "id": "c03a7a23-ee42-4968-a659-1e2a12e992ae",
+      "name": "Penrith Dairy Co-op",
+      "contact_name": "James Smith",
+      "phone": "+61 2 5555 2345",
+      "email": "orders@penrithdairy.com.au",
+      "address": "45 Dairy Lane, Penrith, NSW 2750",
+      "distance": 3.8,
+      "categories": [
+        "Dairy & Eggs"
+      ],
+      "delivery_schedule": "Daily",
+      "min_order": 25.0,
+      "is_local": true,
+      "reliability_score": 9.5,
+      "sustainability_score": 8.9,
+      "date_added": "2024-10-05T22:54:56.162833",
+      "last_order_date": "2025-04-02T22:54:56.162835",
+      "coordinates": {
+        "latitude": -33.759,
+        "longitude": 150.702
+      },
+      "products": [
+        {
+          "name": "Full Cream Milk 2L",
+          "price": 2.4,
+          "unit": "each"
+        },
+        {
+          "name": "Local Yogurt 500g",
+          "price": 3.2,
+          "unit": "each"
+        },
+        {
+          "name": "Block Cheddar 250g",
+          "price": 4.5,
+          "unit": "each"
+        }
+      ]
+    },
+    {
+      "id": "d98c4c0e-2694-482a-be53-a168ecefa786",
+      "name": "Penrith Bakehouse",
+      "contact_name": "Emma Wong",
+      "phone": "+61 2 5555 3456",
+      "email": "orders@penrithbakehouse.com.au",
+      "address": "78 Main St, Penrith, NSW 2750",
+      "distance": 1.2,
+      "categories": [
+        "Bakery"
+      ],
+      "delivery_schedule": "Daily",
+      "min_order": 15.0,
+      "is_local": true,
+      "reliability_score": 9.0,
+      "sustainability_score": 8.5,
+      "date_added": "2025-01-03T22:54:56.162844",
+      "last_order_date": "2025-04-02T22:54:56.162846",
+      "coordinates": {
+        "latitude": -33.755,
+        "longitude": 150.689
+      },
+      "products": [
+        {
+          "name": "Multigrain Loaf",
+          "price": 3.8,
+          "unit": "each"
+        },
+        {
+          "name": "White Bread Rolls 6pk",
+          "price": 3.2,
+          "unit": "each"
+        },
+        {
+          "name": "Sourdough Batard",
+          "price": 5.5,
+          "unit": "each"
+        }
+      ]
+    },
+    {
+      "id": "2a14d345-ac7d-49d2-beb4-dad844d5dff0",
+      "name": "Happy Hens Farm",
+      "contact_name": "Michael Zhang",
+      "phone": "+61 2 5555 4567",
+      "email": "info@happyhens.com.au",
+      "address": "156 Range Rd, Wallacia, NSW 2745",
+      "distance": 12.5,
+      "categories": [
+        "Dairy & Eggs",
+        "Organic"
+      ],
+      "delivery_schedule": "Twice a week",
+      "min_order": 30.0,
+      "is_local": true,
+      "reliability_score": 8.8,
+      "sustainability_score": 9.6,
+      "date_added": "2024-11-04T22:54:56.162853",
+      "last_order_date": "2025-04-01T22:54:56.162855",
+      "coordinates": {
+        "latitude": -33.867,
+        "longitude": 150.639
+      },
+      "products": [
+        {
+          "name": "Free Range Eggs Dozen",
+          "price": 5.2,
+          "unit": "each"
+        },
+        {
+          "name": "Organic Eggs Dozen",
+          "price": 6.5,
+          "unit": "each"
+        }
+      ]
+    },
+    {
+      "id": "b1847418-f47b-421c-850b-7c4f1cffbf99",
+      "name": "NSW Poultry",
+      "contact_name": "David Chen",
+      "phone": "+61 2 5555 5678",
+      "email": "sales@nswpoultry.com.au",
+      "address": "42 Industry Way, Eastern Creek, NSW 2766",
+      "distance": 22.8,
+      "categories": [
+        "Meat & Seafood"
+      ],
+      "delivery_schedule": "Twice a week",
+      "min_order": 100.0,
+      "is_local": true,
+      "reliability_score": 8.9,
+      "sustainability_score": 7.8,
+      "date_added": "2024-09-15T22:54:56.162862",
+      "last_order_date": "2025-03-27T22:54:56.162864",
+      "coordinates": {
+        "latitude": -33.806,
+        "longitude": 150.866
+      },
+      "products": [
+        {
+          "name": "Chicken Breast 500g",
+          "price": 7.2,
+          "unit": "each"
+        },
+        {
+          "name": "Whole Chicken 1.5kg",
+          "price": 9.5,
+          "unit": "each"
+        },
+        {
+          "name": "Chicken Thigh Fillets 500g",
+          "price": 6.8,
+          "unit": "each"
+        }
+      ]
+    },
+    {
+      "id": "29202b8f-b26f-47ff-b066-2b12b30f56c6",
+      "name": "National Distributors",
+      "contact_name": "Lisa Taylor",
+      "phone": "+61 2 8888 1234",
+      "email": "orders@nationaldist.com.au",
+      "address": "5 Corporate Dr, Homebush, NSW 2140",
+      "distance": 45.3,
+      "categories": [
+        "Beverages",
+        "Canned & Packaged",
+        "Snacks & Confectionery"
+      ],
+      "delivery_schedule": "Weekly",
+      "min_order": 500.0,
+      "is_local": false,
+      "reliability_score": 9.7,
+      "sustainability_score": 6.5,
+      "date_added": "2024-04-03T22:54:56.162872",
+      "last_order_date": "2025-03-29T22:54:56.162876",
+      "coordinates": {
+        "latitude": -33.865,
+        "longitude": 151.082
+      },
+      "products": [
+        {
+          "name": "Bottled Water 24-Pack",
+          "price": 8.5,
+          "unit": "each"
+        },
+        {
+          "name": "Pasta Sauce - Tomato & Basil",
+          "price": 2.1,
+          "unit": "each"
+        },
+        {
+          "name": "Potato Chips 175g",
+          "price": 2.8,
+          "unit": "each"
+        }
+      ]
+    }
+  ],
+  "categories": [
+    "Fruits & Vegetables",
+    "Dairy & Eggs",
+    "Meat & Seafood",
+    "Bakery",
+    "Beverages",
+    "Snacks & Confectionery",
+    "Organic",
+    "Specialty Foods"
+  ],
+  "orders": []
+}

@@ -1,0 +1,702 @@
+{
+  "location": "Penrith, Australia",
+  "weather_impacts": [
+    {
+      "weather_condition": "sunny",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": 12.2
+    },
+    {
+      "weather_condition": "sunny",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": 6.5
+    },
+    {
+      "weather_condition": "sunny",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": 0.2
+    },
+    {
+      "weather_condition": "sunny",
+      "category": "Bakery",
+      "sales_impact_percentage": 1.6
+    },
+    {
+      "weather_condition": "sunny",
+      "category": "Beverages",
+      "sales_impact_percentage": 15.1
+    },
+    {
+      "weather_condition": "sunny",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 10.2
+    },
+    {
+      "weather_condition": "sunny",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": 17.7
+    },
+    {
+      "weather_condition": "sunny",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": 3.4
+    },
+    {
+      "weather_condition": "clear",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": 18.4
+    },
+    {
+      "weather_condition": "clear",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": 5.1
+    },
+    {
+      "weather_condition": "clear",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": 0.1
+    },
+    {
+      "weather_condition": "clear",
+      "category": "Bakery",
+      "sales_impact_percentage": 7.5
+    },
+    {
+      "weather_condition": "clear",
+      "category": "Beverages",
+      "sales_impact_percentage": 13.5
+    },
+    {
+      "weather_condition": "clear",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 15.3
+    },
+    {
+      "weather_condition": "clear",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": 16.5
+    },
+    {
+      "weather_condition": "clear",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": 6.3
+    },
+    {
+      "weather_condition": "partly cloudy",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": 4.7
+    },
+    {
+      "weather_condition": "partly cloudy",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": 0.6
+    },
+    {
+      "weather_condition": "partly cloudy",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": -3.3
+    },
+    {
+      "weather_condition": "partly cloudy",
+      "category": "Bakery",
+      "sales_impact_percentage": -1.4
+    },
+    {
+      "weather_condition": "partly cloudy",
+      "category": "Beverages",
+      "sales_impact_percentage": 3.0
+    },
+    {
+      "weather_condition": "partly cloudy",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 2.1
+    },
+    {
+      "weather_condition": "partly cloudy",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": 4.7
+    },
+    {
+      "weather_condition": "partly cloudy",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": -1.7
+    },
+    {
+      "weather_condition": "cloudy",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": -1.0
+    },
+    {
+      "weather_condition": "cloudy",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": -0.4
+    },
+    {
+      "weather_condition": "cloudy",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": -4.4
+    },
+    {
+      "weather_condition": "cloudy",
+      "category": "Bakery",
+      "sales_impact_percentage": -1.6
+    },
+    {
+      "weather_condition": "cloudy",
+      "category": "Beverages",
+      "sales_impact_percentage": 2.9
+    },
+    {
+      "weather_condition": "cloudy",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 1.4
+    },
+    {
+      "weather_condition": "cloudy",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": 1.3
+    },
+    {
+      "weather_condition": "cloudy",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": 2.7
+    },
+    {
+      "weather_condition": "overcast",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": -2.0
+    },
+    {
+      "weather_condition": "overcast",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": -4.6
+    },
+    {
+      "weather_condition": "overcast",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": 0.9
+    },
+    {
+      "weather_condition": "overcast",
+      "category": "Bakery",
+      "sales_impact_percentage": 0.2
+    },
+    {
+      "weather_condition": "overcast",
+      "category": "Beverages",
+      "sales_impact_percentage": -1.8
+    },
+    {
+      "weather_condition": "overcast",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 3.7
+    },
+    {
+      "weather_condition": "overcast",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": -0.3
+    },
+    {
+      "weather_condition": "overcast",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": -0.8
+    },
+    {
+      "weather_condition": "mist",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": 2.0
+    },
+    {
+      "weather_condition": "mist",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": -1.0
+    },
+    {
+      "weather_condition": "mist",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": 2.6
+    },
+    {
+      "weather_condition": "mist",
+      "category": "Bakery",
+      "sales_impact_percentage": -3.6
+    },
+    {
+      "weather_condition": "mist",
+      "category": "Beverages",
+      "sales_impact_percentage": -0.2
+    },
+    {
+      "weather_condition": "mist",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 0.6
+    },
+    {
+      "weather_condition": "mist",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": 1.2
+    },
+    {
+      "weather_condition": "mist",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": -4.5
+    },
+    {
+      "weather_condition": "fog",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": 4.0
+    },
+    {
+      "weather_condition": "fog",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": 4.6
+    },
+    {
+      "weather_condition": "fog",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": -2.5
+    },
+    {
+      "weather_condition": "fog",
+      "category": "Bakery",
+      "sales_impact_percentage": 3.6
+    },
+    {
+      "weather_condition": "fog",
+      "category": "Beverages",
+      "sales_impact_percentage": -1.0
+    },
+    {
+      "weather_condition": "fog",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 0.0
+    },
+    {
+      "weather_condition": "fog",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": -1.8
+    },
+    {
+      "weather_condition": "fog",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": -3.1
+    },
+    {
+      "weather_condition": "light rain",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": -14.0
+    },
+    {
+      "weather_condition": "light rain",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": -4.6
+    },
+    {
+      "weather_condition": "light rain",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": 4.7
+    },
+    {
+      "weather_condition": "light rain",
+      "category": "Bakery",
+      "sales_impact_percentage": -5.3
+    },
+    {
+      "weather_condition": "light rain",
+      "category": "Beverages",
+      "sales_impact_percentage": 2.4
+    },
+    {
+      "weather_condition": "light rain",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 12.3
+    },
+    {
+      "weather_condition": "light rain",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": 9.2
+    },
+    {
+      "weather_condition": "light rain",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": -3.7
+    },
+    {
+      "weather_condition": "moderate rain",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": -12.2
+    },
+    {
+      "weather_condition": "moderate rain",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": -1.3
+    },
+    {
+      "weather_condition": "moderate rain",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": 2.0
+    },
+    {
+      "weather_condition": "moderate rain",
+      "category": "Bakery",
+      "sales_impact_percentage": -14.2
+    },
+    {
+      "weather_condition": "moderate rain",
+      "category": "Beverages",
+      "sales_impact_percentage": -1.9
+    },
+    {
+      "weather_condition": "moderate rain",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 8.0
+    },
+    {
+      "weather_condition": "moderate rain",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": 7.2
+    },
+    {
+      "weather_condition": "moderate rain",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": -0.1
+    },
+    {
+      "weather_condition": "heavy rain",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": -12.5
+    },
+    {
+      "weather_condition": "heavy rain",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": 4.2
+    },
+    {
+      "weather_condition": "heavy rain",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": -2.6
+    },
+    {
+      "weather_condition": "heavy rain",
+      "category": "Bakery",
+      "sales_impact_percentage": -6.8
+    },
+    {
+      "weather_condition": "heavy rain",
+      "category": "Beverages",
+      "sales_impact_percentage": 1.4
+    },
+    {
+      "weather_condition": "heavy rain",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 14.3
+    },
+    {
+      "weather_condition": "heavy rain",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": 5.9
+    },
+    {
+      "weather_condition": "heavy rain",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": 0.3
+    },
+    {
+      "weather_condition": "thunderstorm",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": -10.9
+    },
+    {
+      "weather_condition": "thunderstorm",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": 4.7
+    },
+    {
+      "weather_condition": "thunderstorm",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": -3.5
+    },
+    {
+      "weather_condition": "thunderstorm",
+      "category": "Bakery",
+      "sales_impact_percentage": -12.0
+    },
+    {
+      "weather_condition": "thunderstorm",
+      "category": "Beverages",
+      "sales_impact_percentage": 3.4
+    },
+    {
+      "weather_condition": "thunderstorm",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 12.9
+    },
+    {
+      "weather_condition": "thunderstorm",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": 7.0
+    },
+    {
+      "weather_condition": "thunderstorm",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": -0.7
+    },
+    {
+      "temp_min": 0,
+      "temp_max": 10,
+      "temp_label": "cold",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": -1.4
+    },
+    {
+      "temp_min": 0,
+      "temp_max": 10,
+      "temp_label": "cold",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": 3.2
+    },
+    {
+      "temp_min": 0,
+      "temp_max": 10,
+      "temp_label": "cold",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": 0.3
+    },
+    {
+      "temp_min": 0,
+      "temp_max": 10,
+      "temp_label": "cold",
+      "category": "Bakery",
+      "sales_impact_percentage": 13.7
+    },
+    {
+      "temp_min": 0,
+      "temp_max": 10,
+      "temp_label": "cold",
+      "category": "Beverages",
+      "sales_impact_percentage": -19.2
+    },
+    {
+      "temp_min": 0,
+      "temp_max": 10,
+      "temp_label": "cold",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": -1.9
+    },
+    {
+      "temp_min": 0,
+      "temp_max": 10,
+      "temp_label": "cold",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": -18.4
+    },
+    {
+      "temp_min": 0,
+      "temp_max": 10,
+      "temp_label": "cold",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": 1.5
+    },
+    {
+      "temp_min": 10,
+      "temp_max": 20,
+      "temp_label": "cool",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": -4.0
+    },
+    {
+      "temp_min": 10,
+      "temp_max": 20,
+      "temp_label": "cool",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": 5.5
+    },
+    {
+      "temp_min": 10,
+      "temp_max": 20,
+      "temp_label": "cool",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": 0.1
+    },
+    {
+      "temp_min": 10,
+      "temp_max": 20,
+      "temp_label": "cool",
+      "category": "Bakery",
+      "sales_impact_percentage": 5.3
+    },
+    {
+      "temp_min": 10,
+      "temp_max": 20,
+      "temp_label": "cool",
+      "category": "Beverages",
+      "sales_impact_percentage": 8.1
+    },
+    {
+      "temp_min": 10,
+      "temp_max": 20,
+      "temp_label": "cool",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 2.3
+    },
+    {
+      "temp_min": 10,
+      "temp_max": 20,
+      "temp_label": "cool",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": -2.1
+    },
+    {
+      "temp_min": 10,
+      "temp_max": 20,
+      "temp_label": "cool",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": -2.5
+    },
+    {
+      "temp_min": 20,
+      "temp_max": 30,
+      "temp_label": "warm",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": 9.6
+    },
+    {
+      "temp_min": 20,
+      "temp_max": 30,
+      "temp_label": "warm",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": -4.8
+    },
+    {
+      "temp_min": 20,
+      "temp_max": 30,
+      "temp_label": "warm",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": 0.3
+    },
+    {
+      "temp_min": 20,
+      "temp_max": 30,
+      "temp_label": "warm",
+      "category": "Bakery",
+      "sales_impact_percentage": 3.4
+    },
+    {
+      "temp_min": 20,
+      "temp_max": 30,
+      "temp_label": "warm",
+      "category": "Beverages",
+      "sales_impact_percentage": 0.4
+    },
+    {
+      "temp_min": 20,
+      "temp_max": 30,
+      "temp_label": "warm",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 5.2
+    },
+    {
+      "temp_min": 20,
+      "temp_max": 30,
+      "temp_label": "warm",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": -1.5
+    },
+    {
+      "temp_min": 20,
+      "temp_max": 30,
+      "temp_label": "warm",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": 7.4
+    },
+    {
+      "temp_min": 30,
+      "temp_max": 45,
+      "temp_label": "hot",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": 0.2
+    },
+    {
+      "temp_min": 30,
+      "temp_max": 45,
+      "temp_label": "hot",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": -3.7
+    },
+    {
+      "temp_min": 30,
+      "temp_max": 45,
+      "temp_label": "hot",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": 3.1
+    },
+    {
+      "temp_min": 30,
+      "temp_max": 45,
+      "temp_label": "hot",
+      "category": "Bakery",
+      "sales_impact_percentage": -12.4
+    },
+    {
+      "temp_min": 30,
+      "temp_max": 45,
+      "temp_label": "hot",
+      "category": "Beverages",
+      "sales_impact_percentage": 21.7
+    },
+    {
+      "temp_min": 30,
+      "temp_max": 45,
+      "temp_label": "hot",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": -2.6
+    },
+    {
+      "temp_min": 30,
+      "temp_max": 45,
+      "temp_label": "hot",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": 23.6
+    },
+    {
+      "temp_min": 30,
+      "temp_max": 45,
+      "temp_label": "hot",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": 0.9
+    }
+  ],
+  "recent_forecasts": [
+    {
+      "date": "2025-04-03",
+      "condition": "Partly cloudy",
+      "temp_c": 15.9,
+      "precip_mm": 0
+    },
+    {
+      "date": "2025-04-04",
+      "condition": "Partly cloudy",
+      "temp_c": 18.2,
+      "precip_mm": 0
+    },
+    {
+      "date": "2025-04-05",
+      "condition": "Sunny",
+      "temp_c": 18.1,
+      "precip_mm": 0
+    },
+    {
+      "date": "2025-04-06",
+      "condition": "Cloudy",
+      "temp_c": 17.3,
+      "precip_mm": 0
+    },
+    {
+      "date": "2025-04-07",
+      "condition": "Partly cloudy",
+      "temp_c": 17.4,
+      "precip_mm": 0
+    }
+  ],
+  "recommendations_history": []
+}

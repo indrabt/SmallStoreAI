@@ -1,0 +1,355 @@
+{
+  "events": [
+    {
+      "id": "d2e8d6af-b565-4572-9e59-e4730326a798",
+      "name": "Penrith Farmers Market",
+      "date": "2025-04-06",
+      "location": "Penrith City Park",
+      "description": "Weekly farmers market featuring local produce and handmade goods.",
+      "expected_attendance": 500,
+      "recurring": "weekly",
+      "type": "market",
+      "added_by": "system",
+      "date_added": "2025-04-03T22:54:56.166058"
+    },
+    {
+      "id": "cf5ba415-fe99-486d-9c1a-bcb2c49f0e74",
+      "name": "Western Sydney Food Festival",
+      "date": "2025-04-13",
+      "location": "Penrith Panthers Stadium",
+      "description": "Annual food festival celebrating the diverse cuisines of Western Sydney.",
+      "expected_attendance": 3000,
+      "recurring": "annual",
+      "type": "festival",
+      "added_by": "system",
+      "date_added": "2025-04-03T22:54:56.166058"
+    },
+    {
+      "id": "41445488-556b-4bdb-9028-9e52e3b5b96d",
+      "name": "Penrith Community Fair",
+      "date": "2025-04-18",
+      "location": "Jamison Park",
+      "description": "Annual community fair with rides, games, and food stalls.",
+      "expected_attendance": 2000,
+      "recurring": "annual",
+      "type": "fair",
+      "added_by": "system",
+      "date_added": "2025-04-03T22:54:56.166058"
+    },
+    {
+      "id": "bc3ca337-1d19-4218-a88b-fa2ea3f0c216",
+      "name": "School Holiday Start",
+      "date": "2025-04-10",
+      "location": "Penrith and surrounding areas",
+      "description": "Start of school holidays for local schools.",
+      "expected_attendance": 10000,
+      "recurring": "seasonal",
+      "type": "school_holiday",
+      "added_by": "system",
+      "date_added": "2025-04-03T22:54:56.166058"
+    },
+    {
+      "id": "d98b197c-0abe-4b73-bef6-04819c537315",
+      "name": "Nepean River Festival",
+      "date": "2025-04-28",
+      "location": "Nepean River",
+      "description": "Celebration of the Nepean River with water activities, food, and entertainment.",
+      "expected_attendance": 1500,
+      "recurring": "annual",
+      "type": "festival",
+      "added_by": "system",
+      "date_added": "2025-04-03T22:54:56.166058"
+    }
+  ],
+  "event_impacts": [
+    {
+      "event_type": "market",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": 15.1
+    },
+    {
+      "event_type": "market",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": 11.3
+    },
+    {
+      "event_type": "market",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": 7.2
+    },
+    {
+      "event_type": "market",
+      "category": "Bakery",
+      "sales_impact_percentage": 27.1
+    },
+    {
+      "event_type": "market",
+      "category": "Beverages",
+      "sales_impact_percentage": 11.9
+    },
+    {
+      "event_type": "market",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 20.0
+    },
+    {
+      "event_type": "market",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": 5.4
+    },
+    {
+      "event_type": "market",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": 10.3
+    },
+    {
+      "event_type": "festival",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": 14.2
+    },
+    {
+      "event_type": "festival",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": 14.9
+    },
+    {
+      "event_type": "festival",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": 11.8
+    },
+    {
+      "event_type": "festival",
+      "category": "Bakery",
+      "sales_impact_percentage": 10.8
+    },
+    {
+      "event_type": "festival",
+      "category": "Beverages",
+      "sales_impact_percentage": 22.5
+    },
+    {
+      "event_type": "festival",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 27.1
+    },
+    {
+      "event_type": "festival",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": 33.6
+    },
+    {
+      "event_type": "festival",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": 12.7
+    },
+    {
+      "event_type": "fair",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": 5.3
+    },
+    {
+      "event_type": "fair",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": 7.2
+    },
+    {
+      "event_type": "fair",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": 11.6
+    },
+    {
+      "event_type": "fair",
+      "category": "Bakery",
+      "sales_impact_percentage": 10.4
+    },
+    {
+      "event_type": "fair",
+      "category": "Beverages",
+      "sales_impact_percentage": 31.1
+    },
+    {
+      "event_type": "fair",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 32.6
+    },
+    {
+      "event_type": "fair",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": 20.9
+    },
+    {
+      "event_type": "fair",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": 9.3
+    },
+    {
+      "event_type": "school_holiday",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": 18.3
+    },
+    {
+      "event_type": "school_holiday",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": 19.9
+    },
+    {
+      "event_type": "school_holiday",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": 13.1
+    },
+    {
+      "event_type": "school_holiday",
+      "category": "Bakery",
+      "sales_impact_percentage": 13.9
+    },
+    {
+      "event_type": "school_holiday",
+      "category": "Beverages",
+      "sales_impact_percentage": 33.4
+    },
+    {
+      "event_type": "school_holiday",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 35.0
+    },
+    {
+      "event_type": "school_holiday",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": 28.1
+    },
+    {
+      "event_type": "school_holiday",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": 16.3
+    },
+    {
+      "event_type": "sports",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": 0.3
+    },
+    {
+      "event_type": "sports",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": 7.0
+    },
+    {
+      "event_type": "sports",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": 9.4
+    },
+    {
+      "event_type": "sports",
+      "category": "Bakery",
+      "sales_impact_percentage": 6.4
+    },
+    {
+      "event_type": "sports",
+      "category": "Beverages",
+      "sales_impact_percentage": 29.0
+    },
+    {
+      "event_type": "sports",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 30.8
+    },
+    {
+      "event_type": "sports",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": 1.2
+    },
+    {
+      "event_type": "sports",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": 7.0
+    },
+    {
+      "event_type": "concert",
+      "category": "Fruits & Vegetables",
+      "sales_impact_percentage": 0.4
+    },
+    {
+      "event_type": "concert",
+      "category": "Dairy & Eggs",
+      "sales_impact_percentage": 2.9
+    },
+    {
+      "event_type": "concert",
+      "category": "Meat & Seafood",
+      "sales_impact_percentage": 0.2
+    },
+    {
+      "event_type": "concert",
+      "category": "Bakery",
+      "sales_impact_percentage": 2.3
+    },
+    {
+      "event_type": "concert",
+      "category": "Beverages",
+      "sales_impact_percentage": 20.3
+    },
+    {
+      "event_type": "concert",
+      "category": "Snacks & Confectionery",
+      "sales_impact_percentage": 25.9
+    },
+    {
+      "event_type": "concert",
+      "category": "Frozen Foods",
+      "sales_impact_percentage": 1.1
+    },
+    {
+      "event_type": "concert",
+      "category": "Household & Cleaning",
+      "sales_impact_percentage": 2.4
+    },
+    {
+      "event_type": "market",
+      "product": "Reusable Shopping Bags",
+      "sales_impact_percentage": 45.0,
+      "recommendation_reason": "Shoppers at farmers markets often forget bags"
+    },
+    {
+      "event_type": "market",
+      "product": "Fresh Bread",
+      "sales_impact_percentage": 35.0,
+      "recommendation_reason": "Complements fresh produce purchases"
+    },
+    {
+      "event_type": "festival",
+      "product": "Bottled Water",
+      "sales_impact_percentage": 60.0,
+      "recommendation_reason": "Essential for outdoor festival-goers"
+    },
+    {
+      "event_type": "festival",
+      "product": "Sunscreen",
+      "sales_impact_percentage": 40.0,
+      "recommendation_reason": "Outdoor event necessity often forgotten"
+    },
+    {
+      "event_type": "school_holiday",
+      "product": "Juice Boxes",
+      "sales_impact_percentage": 50.0,
+      "recommendation_reason": "Popular for kids' activities and outings"
+    },
+    {
+      "event_type": "school_holiday",
+      "product": "Sandwich Supplies",
+      "sales_impact_percentage": 40.0,
+      "recommendation_reason": "Increased lunch preparation at home"
+    },
+    {
+      "event_type": "fair",
+      "product": "Ice Cream",
+      "sales_impact_percentage": 45.0,
+      "recommendation_reason": "Popular treat before/after fair attendance"
+    },
+    {
+      "event_type": "sports",
+      "product": "Sports Drinks",
+      "sales_impact_percentage": 55.0,
+      "recommendation_reason": "High demand for hydration before/after events"
+    }
+  ],
+  "recommendation_history": []
+}

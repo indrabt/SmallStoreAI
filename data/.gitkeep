@@ -1,0 +1,2 @@
+# This file is used to ensure the data directory is included in version control
+# even if it's empty. The actual data files will be generated at runtime.

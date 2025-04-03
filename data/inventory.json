@@ -1,0 +1,104 @@
+{
+  "inventory": [
+    {
+      "id": "6d3d30fe-6847-433a-a31c-9ce720195521",
+      "name": "Apples - Royal Gala",
+      "category": "Fruits & Vegetables",
+      "supplier": "Local Organic Farms",
+      "quantity": 50,
+      "reorder_point": 15,
+      "cost_price": 1.25,
+      "selling_price": 2.99,
+      "last_updated": "2025-04-01T22:54:56.160071"
+    },
+    {
+      "id": "47cf6027-24e6-4e03-80ea-842caa7f4669",
+      "name": "Milk - Full Cream 2L",
+      "category": "Dairy & Eggs",
+      "supplier": "Penrith Dairy Co-op",
+      "quantity": 30,
+      "reorder_point": 10,
+      "cost_price": 2.5,
+      "selling_price": 4.2,
+      "last_updated": "2025-04-02T22:54:56.160091"
+    },
+    {
+      "id": "595bde8a-e532-4f72-8f0d-e2b5c1ac8694",
+      "name": "Bread - Multigrain Loaf",
+      "category": "Bakery",
+      "supplier": "Penrith Bakehouse",
+      "quantity": 15,
+      "reorder_point": 5,
+      "cost_price": 2.0,
+      "selling_price": 4.5,
+      "last_updated": "2025-04-03T22:54:56.160098"
+    },
+    {
+      "id": "cbcfb0a4-308c-4d7a-b47e-a524e6c9cb9a",
+      "name": "Eggs - Free Range Dozen",
+      "category": "Dairy & Eggs",
+      "supplier": "Happy Hens Farm",
+      "quantity": 25,
+      "reorder_point": 8,
+      "cost_price": 3.5,
+      "selling_price": 6.99,
+      "last_updated": "2025-03-31T22:54:56.160105"
+    },
+    {
+      "id": "eace95e6-127b-4fd2-aa83-ca5e15964d11",
+      "name": "Bananas",
+      "category": "Fruits & Vegetables",
+      "supplier": "Local Organic Farms",
+      "quantity": 40,
+      "reorder_point": 12,
+      "cost_price": 0.75,
+      "selling_price": 1.99,
+      "last_updated": "2025-04-02T22:54:56.160111"
+    },
+    {
+      "id": "dd58b709-668c-4642-b9d3-21f0419f2222",
+      "name": "Bottled Water 24-Pack",
+      "category": "Beverages",
+      "supplier": "National Distributors",
+      "quantity": 20,
+      "reorder_point": 5,
+      "cost_price": 6.0,
+      "selling_price": 9.99,
+      "last_updated": "2025-04-03T22:54:56.160117"
+    },
+    {
+      "id": "f95928db-e60c-44d2-b80a-3d7b13f48083",
+      "name": "Chicken Breast - 500g",
+      "category": "Meat & Seafood",
+      "supplier": "NSW Poultry",
+      "quantity": 10,
+      "reorder_point": 4,
+      "cost_price": 7.5,
+      "selling_price": 12.99,
+      "last_updated": "2025-04-01T22:54:56.160122"
+    },
+    {
+      "id": "96040a46-4f95-4a6e-8a1f-39adab82f789",
+      "name": "Pasta Sauce - Tomato & Basil",
+      "category": "Canned & Packaged",
+      "supplier": "National Distributors",
+      "quantity": 35,
+      "reorder_point": 10,
+      "cost_price": 1.8,
+      "selling_price": 3.49,
+      "last_updated": "2025-03-30T22:54:56.160127"
+    }
+  ],
+  "categories": [
+    "Fruits & Vegetables",
+    "Dairy & Eggs",
+    "Meat & Seafood",
+    "Bakery",
+    "Beverages",
+    "Snacks & Confectionery",
+    "Canned & Packaged",
+    "Frozen Foods",
+    "Household & Cleaning"
+  ],
+  "transactions": []
+}
