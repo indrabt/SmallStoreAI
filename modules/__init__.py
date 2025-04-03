@@ -8,3 +8,4 @@ from .local_sourcing import LocalSourcingManager
 from .weather_integration import WeatherIntegration
 from .event_recommender import EventRecommender
 from .hub_integration import LogisticsHubIntegration
+from .demand_predictor import DemandPredictor

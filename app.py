@@ -81,7 +81,7 @@ if page == "Dashboard":
     st.subheader("📊 Weather-Based Stocking Recommendations")
     
     weather_data = get_weather_forecast()
-    if weather_data:
+    if not weather_data.empty:
         weather_col, rec_col = st.columns(2)
         
         with weather_col:
@@ -95,6 +95,8 @@ if page == "Dashboard":
                 st.write(f"**{category}**:")
                 for item in items:
                     st.write(f"- {item['name']}: {item['recommendation']}")
+    # Add link to the new demand prediction page
+    st.info("📊 Check out our new [Weather & Event Demand Prediction](/demand_prediction) tool for more detailed stock recommendations!")
     
     # Upcoming events and recommendations
     st.subheader("🎉 Upcoming Events")
@@ -461,7 +463,7 @@ elif page == "Weather Forecasting":
     # Get weather forecast
     weather_data = get_weather_forecast()
     
-    if weather_data is not None:
+    if not weather_data.empty:
         # Display weather forecast
         st.subheader("5-Day Weather Forecast for Penrith")
         
