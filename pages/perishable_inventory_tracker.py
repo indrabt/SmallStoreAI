@@ -188,7 +188,7 @@ with fifo_tab:
                     "Expiration Date": item["expiration_date"],
                     "Days to Expiry": days_to_expiry,
                     "Location": item["location"],
-                    "Current Price": f"${item["current_price"]:.2f}",
+                    "Current Price": f"${item['current_price']:.2f}",
                     "Discount": f"{item['discount_rate']}%" if item["discount_applied"] else "None",
                     "Last Scanned": item["last_scanned"]
                 })
