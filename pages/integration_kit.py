@@ -431,9 +431,9 @@ def show_integration_logs(integration_manager):
             }.get(log["status"], "gray")
             
             st.markdown(
-                f"<div style=f'border-left: 4px solid {status_color}; padding-left: 10px; margin-bottom: 10px;">"
+                f"<div style='border-left: 4px solid {status_color}; padding-left: 10px; margin-bottom: 10px;'>"
                 f"<span style='color: gray;'>{log['timestamp']}</span> | "
-                f"<span style=f'color: {status_color}; font-weight: bold;">{log['type']}</span><br/>"
+                f"<span style='color: {status_color}; font-weight: bold;'>{log['type']}</span><br/>"
                 f"{log['details']}"
                 "</div>",
                 unsafe_allow_html=True
