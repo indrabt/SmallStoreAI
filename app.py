@@ -44,6 +44,7 @@ page = st.sidebar.radio(
         "Event Recommendations",
         "Waste Management",
         "Logistics Hub",
+        "Real-Time Dashboard",
         "Integration Kit",
         "Settings"
     ]
@@ -666,6 +667,12 @@ elif page == "Logistics Hub":
     st.title("Smart Logistics Hub Integration")
     
     tab1, tab2, tab3 = st.tabs(["Route Optimization", "Predictive Resilience", "Multi-Modal Logistics"])
+
+# Real-Time Dashboard Page
+elif page == "Real-Time Dashboard":
+    # Redirect to the real-time dashboard page
+    st.info("Opening Real-Time Client Dashboard...")
+    st.switch_page("pages/realtime_dashboard.py")
 
 # Integration Kit Page
 elif page == "Integration Kit":
