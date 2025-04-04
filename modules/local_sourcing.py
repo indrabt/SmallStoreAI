@@ -14,6 +14,8 @@ class LocalSourcingManager:
     - Supplier directory management
     - Local sourcing analytics
     - Cost comparisons between local and non-local suppliers
+    - Supplier order management and notifications
+    - Automated order confirmation via SMS/email
     """
     
     def __init__(self, data_file="data/suppliers.json"):
@@ -623,3 +625,341 @@ class LocalSourcingManager:
         monthly_savings = total_savings * estimated_quantity
         
         return monthly_savings
+        
+    def get_supplier_by_id(self, supplier_id):
+        """Get supplier details by ID"""
+        data = self._load_data()
+        suppliers = data['suppliers']
+        
+        for supplier in suppliers:
+            if supplier['id'] == supplier_id:
+                return supplier
+                
+        return None
+    
+    def get_supplier_by_name(self, supplier_name):
+        """Get supplier details by name"""
+        data = self._load_data()
+        suppliers = data['suppliers']
+        
+        for supplier in suppliers:
+            if supplier['name'] == supplier_name:
+                return supplier
+                
+        return None
+    
+    def get_supplier_products(self, supplier_id=None, supplier_name=None):
+        """Get products for a specific supplier"""
+        if supplier_id:
+            supplier = self.get_supplier_by_id(supplier_id)
+        elif supplier_name:
+            supplier = self.get_supplier_by_name(supplier_name)
+        else:
+            return []
+            
+        if supplier:
+            return supplier['products']
+        return []
+    
+    def create_order(self, supplier_id, product_name, quantity, pickup_window_start, pickup_window_end):
+        """Create a new order for a supplier"""
+        supplier = self.get_supplier_by_id(supplier_id)
+        if not supplier:
+            return None
+            
+        # Generate order details
+        order_id = str(uuid.uuid4())
+        order_date = datetime.now().isoformat()
+        
+        # Find product details
+        product_details = None
+        for product in supplier['products']:
+            if product['name'] == product_name:
+                product_details = product
+                break
+                
+        if not product_details:
+            return None
+            
+        # Calculate order total
+        total_amount = product_details['price'] * quantity
+        
+        # Create order object
+        order = {
+            "id": order_id,
+            "supplier_id": supplier_id,
+            "supplier_name": supplier['name'],
+            "supplier_contact": {
+                "name": supplier['contact_name'],
+                "phone": supplier['phone'],
+                "email": supplier['email']
+            },
+            "product": {
+                "name": product_name,
+                "price": product_details['price'],
+                "unit": product_details['unit']
+            },
+            "quantity": quantity,
+            "total_amount": total_amount,
+            "pickup_window": {
+                "start": pickup_window_start,
+                "end": pickup_window_end
+            },
+            "order_date": order_date,
+            "status": "pending",
+            "status_history": [
+                {
+                    "status": "pending",
+                    "timestamp": order_date,
+                    "note": "Order created"
+                }
+            ],
+            "notification_history": [],
+            "driver_assigned": False
+        }
+        
+        # Save order
+        data = self._load_data()
+        data['orders'].append(order)
+        self._save_data(data)
+        
+        # Update supplier's last_order_date
+        for i, s in enumerate(data['suppliers']):
+            if s['id'] == supplier_id:
+                data['suppliers'][i]['last_order_date'] = order_date
+                break
+                
+        self._save_data(data)
+        
+        return order
+    
+    def get_orders(self, status=None):
+        """Get all orders, optionally filtered by status"""
+        data = self._load_data()
+        orders = data['orders']
+        
+        if status:
+            orders = [order for order in orders if order['status'] == status]
+            
+        # Sort by order date (most recent first)
+        orders = sorted(orders, key=lambda o: o['order_date'], reverse=True)
+        
+        return orders
+    
+    def get_order_by_id(self, order_id):
+        """Get order details by ID"""
+        data = self._load_data()
+        orders = data['orders']
+        
+        for order in orders:
+            if order['id'] == order_id:
+                return order
+                
+        return None
+    
+    def update_order_status(self, order_id, new_status, note=None):
+        """Update an order's status"""
+        data = self._load_data()
+        
+        for i, order in enumerate(data['orders']):
+            if order['id'] == order_id:
+                data['orders'][i]['status'] = new_status
+                
+                # Add status history entry
+                status_entry = {
+                    "status": new_status,
+                    "timestamp": datetime.now().isoformat(),
+                    "note": note if note else f"Status updated to {new_status}"
+                }
+                
+                data['orders'][i]['status_history'].append(status_entry)
+                self._save_data(data)
+                return data['orders'][i]
+                
+        return None
+    
+    def send_order_notification(self, order_id, notification_type="sms"):
+        """Send order notification to supplier via SMS or email"""
+        order = self.get_order_by_id(order_id)
+        if not order:
+            return {"success": False, "message": "Order not found"}
+            
+        # Import notification services
+        import os
+        from twilio.rest import Client
+        from sendgrid import SendGridAPIClient
+        from sendgrid.helpers.mail import Mail
+        
+        # Create notification message
+        message = f"Order #{order_id[:8]}: {order['quantity']} {order['product']['name']}, pickup {order['pickup_window']['start']} - {order['pickup_window']['end']}, Penrith Grocery"
+        
+        notification_result = {"success": False, "message": "Notification failed"}
+        
+        # Record notification attempt
+        notification_entry = {
+            "type": notification_type,
+            "timestamp": datetime.now().isoformat(),
+            "message": message,
+            "status": "pending"
+        }
+        
+        # Attempt notification
+        try:
+            if notification_type == "sms":
+                # Check if we have Twilio credentials
+                twilio_account_sid = os.environ.get("TWILIO_ACCOUNT_SID")
+                twilio_auth_token = os.environ.get("TWILIO_AUTH_TOKEN")
+                twilio_phone_number = os.environ.get("TWILIO_PHONE_NUMBER")
+                
+                if twilio_account_sid and twilio_auth_token and twilio_phone_number:
+                    # Send SMS via Twilio
+                    client = Client(twilio_account_sid, twilio_auth_token)
+                    
+                    client.messages.create(
+                        body=message,
+                        from_=twilio_phone_number,
+                        to=order['supplier_contact']['phone']
+                    )
+                    
+                    notification_result = {"success": True, "message": "SMS sent successfully"}
+                    notification_entry["status"] = "sent"
+                else:
+                    # Simulate success for demo purposes
+                    notification_result = {"success": True, "message": "SMS notification simulated (Twilio credentials not found)"}
+                    notification_entry["status"] = "simulated"
+                    notification_entry["note"] = "Twilio credentials not found"
+            
+            elif notification_type == "email":
+                # Check if we have SendGrid credentials
+                sendgrid_api_key = os.environ.get("SENDGRID_API_KEY")
+                
+                if sendgrid_api_key:
+                    # Send email via SendGrid
+                    sg = SendGridAPIClient(sendgrid_api_key)
+                    
+                    email_message = Mail(
+                        from_email='orders@penrithgrocery.com.au',
+                        to_emails=order['supplier_contact']['email'],
+                        subject=f'Order #{order_id[:8]} from Penrith Grocery',
+                        html_content=f"""
+                        <h2>New Order from Penrith Grocery</h2>
+                        <p><strong>Order ID:</strong> #{order_id[:8]}</p>
+                        <p><strong>Product:</strong> {order['product']['name']}</p>
+                        <p><strong>Quantity:</strong> {order['quantity']}</p>
+                        <p><strong>Pickup Window:</strong> {order['pickup_window']['start']} - {order['pickup_window']['end']}</p>
+                        <p>Please confirm this order by replying to this email or calling (02) 5555-9999.</p>
+                        """
+                    )
+                    
+                    sg.send(email_message)
+                    
+                    notification_result = {"success": True, "message": "Email sent successfully"}
+                    notification_entry["status"] = "sent"
+                else:
+                    # Simulate success for demo purposes
+                    notification_result = {"success": True, "message": "Email notification simulated (SendGrid credentials not found)"}
+                    notification_entry["status"] = "simulated"
+                    notification_entry["note"] = "SendGrid credentials not found"
+        
+        except Exception as e:
+            notification_result = {"success": False, "message": f"Notification failed: {str(e)}"}
+            notification_entry["status"] = "failed"
+            notification_entry["error"] = str(e)
+        
+        # Update order's notification history
+        data = self._load_data()
+        for i, o in enumerate(data['orders']):
+            if o['id'] == order_id:
+                data['orders'][i]['notification_history'].append(notification_entry)
+                self._save_data(data)
+                break
+                
+        return notification_result
+    
+    def process_supplier_response(self, order_id, response_text):
+        """Process a response from a supplier"""
+        order = self.get_order_by_id(order_id)
+        if not order:
+            return {"success": False, "message": "Order not found"}
+            
+        # Analyze response text for confirmation or rejection
+        response_lower = response_text.lower()
+        
+        if "confirm" in response_lower or "yes" in response_lower or "accept" in response_lower:
+            # Order confirmed
+            self.update_order_status(
+                order_id, 
+                "confirmed", 
+                f"Supplier confirmed: {response_text}"
+            )
+            return {"success": True, "message": "Order confirmed", "status": "confirmed"}
+            
+        elif "cancel" in response_lower or "no" in response_lower or "reject" in response_lower:
+            # Order rejected
+            self.update_order_status(
+                order_id, 
+                "rejected", 
+                f"Supplier rejected: {response_text}"
+            )
+            return {"success": True, "message": "Order rejected", "status": "rejected"}
+            
+        else:
+            # Ambiguous response
+            self.update_order_status(
+                order_id, 
+                "pending", 
+                f"Received response: {response_text}"
+            )
+            return {"success": True, "message": "Response recorded, but needs manual review", "status": "pending"}
+    
+    def assign_driver(self, order_id, driver_name):
+        """Assign a driver to an order"""
+        data = self._load_data()
+        
+        for i, order in enumerate(data['orders']):
+            if order['id'] == order_id:
+                data['orders'][i]['driver_assigned'] = True
+                data['orders'][i]['driver'] = {
+                    "name": driver_name,
+                    "assigned_at": datetime.now().isoformat()
+                }
+                
+                # Add status history entry
+                status_entry = {
+                    "status": "driver_assigned",
+                    "timestamp": datetime.now().isoformat(),
+                    "note": f"Driver {driver_name} assigned to order"
+                }
+                
+                data['orders'][i]['status_history'].append(status_entry)
+                self._save_data(data)
+                return data['orders'][i]
+                
+        return None
+    
+    def get_alternative_suppliers(self, product_name, original_supplier_id):
+        """Get alternative suppliers for a product when original supplier cancels"""
+        data = self._load_data()
+        suppliers = data['suppliers']
+        
+        alternatives = []
+        
+        for supplier in suppliers:
+            # Skip the original supplier
+            if supplier['id'] == original_supplier_id:
+                continue
+                
+            # Check if this supplier offers the product
+            for product in supplier['products']:
+                if product_name.lower() in product['name'].lower():
+                    alternatives.append({
+                        "supplier": supplier,
+                        "product": product
+                    })
+                    break
+        
+        # Sort alternatives by reliability score and then by distance
+        return sorted(
+            alternatives, 
+            key=lambda a: (-a['supplier']['reliability_score'], a['supplier']['distance'])
+        )

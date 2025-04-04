@@ -1,0 +1,19 @@
+Section 3: Feature 2 - Low-Cost Local Sourcing Connector
+Description: Connects to suppliers (farmers/companies), sends automated email/SMS orders, schedules pickups for the logistics manager.
+Detailed Steps:
+
+Logistics manager opens connector on dashboard at 9:00 AM.
+Views supplier list (e.g., “Supplier A: 80 water bottles, $0.80/bottle, 20km from Penrith”) from database.
+Selects Supplier A via dropdown, enters “80 bottles” in quantity field, sets pickup window (10:00 AM-1:00 PM) using time picker.
+Clicks “Send Order” button, triggering SMS (“Order #123: 80 water bottles, pickup 10:00 AM-1:00 PM, Penrith Grocery”) via Twilio API or email via SendGrid API.
+Supplier A replies “Confirmed, ready by 10:00 AM” via SMS/email, logged in dashboard by 9:05 AM.
+Manager assigns driver via Feature 5 button (“Assign Driver”). Workflow:
+Input: Order from Feature 1 (e.g., 80 bottles), supplier database (e.g., Supplier A contact).
+Process: Sends automated notification, logs supplier reply, schedules pickup.
+Output: Confirmed order ready for driver assignment. Acceptance Criteria:
+Given need for 80 water bottles, when manager clicks “Send Order” at 9:00 AM, then SMS/email sent within 5 minutes (9:02 AM), schedules 3-hour window, delivers <6 hours with ≥95% success (e.g., 12:30 PM).
+Given Supplier A offers $0.80/bottle (15% below $0.95), when manager confirms, then locks price in database, sends SMS, saves ≥10% ($12 on 80 bottles).
+Given Supplier A replies “Confirmed” at 9:04 AM, when manager checks dashboard, then updates status by 9:05 AM, ≥95% confirmation rate (19/20 confirmed).
+Given Supplier A cancels at 10:00 AM via SMS, when manager checks, then suggests Supplier B by 10:12 PM (“80 bottles, 2:00 PM”), ≥90% supply continuity.
+Given SMS fails (no reply by 9:15 AM), when system checks, then retries via email, alerts manager via popup, ≥90% success (e.g., 9:20 AM).
+Given van breakdown at 10:30 AM (driver input), when system detects, then alerts manager via email within 15 minutes, reschedules, delay ≤1 day (e.g., 2:00 PM next day). Example: Manager orders 80 bottles from Supplier A, SMS sent at 9:02 AM, confirmed by 9:05 AM
