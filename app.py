@@ -12,6 +12,7 @@ from modules.local_sourcing import LocalSourcingManager
 from modules.weather_integration import WeatherIntegration
 from modules.event_recommender import EventRecommender
 from modules.hub_integration import LogisticsHubIntegration
+from modules.waste_management import WasteManagement
 
 # Set page configuration
 st.set_page_config(
@@ -40,6 +41,7 @@ page = st.sidebar.radio(
         "Local Sourcing", 
         "Weather Forecasting", 
         "Event Recommendations",
+        "Waste Management",
         "Logistics Hub",
         "Settings"
     ]
@@ -55,6 +57,7 @@ local_sourcing = LocalSourcingManager()
 weather_integration = WeatherIntegration(location="Penrith, Australia")
 event_recommender = EventRecommender()
 logistics_hub = LogisticsHubIntegration()
+waste_manager = WasteManagement()
 
 # Cache the weather data to avoid repeated API calls
 @st.cache_data(ttl=3600)
@@ -75,7 +78,8 @@ if page == "Dashboard":
         st.metric(label="Low Stock Items", value=inventory_manager.get_low_stock_count())
     
     with col3:
-        st.metric(label="Local Suppliers", value=local_sourcing.get_supplier_count())
+        summary = waste_manager.get_summary()
+        st.metric(label="Donation Savings", value=f"${summary['cost_savings']:.2f}")
     
     with col4:
         st.metric(label="Price Alerts", value=pricing_analyzer.get_alert_count())
@@ -99,11 +103,13 @@ if page == "Dashboard":
                 for item in items:
                     st.write(f"- {item['name']}: {item['recommendation']}")
     # Add links to the new features
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     with col1:
         st.info("📊 Check out our new [Weather & Event Demand Prediction](/demand_prediction) tool for more detailed stock recommendations!")
     with col2:
         st.info("💰 Try our new [Dynamic Pricing Assistant](/dynamic_pricing_assistant) for AI-powered pricing and promotions!")
+    with col3:
+        st.info("♻️ Try our new [Waste Management Lite](/waste_management_lite) for tracking donations and reducing waste!")
     
     # Upcoming events and recommendations
     st.subheader("🎉 Upcoming Events")
@@ -645,6 +651,12 @@ elif page == "Event Recommendations":
                     )
                     st.success(f"Added {event_name} to event calendar!")
                     st.rerun()
+
+# Waste Management Page
+elif page == "Waste Management":
+    # Redirect to the waste management page
+    st.info("Opening Waste Management Lite...")
+    st.switch_page("pages/waste_management_lite.py")
 
 # Logistics Hub Integration Page
 elif page == "Logistics Hub":

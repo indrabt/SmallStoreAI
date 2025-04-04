@@ -322,3 +322,37 @@ class EventRecommender:
                 })
         
         return recommendations
+        
+    def get_recommendations_for_event(self, event_id):
+        """
+        Get product recommendations for a specific event
+        
+        Args:
+            event_id (str): ID of the event
+            
+        Returns:
+            list: List of product recommendations with expected sales lift
+        """
+        event = self.get_event_by_id(event_id)
+        if not event:
+            return []
+            
+        recommendations = []
+        
+        # Generate recommendations based on products affected by the event
+        for product in event.get("products_affected", []):
+            recommendations.append({
+                "product": product,
+                "expected_sales_lift": event.get("expected_sales_lift", "5-10%").replace("%", "")
+            })
+            
+        # If no specific products are listed, provide generic recommendations
+        if not recommendations:
+            generic_products = ["Water", "Snacks", "Prepared meals", "Fresh produce"]
+            for product in generic_products:
+                recommendations.append({
+                    "product": product,
+                    "expected_sales_lift": "5-10"
+                })
+                
+        return recommendations

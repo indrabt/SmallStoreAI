@@ -1,0 +1,22 @@
+{
+  "donation_logs": [],
+  "order_adjustments": [],
+  "waste_metrics": {
+    "total_donated": 0,
+    "total_wasted": 0,
+    "cost_savings": 0,
+    "donations_by_recipient": {},
+    "last_updated": "2025-04-04 03:07:23"
+  },
+  "settings": {
+    "donation_recipients": [
+      "Food Bank",
+      "Local Shelter",
+      "Community Center",
+      "Staff Take-Home",
+      "Other"
+    ],
+    "notification_emails": [],
+    "square_pos_integration": true
+  }
+}
