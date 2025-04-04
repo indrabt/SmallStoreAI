@@ -534,11 +534,36 @@ class IntegrationKit:
             
         if "hub_integration" not in self.status:
             self.status["hub_integration"] = {
-                "hyper_local_route": {"connected": False, "last_sync": None, "status": "not_configured"},
-                "predictive_resilience": {"connected": False, "last_sync": None, "status": "not_configured"},
-                "multi_modal": {"connected": False, "last_sync": None, "status": "not_configured"},
-                "real_time_dashboard": {"connected": False, "last_sync": None, "status": "not_configured"},
-                "partnerships": {"connected": False, "last_sync": None, "status": "not_configured"}
+                "hyper_local_route": {
+                    "name": "Hyper-Local Route Optimization",
+                    "connected": False, 
+                    "last_sync": None, 
+                    "status": "not_configured"
+                },
+                "predictive_resilience": {
+                    "name": "Predictive Resilience",
+                    "connected": False, 
+                    "last_sync": None, 
+                    "status": "not_configured"
+                },
+                "multi_modal": {
+                    "name": "Multi-Modal Logistics Orchestration",
+                    "connected": False, 
+                    "last_sync": None, 
+                    "status": "not_configured"
+                },
+                "real_time_dashboard": {
+                    "name": "Real-Time Client Dashboard",
+                    "connected": False, 
+                    "last_sync": None, 
+                    "status": "not_configured"
+                },
+                "partnerships": {
+                    "name": "Partnerships and Ecosystem Integration",
+                    "connected": False, 
+                    "last_sync": None, 
+                    "status": "not_configured"
+                }
             }
             
         if "integration_metrics" not in self.status:

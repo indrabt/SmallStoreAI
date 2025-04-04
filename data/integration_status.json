@@ -60,29 +60,45 @@
   },
   "hub_integration": {
     "hyper_local_route": {
+      "name": "Hyper-Local Route Optimization",
       "connected": false,
       "last_sync": null,
       "status": "not_configured"
     },
     "predictive_resilience": {
+      "name": "Predictive Resilience",
       "connected": false,
       "last_sync": null,
       "status": "not_configured"
     },
     "multi_modal": {
+      "name": "Multi-Modal Logistics Orchestration",
       "connected": false,
       "last_sync": null,
       "status": "not_configured"
     },
     "real_time_dashboard": {
+      "name": "Real-Time Client Dashboard",
       "connected": false,
       "last_sync": null,
       "status": "not_configured"
     },
     "partnerships": {
+      "name": "Partnerships and Ecosystem Integration",
       "connected": false,
       "last_sync": null,
       "status": "not_configured"
     }
-  }
+  },
+  "integration_metrics": {
+    "uptime_percentage": 0,
+    "connection_time": 0,
+    "average_sync_time": 0,
+    "total_syncs": 0,
+    "total_errors": 0,
+    "last_system_check": null,
+    "cost_savings": 0,
+    "cached_data_usage": 0
+  },
+  "integration_logs": []
 }
