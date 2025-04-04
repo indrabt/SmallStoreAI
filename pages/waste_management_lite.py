@@ -539,7 +539,7 @@ def show_cost_savings(waste_manager):
         
         # Total cost savings
         total_savings = cost_df['total_cost'].sum()
-        st.metric("Total Cost Savings", f"${{total_savings:.2f}")
+        st.metric("Total Cost Savings", f"${total_savings:.2f}")
         
         # Cost savings by recipient
         st.write("Cost Savings by Recipient")

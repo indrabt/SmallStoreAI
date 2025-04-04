@@ -217,11 +217,11 @@ def show_deliveries_tab(dashboard_manager, dashboard):
                     
                 with col2:
                     st.markdown(
-                        f"<span style=f'color: {status_color}; font-weight: bold;">"
+                        f"<span style='color: {status_color}; font-weight: bold;'>"
                         f"Driver {delivery['driver']} - {delivery['status'].upper()}</span>",
                         unsafe_allow_html=True
                     )
-                    st.write(f"**{delivery[f'distance']} km away** ({minutes_away} minutes)")
+                    st.write(f"**{delivery['distance']} km away** ({minutes_away} minutes)")
                     st.write(f"Delivering {delivery['items']} {delivery['product_type']}")
                     
                     # Progress bar for arrival time
@@ -374,7 +374,7 @@ def show_sales_tab(dashboard_manager, dashboard):
         top_items_df.columns = ["Product", "Quantity", "Amount ($)"]
         
         # Format the Amount column
-        top_items_df["Amount ($)"] = top_items_df["Amount ($)"].map("${{:.2f}}".format)
+        top_items_df["Amount ($)"] = top_items_df["Amount ($)"].map("${:.2f}".format)
         
         st.dataframe(top_items_df, hide_index=True)
     else:
@@ -422,7 +422,7 @@ def show_inventory_tab(dashboard_manager, dashboard):
                 "Item": item["name"],
                 "Category": item["category"],
                 "Current Stock": item["current_stock"],
-                "Stock Level": f"{{item['stock_percentage']:.1f}%",
+                "Stock Level": f"{item['stock_percentage']:.1f}%",
                 "Urgency": item["urgency"].capitalize()
             }
             for item in dashboard["inventory_status"]["low_stock_items"]
