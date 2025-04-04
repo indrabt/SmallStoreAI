@@ -98,11 +98,11 @@ with tab1:
             col1, col2 = st.columns(2)
             
             with col1:
-                st.write("**Product:** " + str({selected_suggestion['product_name']) + "}")
-                st.write("**Category:** " + str({selected_suggestion['category']) + "}")
-                st.write("**Current Price:** $" + str({selected_suggestion['current_price']:.2f) + "}")
-                st.write("**Suggested Price:** $" + str({selected_suggestion['competitive_price']:.2f) + "}")
-                st.write("**Competitor Price (" + str({selected_suggestion['competitor_name']) + "}):** ${selected_suggestion['competitor_price']:.2f}")
+                st.write(f"**Product:** {selected_suggestion['product_name']}")
+                st.write(f"**Category:** {selected_suggestion['category']}")
+                st.write(f"**Current Price:** ${selected_suggestion['current_price']:.2f}")
+                st.write(f"**Suggested Price:** ${selected_suggestion['competitive_price']:.2f}")
+                st.write(f"**Competitor Price ({selected_suggestion['competitor_name']}):** ${selected_suggestion['competitor_price']:.2f}")
                 
                 # Price adjustment
                 adjusted_price = st.number_input("Adjusted Price ($)", 
@@ -114,7 +114,7 @@ with tab1:
                 
                 # Calculate new margin
                 new_margin = ((adjusted_price - selected_suggestion['supplier_cost']) / adjusted_price) * 100
-                st.write("New Margin: **" + str({new_margin:.1f) + "}%**")
+                st.write(f"New Margin: **{new_margin:.1f}%**")
                 
                 # Apply button
                 if st.button("Apply & Sync to POS"):
@@ -154,20 +154,20 @@ with tab1:
                 
                 # Display savings information
                 if selected_suggestion['supplier_savings'] > 0:
-                    st.info(f"Supplier Cost Savings: **" + str({selected_suggestion['supplier_savings']) + f"**}% using {selected_suggestion['supplier_name']}")
+                    st.info(f"Supplier Cost Savings: **{selected_suggestion['supplier_savings']}%** using {selected_suggestion['supplier_name']}")
                 
                 # Display competitive position
                 price_diff = ((selected_suggestion['competitive_price'] - selected_suggestion['competitor_price']) 
                              / selected_suggestion['competitor_price'] * 100)
                 
                 if price_diff < 0:
-                    st.success(f"Price is **" + str({abs(price_diff):.1f) + f"**}% below {selected_suggestion['competitor_name']}")
+                    st.success(f"Price is **{abs(price_diff):.1f}%** below {selected_suggestion['competitor_name']}")
                 elif price_diff > 5:
-                    st.warning(f"Price is **" + str({price_diff:.1f) + f"**}% above {selected_suggestion['competitor_name']}")
+                    st.warning(f"Price is **{price_diff:.1f}%** above {selected_suggestion['competitor_name']}")
                 else:
                     # Fix the formatting to avoid embedded expressions with parentheses
                     position = "above" if price_diff > 0 else "below"
-                    st.info(f"Price is **" + str({price_diff:.1f) + f"**}% {position} {selected_suggestion['competitor_name']}")
+                    st.info(f"Price is **{price_diff:.1f}%** {position} {selected_suggestion['competitor_name']}")
 
 #
 # Tab 2: Promotions

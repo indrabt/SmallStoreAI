@@ -199,15 +199,15 @@ with tab2:
                         col1, col2 = st.columns(2)
                         
                         with col1:
-                            st.write("**Type:** " + str({promo['type'].replace('_', ' ').title()) + "}")
+                            st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
                             # Fix potentially problematic f-string with conditional
                             symbol_value = "%" if promo['type'] == 'percent_off' else ""
-                            st.write("**Value:** " + str({promo['value']) + "}{symbol_value}")
-                            st.write("**Category:** " + str({promo['category']) + "}")
-                            st.write("**Description:** " + str({promo['description']) + "}")
+                            st.write(f"**Value:** {promo['value']}{symbol_value}")
+                            st.write(f"**Category:** {promo['category']}")
+                            st.write(f"**Description:** {promo['description']}")
                             
                             if promo['related_event']:
-                                st.write("**Related Event:** " + str({promo['event_name']) + "}")
+                                st.write(f"**Related Event:** {promo['event_name']}")
                         
                         with col2:
                             # Display impact visualization
@@ -238,15 +238,15 @@ with tab2:
                         col1, col2 = st.columns(2)
                         
                         with col1:
-                            st.write("**Type:** " + str({promo['type'].replace('_', ' ').title()) + "}")
+                            st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
                             # Fix potentially problematic f-string with conditional
                             symbol_value = "%" if promo['type'] == 'percent_off' else ""
-                            st.write("**Value:** " + str({promo['value']) + "}{symbol_value}")
-                            st.write("**Category:** " + str({promo['category']) + "}")
-                            st.write("**Description:** " + str({promo['description']) + "}")
+                            st.write(f"**Value:** {promo['value']}{symbol_value}")
+                            st.write(f"**Category:** {promo['category']}")
+                            st.write(f"**Description:** {promo['description']}")
                             
                             if promo['related_event']:
-                                st.write("**Related Event:** " + str({promo['event_name']) + "}")
+                                st.write(f"**Related Event:** {promo['event_name']}")
                             
                             # Allow adjustment before applying
                             if promo['type'] == 'percent_off':
@@ -292,14 +292,14 @@ with tab2:
                 st.write("### Upcoming Promotions")
                 for promo in upcoming_promotions:
                     with st.expander(f"{promo['name']} (Starting {promo['start_date']})"):
-                        st.write("**Type:** " + str({promo['type'].replace('_', ' ').title()) + "}")
+                        st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
                         # Fix potentially problematic f-string with conditional
-                        symbol_value = "%" if promo['type'] == 'percent_off' else ""
-                        st.write("**Value:** " + str({promo['value']) + "}{symbol_value}")
-                        st.write("**Category:** " + str({promo['category']) + "}")
+                        st.write(f"**Value:** {promo['value']}{symbol_value}")
+                        st.write(f"**Category:** {promo['category']}")
+                        st.write(f"**Description:** {promo['description']}")
                         st.write("**Description:** " + str({promo['description']) + "}")
                         st.write("**Period:** " + str({promo['start_date']) + "} to {promo['end_date']}")
-                        
+                            st.write(f"**Related Event:** {promo['event_name']}")
                         if promo['related_event']:
                             st.write("**Related Event:** " + str({promo['event_name']) + "}")
     
