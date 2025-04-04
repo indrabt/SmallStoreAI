@@ -438,7 +438,7 @@ def show_inventory_tab(dashboard_manager, dashboard):
                 return "background-color: #E5FFCC"
         
         # Apply styling
-        styled_df = low_stock_df.style.applymap(color_urgency, subset=["Urgency"])
+        styled_df = low_stock_df.style.map(color_urgency, subset=["Urgency"])
         
         # Display the dataframe
         st.dataframe(styled_df, hide_index=True)
