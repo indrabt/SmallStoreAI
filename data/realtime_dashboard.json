@@ -1,11 +1,31 @@
 {
-  "last_updated": "2025-04-04 03:26:36",
+  "last_updated": "2025-04-04 04:01:00",
   "delivery_status": {
-    "active_deliveries": [
-      {
-        "id": "53e6e538-6aa6-41f0-a3d3-b045f36ce4de",
-        "driver": "Casey",
-        "distance": 6.2,
-        "items": 45,
-        "product_type": "Cases",
-        "estimated_arrival": 
+    "active_deliveries": [],
+    "completed_deliveries": [],
+    "on_time_percentage": 98.5,
+    "connection_status": "connected"
+  },
+  "sales_data": {
+    "today_sales": 850.25,
+    "yesterday_sales": 1200.75,
+    "week_sales": 7500.50,
+    "month_sales": 32000.00,
+    "top_items": [],
+    "accuracy_percentage": 99.2,
+    "connection_status": "connected"
+  },
+  "inventory_status": {
+    "low_stock_items": [],
+    "total_items": 175,
+    "low_stock_percentage": 8.5
+  },
+  "operational_summary": {
+    "deliveries_on_time": 18,
+    "deliveries_total": 20,
+    "on_time_percentage": 90.0,
+    "cost_savings": 250.75,
+    "issues_resolved": 3
+  },
+  "notifications": []
+}
