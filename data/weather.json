@@ -670,32 +670,32 @@
     {
       "date": "2025-04-04",
       "condition": "Sunny",
-      "temp_c": 22.5,
-      "precip_mm": 0
+      "temp_c": 18.4,
+      "precip_mm": 0.0
     },
     {
       "date": "2025-04-05",
       "condition": "Cloudy",
-      "temp_c": 18.4,
-      "precip_mm": 0
+      "temp_c": 23.1,
+      "precip_mm": 0.7
     },
     {
       "date": "2025-04-06",
       "condition": "Sunny",
-      "temp_c": 18.7,
-      "precip_mm": 0
+      "temp_c": 23.5,
+      "precip_mm": 0.0
     },
     {
       "date": "2025-04-07",
       "condition": "Partly cloudy",
-      "temp_c": 25.7,
-      "precip_mm": 0
+      "temp_c": 21.5,
+      "precip_mm": 0.0
     },
     {
       "date": "2025-04-08",
       "condition": "Partly cloudy",
-      "temp_c": 26.3,
-      "precip_mm": 0
+      "temp_c": 18.3,
+      "precip_mm": 0.0
     }
   ],
   "recommendations_history": []
