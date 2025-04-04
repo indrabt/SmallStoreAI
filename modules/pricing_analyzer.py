@@ -71,7 +71,7 @@ class PricingAnalyzer:
             
             for competitor in competitors:
                 # Random price variation within ±15% of our price
-                np.random.seed(hash(f"{competitor}_{{item[}"id']}") % 10000)
+                np.random.seed(hash(f"{competitor}_{item['id']}") % 10000)
                 price_variation = np.random.uniform(-0.15, 0.15)
                 competitor_price = round(base_price * (1 + price_variation), 2)
                 

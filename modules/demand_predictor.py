@@ -247,13 +247,13 @@ class DemandPredictor:
             for temp_impact in product["temperature_impacts"]:
                 if temp_impact["min_temp"] <= temp_c <= temp_impact["max_temp"]:
                     base_quantity += temp_impact["base_units"]
-                    impact_reasons.append(f"{temp_c}°C temperature ({{temp_impact[}"impact_percentage']}% impact)")
+                    impact_reasons.append(f"{temp_c}°C temperature ({temp_impact['impact_percentage']}% impact)")
             
             # Check condition impacts
             for cond_impact in product["condition_impacts"]:
                 if cond_impact["condition"].lower() in condition.lower():
                     base_quantity += cond_impact["base_units"]
-                    impact_reasons.append(f"{condition} conditions ({{cond_impact[}"impact_percentage']}% impact)")
+                    impact_reasons.append(f"{condition} conditions ({cond_impact['impact_percentage']}% impact)")
             
             # Only add predictions with some quantity
             if base_quantity > 0:
@@ -312,7 +312,7 @@ class DemandPredictor:
                             "suggested_quantity": int(event_impact["base_units"]),
                             "confidence_score": product["confidence_score"],
                             "based_on": "Historical event sales patterns",
-                            "impact_factors": [f"{event_name} ({{event_impact[}"impact_percentage']}% impact)"],
+                            "impact_factors": [f"{event_name} ({event_impact['impact_percentage']}% impact)"],
                             "forecast_date": event_date,
                             "event_name": event_name
                         })

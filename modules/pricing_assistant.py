@@ -211,7 +211,7 @@ class PricingAssistant:
                 promotions.append({
                     "id": str(uuid.uuid4()),
                     "name": template["name"].format(discount=discount, category=category),
-                    "description": f"Special promotion for {event['name']} on {{event['date']}",
+                    "description": f"Special promotion for {event['name']} on {event['date']}",
                     "type": "percent_off",
                     "value": discount,
                     "category": category,
@@ -737,7 +737,7 @@ class PricingAssistant:
         return {
             "success": True,
             "synced": True,
-            "message": f"successfully synced with Square POS at {{datetime.now().strftime('%H:%M:%S')}"
+            "message": f"successfully synced with Square POS at {datetime.now().strftime('%H:%M:%S')}"
         }
     
     def update_pos_settings(self, enabled=None, api_key=None, location_id=None, auto_sync=None, sync_schedule=None):
@@ -867,7 +867,7 @@ class PricingAssistant:
         # Add percentage change annotations
         for i, pct in enumerate(pct_changes):
             color = 'green' if pct >= 0 else 'red'
-            ax.annotate(f'{pct:.1f}}%",
+            ax.annotate(f'{pct:.1f}%',
                        xy=(i, max(current_values[i], new_values[i])),
                        xytext=(0, 10),
                        textcoords="offset points",
@@ -925,7 +925,7 @@ class PricingAssistant:
         for bar in bars:
             width = bar.get_width()
             label_x_pos = width if width >= 0 else 0
-            ax.text(label_x_pos + 1, bar.get_y() + bar.get_height()/2, f'{width}}%", 
+            ax.text(label_x_pos + 1, bar.get_y() + bar.get_height()/2, f'{width}%', 
                    va='center')
         
         # Add a vertical line at 0 for margin impact
@@ -980,7 +980,7 @@ class PricingAssistant:
                 "promotion_type": promotion['type'],
                 "category": promotion['category'],
                 "customer_retention": promotion['estimated_impact']['customer_retention'],
-                "message": f"This promotion is underperforming. Consider increasing the discount to {{suggested_value:.0f}%."
+                "message": f"This promotion is underperforming. Consider increasing the discount to {suggested_value:.0f}%."
             })
         
         return failed_promotions

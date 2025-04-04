@@ -277,7 +277,7 @@ class PartnershipsIntegration:
             "timestamp": datetime.datetime.now().isoformat(),
             "type": "configuration",
             "source": "suppliers",
-            "message": f"Supplier integration for {supplier_name} {"enabled' if enabled else 'disabled'}"
+            "message": f"Supplier integration for {supplier_name} {'enabled' if enabled else 'disabled'}"
         })
         
         self.save_status()

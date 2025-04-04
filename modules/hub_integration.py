@@ -443,7 +443,7 @@ class LogisticsHubIntegration:
             
             # Plot route line
             ax.plot(route_lons, route_lats, color=route_color, linestyle='-', linewidth=2, alpha=0.6,
-                   label=f"Route {route['id']} ({{route[}"driver']})")
+                   label=f"Route {route['id']} ({route['driver']})")
         
         # Add legend
         ax.legend(loc='upper right', fontsize=9)

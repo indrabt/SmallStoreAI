@@ -458,7 +458,7 @@ class RealtimeDashboard:
         # Add notification
         notification = self._add_notification(
             "Delivery Delay Detected",
-            f"Delivery by {delivery['driver']} with {{delivery[}"items']} {delivery['product_type']} " +
+            f"Delivery by {delivery['driver']} with {delivery['items']} {delivery['product_type']} " +
             f"is delayed by {delay_minutes} minutes.",
             "warning"
         )
@@ -520,7 +520,7 @@ class RealtimeDashboard:
         # Add notification
         notification = self._add_notification(
             "Critical Inventory Alert",
-            f"{item['name']} is critically low at {{item[}"stock_percentage']}% of maximum stock. " +
+            f"{item['name']} is critically low at {item['stock_percentage']}% of maximum stock. " +
             f"Only {item['current_stock']} units remaining.",
             "error"
         )

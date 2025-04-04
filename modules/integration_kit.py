@@ -351,7 +351,7 @@ class IntegrationKit:
                 status = "success" if success else "error"
                 self._log_event(
                     "Hub Test", 
-                    f"Test for {feature['name']}: {"Passed' if success else 'Failed'}", 
+                    f"Test for {feature['name']}: {'Passed' if success else 'Failed'}", 
                     status
                 )
         
