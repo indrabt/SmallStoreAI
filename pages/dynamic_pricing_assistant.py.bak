@@ -200,9 +200,7 @@ with tab2:
                         
                         with col1:
                             st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
-                            # Fix potentially problematic f-string with conditional
-                            symbol_value = "%" if promo['type'] == 'percent_off' else ""
-                            st.write(f"**Value:** {promo['value']}{symbol_value}")
+                            st.write(f"**Value:** {promo['value']}{'%' if promo['type'] == 'percent_off' else ''}")
                             st.write(f"**Category:** {promo['category']}")
                             st.write(f"**Description:** {promo['description']}")
                             
@@ -239,9 +237,7 @@ with tab2:
                         
                         with col1:
                             st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
-                            # Fix potentially problematic f-string with conditional
-                            symbol_value = "%" if promo['type'] == 'percent_off' else ""
-                                                        st.write(f"**Value:** {promo['value']}{symbol_value}")
+                            st.write(f"**Value:** {promo['value']}{'%' if promo['type'] == 'percent_off' else ''}")
                             st.write(f"**Category:** {promo['category']}")
                             st.write(f"**Description:** {promo['description']}")
                             
@@ -293,9 +289,7 @@ with tab2:
                 for promo in upcoming_promotions:
                     with st.expander(f"{promo['name']} (Starting {promo['start_date']})"):
                         st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
-                        # Fix potentially problematic f-string with conditional
-                        symbol_value = "%" if promo['type'] == 'percent_off' else ""
-                                                st.write(f"**Value:** {promo['value']}{symbol_value}")
+                        st.write(f"**Value:** {promo['value']}{'%' if promo['type'] == 'percent_off' else ''}")
                         st.write(f"**Category:** {promo['category']}")
                         st.write(f"**Description:** {promo['description']}")
                         st.write(f"**Period:** {promo['start_date']} to {promo['end_date']}")
@@ -436,9 +430,7 @@ with tab2:
                     "Applied On": datetime.fromisoformat(entry['timestamp']).strftime("%Y-%m-%d %H:%M"),
                     "Period": f"{entry['start_date']} to {entry['end_date']}",
                     "Category": entry['category'],
-                    # Fix potentially problematic f-string with conditional
-                    symbol_value = "%" if 'percent' in entry['promotion_name'].lower() else ""
-                                        "Value": f"{entry['applied_value']}{symbol_value}",
+                    "Value": f"{entry['applied_value']}{'%' if 'percent' in entry['promotion_name'].lower() else ''}",
                     "Event": entry['event_name'] if entry['event_name'] else "-"
                 })
             
