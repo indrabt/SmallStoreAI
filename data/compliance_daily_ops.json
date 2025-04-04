@@ -1,0 +1,12 @@
+{
+  "checklist_today_complete": false,
+  "last_checklist_date": "",
+  "today_tasks": {
+    "fss_verified": false,
+    "supplier_logs_verified": false,
+    "inventory_checks_complete": false,
+    "inspection_readiness_verified": true,
+    "report_generated": false
+  },
+  "last_updated": "2025-04-04T06:37:17.317139"
+}

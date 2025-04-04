@@ -1,0 +1,37 @@
+Section 3: Integration, Testing, and Deployment
+Prompt:
+
+"You are an advanced AI agent tasked with building the Integration, Testing, and Deployment phase of the StateSafe Compliance Manager (Feature 11) for the Small Store AI Pack, a software solution for a small grocery store near Penrith, Australia (New South Wales). This phase integrates Feature 11 with existing features (2, 4, 7, 8, 9), tests compliance functionality, and prepares deployment. The current date is April 03, 2025, and the system must meet NSW and scalable state regulations (e.g., VIC, QLD).
+
+Instructions:
+
+Purpose: Ensure Feature 11 integrates seamlessly, passes compliance tests, and deploys effectively.
+Detailed Steps:
+Integration:
+Link Feature 2 (Low-Cost Local Sourcing Connector) via API to pull supplier logs (e.g., “80 bottles, Supplier A”).
+Connect Feature 4 (Perishable Inventory Tracker) to fetch inventory data (e.g., “80 bottles, expires 30 days”).
+Sync Feature 7 (Plug-and-Play Integration Kit) to integrate Square POS and hub data in ≤2 hours.
+Integrate Feature 8 (Staff Training Tutorials) to verify FSS/training records (e.g., “Jane Doe, valid until 2028”).
+Use Feature 9 (Real-Time Client Dashboard) to display compliance status (e.g., “4/5 Scores on Doors”).
+Testing:
+Test NSW setup: Register “Penrith Grocery,” assign FSS, confirm by 8:10 AM.
+Test daily ops: Upload 80-bottle receipt, verify inventory, export report by 5:00 PM.
+Test VIC variation: Submit $300 fee notification, verify compliance.
+Test failure: Simulate missing receipt, ensure 24-hour prompt resolves ≥90% cases.
+Deployment:
+Build feature for $1,000-$1,500 (APIs: NSW Food Authority, Twilio, SendGrid).
+Deploy by Q3 2025, test in Penrith store, scale to 10 stores by Q4 2025.
+Workflow:
+Input: Data from Features 2, 4, 7, 8, 9.
+Process: Syncs data, runs compliance checks (e.g., NSW FSS rules), tests scenarios, deploys via cloud.
+Output: Fully integrated feature, tested compliance, live system.
+Acceptance Criteria:
+Given Feature 2 logs 80 bottles, when integrated at 9:00 AM, then Feature 11 pulls data by 9:01 AM, ensuring ≥95% accuracy (19/20 synced).
+Given Feature 8 FSS data, when synced, then verifies training by 8:06 AM, meeting Standard 3.2.2A 100% of the time.
+Given internet drops in ACT, when registration submitted, then caches data, syncs within 12 hours, zero loss.
+Given Penrith test with 80 bottles, when deployed by Q3 2025, then passes NSW audit with ≥90% score (e.g., 4/5).
+Technical Specs:
+APIs: Twilio (SMS alerts), SendGrid (email), Feature APIs (2, 4, 7, 8, 9).
+Cost: $1,000-$1,500, $0.05/message (e.g., $2/day).
+Timeline: 3-4 weeks build, 1 week test (Q3 2025).
+Example: Integrates 80-bottle order, tests NSW compliance, deploys by August 2025, achieves 4/5 audit score."
