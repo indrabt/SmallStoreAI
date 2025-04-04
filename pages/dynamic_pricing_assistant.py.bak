@@ -98,11 +98,11 @@ with tab1:
             col1, col2 = st.columns(2)
             
             with col1:
-                st.write(f"**Product:** {selected_suggestion['product_name']}")
-                st.write(f"**Category:** {selected_suggestion['category']}")
-                st.write(f"**Current Price:** ${selected_suggestion['current_price']:.2f}")
-                st.write(f"**Suggested Price:** ${selected_suggestion['competitive_price']:.2f}")
-                st.write(f"**Competitor Price ({selected_suggestion['competitor_name']}):** ${selected_suggestion['competitor_price']:.2f}")
+                st.write("**Product:** " + str({selected_suggestion['product_name']) + "}")
+                st.write("**Category:** " + str({selected_suggestion['category']) + "}")
+                st.write("**Current Price:** $" + str({selected_suggestion['current_price']:.2f) + "}")
+                st.write("**Suggested Price:** $" + str({selected_suggestion['competitive_price']:.2f) + "}")
+                st.write("**Competitor Price (" + str({selected_suggestion['competitor_name']) + "}):** ${selected_suggestion['competitor_price']:.2f}")
                 
                 # Price adjustment
                 adjusted_price = st.number_input("Adjusted Price ($)", 
@@ -114,7 +114,7 @@ with tab1:
                 
                 # Calculate new margin
                 new_margin = ((adjusted_price - selected_suggestion['supplier_cost']) / adjusted_price) * 100
-                st.write(f"New Margin: **{new_margin:.1f}%**")
+                st.write("New Margin: **" + str({new_margin:.1f) + "}%**")
                 
                 # Apply button
                 if st.button("Apply & Sync to POS"):
@@ -154,20 +154,20 @@ with tab1:
                 
                 # Display savings information
                 if selected_suggestion['supplier_savings'] > 0:
-                    st.info(f"Supplier Cost Savings: **{selected_suggestion['supplier_savings']}%** using {selected_suggestion['supplier_name']}")
+                    st.info(f"Supplier Cost Savings: **" + str({selected_suggestion['supplier_savings']) + f"**}% using {selected_suggestion['supplier_name']}")
                 
                 # Display competitive position
                 price_diff = ((selected_suggestion['competitive_price'] - selected_suggestion['competitor_price']) 
                              / selected_suggestion['competitor_price'] * 100)
                 
                 if price_diff < 0:
-                    st.success(f"Price is **{abs(price_diff):.1f}%** below {selected_suggestion['competitor_name']}")
+                    st.success(f"Price is **" + str({abs(price_diff):.1f) + f"**}% below {selected_suggestion['competitor_name']}")
                 elif price_diff > 5:
-                    st.warning(f"Price is **{price_diff:.1f}%** above {selected_suggestion['competitor_name']}")
+                    st.warning(f"Price is **" + str({price_diff:.1f) + f"**}% above {selected_suggestion['competitor_name']}")
                 else:
                     # Fix the formatting to avoid embedded expressions with parentheses
                     position = "above" if price_diff > 0 else "below"
-                    st.info(f"Price is **{price_diff:.1f}%** {position} {selected_suggestion['competitor_name']}")
+                    st.info(f"Price is **" + str({price_diff:.1f) + f"**}% {position} {selected_suggestion['competitor_name']}")
 
 #
 # Tab 2: Promotions
@@ -199,13 +199,15 @@ with tab2:
                         col1, col2 = st.columns(2)
                         
                         with col1:
-                            st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
-                            st.write(f"**Value:** {promo['value']}{'%' if promo['type'] == 'percent_off' else ''}")
-                            st.write(f"**Category:** {promo['category']}")
-                            st.write(f"**Description:** {promo['description']}")
+                            st.write("**Type:** " + str({promo['type'].replace('_', ' ').title()) + "}")
+                            # Fix potentially problematic f-string with conditional
+                            symbol_value = "%" if promo['type'] == 'percent_off' else ""
+                            st.write("**Value:** " + str({promo['value']) + "}{symbol_value}")
+                            st.write("**Category:** " + str({promo['category']) + "}")
+                            st.write("**Description:** " + str({promo['description']) + "}")
                             
                             if promo['related_event']:
-                                st.write(f"**Related Event:** {promo['event_name']}")
+                                st.write("**Related Event:** " + str({promo['event_name']) + "}")
                         
                         with col2:
                             # Display impact visualization
@@ -236,13 +238,15 @@ with tab2:
                         col1, col2 = st.columns(2)
                         
                         with col1:
-                            st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
-                            st.write(f"**Value:** {promo['value']}{'%' if promo['type'] == 'percent_off' else ''}")
-                            st.write(f"**Category:** {promo['category']}")
-                            st.write(f"**Description:** {promo['description']}")
+                            st.write("**Type:** " + str({promo['type'].replace('_', ' ').title()) + "}")
+                            # Fix potentially problematic f-string with conditional
+                            symbol_value = "%" if promo['type'] == 'percent_off' else ""
+                            st.write("**Value:** " + str({promo['value']) + "}{symbol_value}")
+                            st.write("**Category:** " + str({promo['category']) + "}")
+                            st.write("**Description:** " + str({promo['description']) + "}")
                             
                             if promo['related_event']:
-                                st.write(f"**Related Event:** {promo['event_name']}")
+                                st.write("**Related Event:** " + str({promo['event_name']) + "}")
                             
                             # Allow adjustment before applying
                             if promo['type'] == 'percent_off':
@@ -288,14 +292,16 @@ with tab2:
                 st.write("### Upcoming Promotions")
                 for promo in upcoming_promotions:
                     with st.expander(f"{promo['name']} (Starting {promo['start_date']})"):
-                        st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
-                        st.write(f"**Value:** {promo['value']}{'%' if promo['type'] == 'percent_off' else ''}")
-                        st.write(f"**Category:** {promo['category']}")
-                        st.write(f"**Description:** {promo['description']}")
-                        st.write(f"**Period:** {promo['start_date']} to {promo['end_date']}")
+                        st.write("**Type:** " + str({promo['type'].replace('_', ' ').title()) + "}")
+                        # Fix potentially problematic f-string with conditional
+                        symbol_value = "%" if promo['type'] == 'percent_off' else ""
+                        st.write("**Value:** " + str({promo['value']) + "}{symbol_value}")
+                        st.write("**Category:** " + str({promo['category']) + "}")
+                        st.write("**Description:** " + str({promo['description']) + "}")
+                        st.write("**Period:** " + str({promo['start_date']) + "} to {promo['end_date']}")
                         
                         if promo['related_event']:
-                            st.write(f"**Related Event:** {promo['event_name']}")
+                            st.write("**Related Event:** " + str({promo['event_name']) + "}")
     
     with promo_tab2:
         st.write("### Create New Promotion")
@@ -430,6 +436,7 @@ with tab2:
                     "Applied On": datetime.fromisoformat(entry['timestamp']).strftime("%Y-%m-%d %H:%M"),
                     "Period": f"{entry['start_date']} to {entry['end_date']}",
                     "Category": entry['category'],
+                    # Fix potentially problematic f-string with conditional
                     "Value": f"{entry['applied_value']}{'%' if 'percent' in entry['promotion_name'].lower() else ''}",
                     "Event": entry['event_name'] if entry['event_name'] else "-"
                 })
