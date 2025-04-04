@@ -291,16 +291,16 @@ def show_order_adjustments(waste_manager):
     tabs = st.tabs(["Pending", "Approved", "Rejected", "All"])
     
     with tabs[0]:
-        show_adjustments_by_status(waste_manager, "pending")
+        show_adjustments_by_status(waste_manager, "pending", "pending_tab")
     
     with tabs[1]:
-        show_adjustments_by_status(waste_manager, "approved")
+        show_adjustments_by_status(waste_manager, "approved", "approved_tab")
     
     with tabs[2]:
-        show_adjustments_by_status(waste_manager, "rejected")
+        show_adjustments_by_status(waste_manager, "rejected", "rejected_tab")
     
     with tabs[3]:
-        show_adjustments_by_status(waste_manager, None)  # Show all
+        show_adjustments_by_status(waste_manager, None, "all_tab")  # Show all
     
     # New adjustment form
     st.markdown("---")
@@ -346,7 +346,7 @@ def show_order_adjustments(waste_manager):
                 # Show success message
                 st.info(f"Recommendation: Adjust future orders of {product_name} by {analysis['suggested_adjustment_percent']}%.")
 
-def show_adjustments_by_status(waste_manager, status):
+def show_adjustments_by_status(waste_manager, status, tab_id='all'):
     # Get adjustments
     adjustments = waste_manager.get_order_adjustments(status=status)
     
@@ -380,7 +380,7 @@ def show_adjustments_by_status(waste_manager, status):
             with col2:
                 # Only show approve/reject for pending
                 if adj['status'] == 'pending':
-                    if st.button("Approve", key=f"approve_{adj['id']}"):
+                    if st.button("Approve", key=f"approve_{tab_id}_{adj['id']}"):
                         waste_manager.update_adjustment_status(
                             adjustment_id=adj['id'],
                             new_status="approved",
@@ -391,7 +391,7 @@ def show_adjustments_by_status(waste_manager, status):
             
             with col3:
                 if adj['status'] == 'pending':
-                    if st.button("Reject", key=f"reject_{adj['id']}"):
+                    if st.button("Reject", key=f"reject_{tab_id}_{adj['id']}"):
                         waste_manager.update_adjustment_status(
                             adjustment_id=adj['id'],
                             new_status="rejected",
@@ -400,7 +400,7 @@ def show_adjustments_by_status(waste_manager, status):
                         st.success("Adjustment rejected.")
                         st.rerun()
                 elif adj['status'] == 'approved' and not adj['applied']:
-                    if st.button("Mark Applied", key=f"apply_{adj['id']}"):
+                    if st.button("Mark Applied", key=f"apply_{tab_id}_{adj['id']}"):
                         waste_manager.mark_adjustment_applied(adjustment_id=adj['id'])
                         st.success("Adjustment marked as applied.")
                         st.rerun()
