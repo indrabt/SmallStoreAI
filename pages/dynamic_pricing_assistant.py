@@ -165,7 +165,9 @@ with tab1:
                 elif price_diff > 5:
                     st.warning(f"Price is **{price_diff:.1f}%** above {selected_suggestion['competitor_name']}")
                 else:
-                    st.info(f"Price is **{price_diff:.1f}%** {('above' if price_diff > 0 else 'below')} {selected_suggestion['competitor_name']}")
+                    # Fix the formatting to avoid embedded expressions with parentheses
+                    position = "above" if price_diff > 0 else "below"
+                    st.info(f"Price is **{price_diff:.1f}%** {position} {selected_suggestion['competitor_name']}")
 
 #
 # Tab 2: Promotions
