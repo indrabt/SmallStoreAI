@@ -1,478 +1,324 @@
-import pandas as pd
-import numpy as np
-from datetime import datetime, timedelta
-import streamlit as st
-import uuid
-import os
 import json
-import calendar
+import datetime
+import os
+import uuid
+import random
+from datetime import timedelta
 
 class EventRecommender:
     """
-    Handles event-based recommendations including:
-    - Managing local events calendar
-    - Analyzing historical event impacts on sales
-    - Providing product recommendations for upcoming events
+    Recommends local events that might affect product demand
+    - Tracks upcoming events (festivals, holidays, sports, etc.)
+    - Integrates with local event calendars
+    - Provides recommendations for special promotions
+    - Offers double loyalty points during events
     """
     
     def __init__(self, data_file="data/events.json"):
         """Initialize the event recommender with data file path"""
         self.data_file = data_file
         self._ensure_data_file_exists()
+        self.events_data = self._load_data()
     
     def _ensure_data_file_exists(self):
         """Ensure the data file exists, create if it doesn't"""
         os.makedirs(os.path.dirname(self.data_file), exist_ok=True)
-        
         if not os.path.exists(self.data_file):
-            # Create initial data with sample events
-            initial_data = {
-                "events": self._generate_sample_events(),
-                "event_impacts": self._generate_sample_event_impacts(),
-                "recommendation_history": []
+            # Create a sample events data structure
+            sample_events = self._generate_sample_events()
+            
+            events_data = {
+                "events": sample_events,
+                "last_updated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             }
             
-            with open(self.data_file, 'w') as f:
-                json.dump(initial_data, f, indent=2)
+            with open(self.data_file, 'w') as file:
+                json.dump(events_data, file, indent=4)
     
     def _generate_sample_events(self):
-        """Generate sample events for first-time setup"""
-        # Current date for reference
-        now = datetime.now()
+        """Generate sample event data for demonstration"""
+        today = datetime.datetime.now()
         
-        # Sample events for the next 30 days
-        events = [
-            {
+        # Sample event types and names
+        event_types = ["Festival", "Sports", "Holiday", "Community", "School", "Market"]
+        
+        event_names = {
+            "Festival": ["Penrith Food Festival", "Western Sydney Music Fest", "Nepean River Festival", "Cultural Heritage Day"],
+            "Sports": ["Panthers Game Day", "NSW Cup Finals", "School Sports Carnival", "Western Sydney Marathon"],
+            "Holiday": ["Australia Day", "Easter Weekend", "Christmas", "New Year's Eve"],
+            "Community": ["Community Fair", "Charity Fundraiser", "Volunteer Day", "Council Open Day"],
+            "School": ["School Holiday Start", "Back to School Week", "Graduation Week", "School Fair"],
+            "Market": ["Farmers Market", "Craft Market", "Night Market", "Food Truck Rally"]
+        }
+        
+        impact_products = {
+            "Festival": ["Water Bottles", "Snacks", "Prepared Foods", "Soft Drinks"],
+            "Sports": ["Sports Drinks", "Chips", "Sandwiches", "Energy Bars"],
+            "Holiday": ["Baking Supplies", "Special Foods", "Party Supplies", "Beverages"],
+            "Community": ["Coffee", "Baked Goods", "Fruit", "Sandwiches"],
+            "School": ["Lunch Supplies", "Snacks", "Juice Boxes", "Fresh Fruit"],
+            "Market": ["Fresh Produce", "Specialty Items", "Coffee", "Bottled Water"]
+        }
+        
+        events = []
+        
+        # Generate events for the next 60 days
+        for i in range(15):  # 15 events in the next 60 days
+            event_type = random.choice(event_types)
+            event_name = random.choice(event_names[event_type])
+            
+            # Event date (randomly distributed in next 60 days)
+            days_ahead = random.randint(1, 60)
+            event_date = today + timedelta(days=days_ahead)
+            
+            # Some events span multiple days
+            duration = 1
+            if random.random() < 0.3:  # 30% chance of multi-day event
+                duration = random.randint(2, 3)
+            
+            # Expected attendance
+            attendance = random.choice(["Small (50-200)", "Medium (200-500)", "Large (500-1000)", "Very Large (1000+)"])
+            
+            # Impact level on local sales
+            impact_level = random.choice(["Low", "Medium", "High", "Very High"])
+            
+            # Affected products
+            products_affected = random.sample(impact_products[event_type], min(len(impact_products[event_type]), random.randint(1, 4)))
+            
+            # Expected sales lift
+            sales_lift = random.randint(5, 40)
+            
+            events.append({
                 "id": str(uuid.uuid4()),
-                "name": "Penrith Farmers Market",
-                "date": (now + timedelta(days=3)).strftime('%Y-%m-%d'),
-                "location": "Penrith City Park",
-                "description": "Weekly farmers market featuring local produce and handmade goods.",
-                "expected_attendance": 500,
-                "recurring": "weekly",
-                "type": "market",
-                "added_by": "system",
-                "date_added": now.isoformat()
-            },
-            {
-                "id": str(uuid.uuid4()),
-                "name": "Western Sydney Food Festival",
-                "date": (now + timedelta(days=10)).strftime('%Y-%m-%d'),
-                "location": "Penrith Panthers Stadium",
-                "description": "Annual food festival celebrating the diverse cuisines of Western Sydney.",
-                "expected_attendance": 3000,
-                "recurring": "annual",
-                "type": "festival",
-                "added_by": "system",
-                "date_added": now.isoformat()
-            },
-            {
-                "id": str(uuid.uuid4()),
-                "name": "Penrith Community Fair",
-                "date": (now + timedelta(days=15)).strftime('%Y-%m-%d'),
-                "location": "Jamison Park",
-                "description": "Annual community fair with rides, games, and food stalls.",
-                "expected_attendance": 2000,
-                "recurring": "annual",
-                "type": "fair",
-                "added_by": "system",
-                "date_added": now.isoformat()
-            },
-            {
-                "id": str(uuid.uuid4()),
-                "name": "School Holiday Start",
-                "date": (now + timedelta(days=7)).strftime('%Y-%m-%d'),
-                "location": "Penrith and surrounding areas",
-                "description": "Start of school holidays for local schools.",
-                "expected_attendance": 10000,
-                "recurring": "seasonal",
-                "type": "school_holiday",
-                "added_by": "system",
-                "date_added": now.isoformat()
-            },
-            {
-                "id": str(uuid.uuid4()),
-                "name": "Nepean River Festival",
-                "date": (now + timedelta(days=25)).strftime('%Y-%m-%d'),
-                "location": "Nepean River",
-                "description": "Celebration of the Nepean River with water activities, food, and entertainment.",
-                "expected_attendance": 1500,
-                "recurring": "annual",
-                "type": "festival",
-                "added_by": "system",
-                "date_added": now.isoformat()
-            }
-        ]
+                "name": event_name,
+                "type": event_type,
+                "date": event_date.strftime("%Y-%m-%d"),
+                "duration": duration,
+                "location": "Penrith Area",
+                "attendance": attendance,
+                "impact_level": impact_level,
+                "products_affected": products_affected,
+                "expected_sales_lift": f"{sales_lift}%",
+                "notes": f"Prepare for increased demand on {', '.join(products_affected)}",
+                "double_points_eligible": random.random() < 0.5  # 50% chance of being eligible for double points
+            })
+        
+        # Sort by date
+        events.sort(key=lambda e: e["date"])
         
         return events
     
-    def _generate_sample_event_impacts(self):
-        """Generate sample event impact data for first-time setup"""
-        # Sample product categories
-        categories = [
-            "Fruits & Vegetables", "Dairy & Eggs", "Meat & Seafood", 
-            "Bakery", "Beverages", "Snacks & Confectionery", 
-            "Frozen Foods", "Household & Cleaning"
-        ]
-        
-        # Sample event types
-        event_types = ["market", "festival", "fair", "school_holiday", "sports", "concert"]
-        
-        # Generate impact data
-        impacts = []
-        
-        for event_type in event_types:
-            for category in categories:
-                # Different impacts based on event type and category
-                if event_type == "market":
-                    if category in ["Fruits & Vegetables", "Bakery", "Snacks & Confectionery"]:
-                        impact_value = np.random.uniform(15, 30)
-                    else:
-                        impact_value = np.random.uniform(5, 15)
-                
-                elif event_type == "festival" or event_type == "fair":
-                    if category in ["Beverages", "Snacks & Confectionery", "Frozen Foods"]:
-                        impact_value = np.random.uniform(20, 35)
-                    else:
-                        impact_value = np.random.uniform(5, 15)
-                
-                elif event_type == "school_holiday":
-                    if category in ["Snacks & Confectionery", "Frozen Foods", "Beverages"]:
-                        impact_value = np.random.uniform(25, 40)
-                    else:
-                        impact_value = np.random.uniform(10, 20)
-                
-                elif event_type == "sports":
-                    if category in ["Beverages", "Snacks & Confectionery"]:
-                        impact_value = np.random.uniform(20, 35)
-                    else:
-                        impact_value = np.random.uniform(0, 10)
-                
-                elif event_type == "concert":
-                    if category in ["Beverages", "Snacks & Confectionery"]:
-                        impact_value = np.random.uniform(15, 30)
-                    else:
-                        impact_value = np.random.uniform(0, 5)
-                
-                else:
-                    impact_value = np.random.uniform(5, 15)
-                
-                impacts.append({
-                    "event_type": event_type,
-                    "category": category,
-                    "sales_impact_percentage": round(impact_value, 1)
-                })
-        
-        # Add specific product recommendations for certain event types
-        product_impacts = [
-            {
-                "event_type": "market",
-                "product": "Reusable Shopping Bags",
-                "sales_impact_percentage": 45.0,
-                "recommendation_reason": "Shoppers at farmers markets often forget bags"
-            },
-            {
-                "event_type": "market",
-                "product": "Fresh Bread",
-                "sales_impact_percentage": 35.0,
-                "recommendation_reason": "Complements fresh produce purchases"
-            },
-            {
-                "event_type": "festival",
-                "product": "Bottled Water",
-                "sales_impact_percentage": 60.0,
-                "recommendation_reason": "Essential for outdoor festival-goers"
-            },
-            {
-                "event_type": "festival",
-                "product": "Sunscreen",
-                "sales_impact_percentage": 40.0,
-                "recommendation_reason": "Outdoor event necessity often forgotten"
-            },
-            {
-                "event_type": "school_holiday",
-                "product": "Juice Boxes",
-                "sales_impact_percentage": 50.0,
-                "recommendation_reason": "Popular for kids' activities and outings"
-            },
-            {
-                "event_type": "school_holiday",
-                "product": "Sandwich Supplies",
-                "sales_impact_percentage": 40.0,
-                "recommendation_reason": "Increased lunch preparation at home"
-            },
-            {
-                "event_type": "fair",
-                "product": "Ice Cream",
-                "sales_impact_percentage": 45.0,
-                "recommendation_reason": "Popular treat before/after fair attendance"
-            },
-            {
-                "event_type": "sports",
-                "product": "Sports Drinks",
-                "sales_impact_percentage": 55.0,
-                "recommendation_reason": "High demand for hydration before/after events"
-            }
-        ]
-        
-        impacts.extend(product_impacts)
-        
-        return impacts
-    
     def _load_data(self):
-        """Load event data from file"""
-        with open(self.data_file, 'r') as f:
-            return json.load(f)
+        """Load events data from file"""
+        with open(self.data_file, 'r') as file:
+            return json.load(file)
     
-    def _save_data(self, data):
-        """Save event data to file"""
-        with open(self.data_file, 'w') as f:
-            json.dump(data, f, indent=2)
+    def _save_data(self):
+        """Save events data to file"""
+        with open(self.data_file, 'w') as file:
+            json.dump(self.events_data, file, indent=4)
     
-    def _load_inventory_data(self):
-        """Load inventory data from file"""
-        inventory_file = "data/inventory.json"
-        
-        if not os.path.exists(inventory_file):
-            return {"inventory": []}
-            
-        with open(inventory_file, 'r') as f:
-            return json.load(f)
+    def get_all_events(self):
+        """Get all events"""
+        return self.events_data["events"]
     
     def get_upcoming_events(self, days=30):
-        """Get upcoming events within specified number of days"""
-        data = self._load_data()
-        events = data['events']
+        """
+        Get upcoming events within specified days
         
-        if not events:
-            return []
-        
-        # Current date
-        now = datetime.now().date()
-        
-        # Filter events within the specified days
-        upcoming = []
-        for event in events:
-            event_date = datetime.strptime(event['date'], '%Y-%m-%d').date()
+        Args:
+            days (int, optional): Number of days to look ahead
             
-            if now <= event_date <= (now + timedelta(days=days)):
-                upcoming.append(event)
+        Returns:
+            list: Upcoming events
+        """
+        today = datetime.datetime.now().date()
+        end_date = today + timedelta(days=days)
         
-        # Sort by date
-        upcoming.sort(key=lambda e: e['date'])
+        upcoming = []
+        
+        for event in self.events_data["events"]:
+            event_date = datetime.datetime.strptime(event["date"], "%Y-%m-%d").date()
+            
+            # Include events that start within the period
+            # or are ongoing during the period
+            if today <= event_date <= end_date:
+                upcoming.append(event)
         
         return upcoming
     
-    def get_event_calendar(self):
-        """Get events calendar for the current month"""
-        # Get current month and year
-        now = datetime.now()
-        year = now.year
-        month = now.month
+    def get_event_by_id(self, event_id):
+        """
+        Get event by ID
         
-        # Get all days in the month
-        num_days = calendar.monthrange(year, month)[1]
-        days = [datetime(year, month, day).strftime('%Y-%m-%d') for day in range(1, num_days + 1)]
-        
-        # Create a calendar DataFrame
-        cal_df = pd.DataFrame(index=days, columns=['Day', 'Events'])
-        cal_df['Day'] = [datetime.strptime(day, '%Y-%m-%d').strftime('%a, %b %d') for day in days]
-        cal_df['Events'] = ''
-        
-        # Get events for this month
-        data = self._load_data()
-        month_events = [
-            e for e in data['events'] 
-            if datetime.strptime(e['date'], '%Y-%m-%d').month == month and
-               datetime.strptime(e['date'], '%Y-%m-%d').year == year
-        ]
-        
-        # Add events to calendar
-        for event in month_events:
-            event_date = event['date']
-            if event_date in cal_df.index:
-                if cal_df.at[event_date, 'Events']:
-                    cal_df.at[event_date, 'Events'] += f", {event['name']}"
-                else:
-                    cal_df.at[event_date, 'Events'] = event['name']
-        
-        # Style the calendar
-        cal_df = cal_df.reset_index().rename(columns={'index': 'Date'})
-        
-        return cal_df
+        Args:
+            event_id (str): Event ID
+            
+        Returns:
+            dict: Event data or None if not found
+        """
+        for event in self.events_data["events"]:
+            if event["id"] == event_id:
+                return event
+        return None
     
-    def get_recommendations_for_event(self, event_id):
-        """Get product recommendations for a specific event"""
-        data = self._load_data()
-        inventory_data = self._load_inventory_data()
+    def add_event(self, name, event_type, date, duration=1, location="Penrith Area", 
+                attendance="Medium (200-500)", impact_level="Medium", products_affected=None, 
+                expected_sales_lift="10%", notes="", double_points_eligible=False):
+        """
+        Add a new event
         
-        # Find the event
-        event = next((e for e in data['events'] if e['id'] == event_id), None)
-        
-        if not event:
-            return []
-        
-        # Get event type
-        event_type = event.get('type', 'general')
-        
-        # Find relevant impact data
-        impacts = data['event_impacts']
-        
-        # Filter impacts by event type
-        type_impacts = [i for i in impacts if i.get('event_type') == event_type]
-        
-        # Organize recommendations
-        recommendations = []
-        
-        # Process specific product recommendations
-        product_recs = [i for i in type_impacts if 'product' in i]
-        for rec in product_recs:
-            recommendations.append({
-                'product': rec['product'],
-                'expected_sales_lift': rec['sales_impact_percentage'],
-                'recommendation_reason': rec['recommendation_reason']
-            })
-        
-        # Process category recommendations
-        category_impacts = [i for i in type_impacts if 'category' in i]
-        
-        # Group by category to get average impact
-        category_avg_impacts = {}
-        for impact in category_impacts:
-            category = impact['category']
-            impact_value = impact['sales_impact_percentage']
+        Args:
+            name (str): Event name
+            event_type (str): Type of event
+            date (str): Event date (YYYY-MM-DD)
+            duration (int, optional): Duration in days
+            location (str, optional): Event location
+            attendance (str, optional): Expected attendance
+            impact_level (str, optional): Impact on local sales
+            products_affected (list, optional): Products affected by the event
+            expected_sales_lift (str, optional): Expected sales increase
+            notes (str, optional): Additional notes
+            double_points_eligible (bool, optional): Whether eligible for double loyalty points
             
-            if category not in category_avg_impacts:
-                category_avg_impacts[category] = []
-            
-            category_avg_impacts[category].append(impact_value)
-        
-        # Calculate average impact per category
-        category_avgs = {
-            category: sum(impacts) / len(impacts) 
-            for category, impacts in category_avg_impacts.items()
-        }
-        
-        # Get inventory items by category
-        for category, impact in category_avgs.items():
-            # Get top items from this category
-            category_items = [
-                item for item in inventory_data.get('inventory', []) 
-                if item.get('category') == category
-            ]
-            
-            # Sort by some criteria (e.g., profit margin, popularity)
-            # For demo, just take the first 2 items if they exist
-            top_items = category_items[:2]
-            
-            for item in top_items:
-                recommendations.append({
-                    'product': item['name'],
-                    'expected_sales_lift': round(impact, 1),
-                    'recommendation_reason': f"Popular {category.lower()} item during {event_type.replace('_', ' ')} events"
-                })
-        
-        # Sort by expected impact
-        recommendations.sort(key=lambda r: r['expected_sales_lift'], reverse=True)
-        
-        # Take top 10 recommendations
-        return recommendations[:10]
-    
-    def add_event(self, name, date, location, expected_attendance, description):
-        """Add a new event to the calendar"""
-        data = self._load_data()
-        
-        # Convert date to string if it's a date object
-        if isinstance(date, (datetime, datetime.date)):
-            date_str = date.strftime('%Y-%m-%d')
-        else:
-            date_str = date
+        Returns:
+            dict: New event data
+        """
+        if products_affected is None:
+            products_affected = []
         
         new_event = {
             "id": str(uuid.uuid4()),
             "name": name,
-            "date": date_str,
+            "type": event_type,
+            "date": date,
+            "duration": duration,
             "location": location,
-            "description": description,
-            "expected_attendance": expected_attendance,
-            "recurring": "one-time",  # Default to one-time event
-            "type": "custom",  # Default to custom event type
-            "added_by": "user",
-            "date_added": datetime.now().isoformat()
+            "attendance": attendance,
+            "impact_level": impact_level,
+            "products_affected": products_affected,
+            "expected_sales_lift": expected_sales_lift,
+            "notes": notes,
+            "double_points_eligible": double_points_eligible
         }
         
-        data['events'].append(new_event)
-        self._save_data(data)
+        self.events_data["events"].append(new_event)
+        self.events_data["last_updated"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
+        # Sort by date
+        self.events_data["events"].sort(key=lambda e: e["date"])
+        
+        self._save_data()
         return new_event
     
-    def update_event(self, event_id, **kwargs):
-        """Update an existing event"""
-        data = self._load_data()
-        
-        for i, event in enumerate(data['events']):
-            if event['id'] == event_id:
-                # Update provided fields
-                for key, value in kwargs.items():
-                    if key in event:
-                        event[key] = value
-                
-                data['events'][i] = event
-                self._save_data(data)
-                return event
-        
-        return None  # Event not found
-    
-    def delete_event(self, event_id):
-        """Delete an event"""
-        data = self._load_data()
-        
-        for i, event in enumerate(data['events']):
-            if event['id'] == event_id:
-                deleted_event = data['events'].pop(i)
-                self._save_data(data)
-                return deleted_event
-        
-        return None  # Event not found
-    
-    def apply_event_recommendations(self, event_id):
+    def update_event(self, event_id, updates):
         """
-        Apply event-based recommendations to inventory planning
+        Update an existing event
         
         Args:
-            event_id: ID of the event to apply recommendations for
+            event_id (str): ID of event to update
+            updates (dict): Fields to update
             
         Returns:
-            Boolean indicating success
+            dict: Updated event or None if not found
         """
-        # Get recommendations for this event
-        recommendations = self.get_recommendations_for_event(event_id)
+        for i, event in enumerate(self.events_data["events"]):
+            if event["id"] == event_id:
+                for key, value in updates.items():
+                    if key in event:
+                        self.events_data["events"][i][key] = value
+                
+                self.events_data["last_updated"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                
+                # Re-sort by date if date was updated
+                if "date" in updates:
+                    self.events_data["events"].sort(key=lambda e: e["date"])
+                
+                self._save_data()
+                return self.events_data["events"][i]
         
-        if not recommendations:
-            return False
+        return None
+    
+    def delete_event(self, event_id):
+        """
+        Delete an event
         
-        data = self._load_data()
+        Args:
+            event_id (str): ID of event to delete
+            
+        Returns:
+            bool: Whether deletion was successful
+        """
+        for i, event in enumerate(self.events_data["events"]):
+            if event["id"] == event_id:
+                del self.events_data["events"][i]
+                self.events_data["last_updated"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                self._save_data()
+                return True
         
-        # Find the event
-        event = next((e for e in data['events'] if e['id'] == event_id), None)
+        return False
+    
+    def get_events_by_type(self, event_type):
+        """
+        Get events by type
         
-        if not event:
-            return False
+        Args:
+            event_type (str): Type of events to find
+            
+        Returns:
+            list: Events of the specified type
+        """
+        return [e for e in self.events_data["events"] if e["type"] == event_type]
+    
+    def get_events_by_impact(self, impact_level):
+        """
+        Get events by impact level
         
-        # Record the application of recommendations
-        application_record = {
-            'id': str(uuid.uuid4()),
-            'event_id': event_id,
-            'event_name': event['name'],
-            'event_date': event['date'],
-            'timestamp': datetime.now().isoformat(),
-            'recommendations': recommendations
-        }
+        Args:
+            impact_level (str): Impact level to filter by
+            
+        Returns:
+            list: Events with the specified impact level
+        """
+        return [e for e in self.events_data["events"] if e["impact_level"] == impact_level]
+    
+    def get_double_points_events(self):
+        """
+        Get events eligible for double loyalty points
         
-        data['recommendation_history'].append(application_record)
-        self._save_data(data)
+        Returns:
+            list: Events eligible for double points
+        """
+        return [e for e in self.events_data["events"] if e["double_points_eligible"]]
+    
+    def get_event_recommendations(self, days=7):
+        """
+        Get event-based product recommendations
         
-        # Note: In a real application, this would actually update order quantities or forecasts
-        # For this demo, we just record that recommendations were applied
+        Args:
+            days (int, optional): Days to look ahead
+            
+        Returns:
+            dict: Recommendations grouped by product
+        """
+        upcoming_events = self.get_upcoming_events(days=days)
         
-        return True
+        recommendations = {}
+        
+        for event in upcoming_events:
+            event_date = datetime.datetime.strptime(event["date"], "%Y-%m-%d").date()
+            days_until = (event_date - datetime.datetime.now().date()).days
+            
+            for product in event["products_affected"]:
+                if product not in recommendations:
+                    recommendations[product] = []
+                
+                recommendations[product].append({
+                    "event": event["name"],
+                    "date": event["date"],
+                    "days_until": days_until,
+                    "impact_level": event["impact_level"],
+                    "expected_lift": event["expected_sales_lift"]
+                })
+        
+        return recommendations

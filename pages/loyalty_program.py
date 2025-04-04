@@ -92,7 +92,7 @@ with overview_tab:
         
         # Program toggle
         current_status = program_settings["enabled"]
-        new_status = st.toggle("Enable Loyalty Program", value=current_status)
+        new_status = st.toggle("Enable Loyalty Program", value=current_status, key="program_toggle_overview")
         
         if new_status != current_status:
             loyalty_program.toggle_program(new_status)
@@ -110,7 +110,8 @@ with overview_tab:
             selected_customer_tuple = st.selectbox(
                 "Select Customer",
                 options=customer_options,
-                format_func=lambda x: x[1]
+                format_func=lambda x: x[1],
+                key="transaction_customer_selector"
             )
             
             selected_customer_id = selected_customer_tuple[0]
@@ -124,7 +125,8 @@ with overview_tab:
             double_points = st.checkbox(
                 "Double Points",
                 value=has_events,
-                help="Apply double points for special events"
+                help="Apply double points for special events",
+                key="double_points_checkbox"
             )
             
             event_name = None
@@ -133,11 +135,12 @@ with overview_tab:
                 selected_event_tuple = st.selectbox(
                     "Select Event",
                     options=event_options,
-                    format_func=lambda x: x[1]
+                    format_func=lambda x: x[1],
+                    key="event_selector"
                 )
                 event_name = selected_event_tuple[1]
             
-            if st.button("Record Purchase"):
+            if st.button("Record Purchase", key="record_purchase_button"):
                 points_per_dollar = program_settings["points_per_dollar"]
                 base_points = int(transaction_amount * points_per_dollar)
                 total_points = base_points * 2 if double_points else base_points
@@ -175,8 +178,12 @@ with overview_tab:
             )
             
             # Get the customer's current points
-            selected_customer = loyalty_program.get_customer(selected_customer_for_redemption[0])
-            current_points = selected_customer["points"]
+            if selected_customer_for_redemption:
+                selected_customer = loyalty_program.get_customer(selected_customer_for_redemption[0])
+                current_points = selected_customer["points"] if selected_customer else 0
+            else:
+                selected_customer = None
+                current_points = 0
             
             redemption_threshold = program_settings["redemption_threshold"]
             
@@ -187,13 +194,16 @@ with overview_tab:
                 redemption_item = st.text_input("Item for Redemption", value="Water Bottle")
                 staff_member = st.text_input("Staff Member Processing Redemption")
                 
-                if st.button("Process Redemption"):
-                    redemption = loyalty_program.redeem_points(
-                        selected_customer_for_redemption[0],
-                        points=redemption_threshold,
-                        item=redemption_item,
-                        staff_member=staff_member
-                    )
+                if st.button("Process Redemption", key="process_redemption_button"):
+                    if selected_customer_for_redemption and selected_customer:
+                        redemption = loyalty_program.redeem_points(
+                            selected_customer_for_redemption[0],
+                            points=redemption_threshold,
+                            item=redemption_item,
+                            staff_member=staff_member
+                        )
+                    else:
+                        redemption = {"error": "Customer not found or not selected"}
                     
                     if "error" in redemption:
                         st.error(redemption["error"])
@@ -209,7 +219,7 @@ with overview_tab:
         if program_settings.get("offline_mode", False):
             st.write("### Sync Offline Data")
             
-            if st.button("Sync with Square POS"):
+            if st.button("Sync with Square POS", key="sync_square_button"):
                 sync_result = loyalty_program.sync_offline_cache()
                 st.write(f"Synced {sync_result['synced']} items with {sync_result['errors']} errors")
                 st.write(f"Last sync: {sync_result['last_sync']}")
@@ -234,7 +244,8 @@ with transactions_tab:
             selected_customer_filter = st.selectbox(
                 "Filter by Customer",
                 options=customer_options,
-                format_func=lambda x: x[1] if x else "All Customers"
+                format_func=lambda x: x[1] if x else "All Customers",
+                key="transaction_customer_filter"
             )
             
             customer_id_filter = selected_customer_filter[0] if selected_customer_filter else None
@@ -377,7 +388,7 @@ with customers_tab:
     col1, col2 = st.columns(2)
     
     with col1:
-        sort_by = st.selectbox("Sort By", options=list(sort_options.keys()), format_func=lambda x: sort_options[x])
+        sort_by = st.selectbox("Sort By", options=list(sort_options.keys()), format_func=lambda x: sort_options[x], key="sort_by_options")
     
     with col2:
         descending = sort_by != "name"  # Default ascending for name, descending for others
@@ -423,7 +434,8 @@ with customers_tab:
         selected_customer_tuple = st.selectbox(
             "Select Customer",
             options=[(c["id"], c["name"]) for c in customers],
-            format_func=lambda x: x[1]
+            format_func=lambda x: x[1],
+            key="customer_details_selector"
         )
         
         selected_customer_id = selected_customer_tuple[0]
@@ -457,7 +469,7 @@ with customers_tab:
                 
                 # Add notes
                 new_note = st.text_area("Add Notes")
-                if st.button("Save Notes"):
+                if st.button("Save Notes", key="save_notes_button"):
                     if new_note:
                         current_notes = selected_customer["notes"]
                         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -479,7 +491,7 @@ with customers_tab:
                     
                     confirm_optout = st.checkbox("Confirm customer has requested to opt out")
                     
-                    if confirm_optout and st.button("Process Opt-Out"):
+                    if confirm_optout and st.button("Process Opt-Out", key="opt_out_button"):
                         result = loyalty_program.opt_out_customer(selected_customer_id)
                         
                         if result["success"]:
@@ -497,7 +509,7 @@ with customers_tab:
             new_email = st.text_input("Customer Email")
             new_phone = st.text_input("Customer Phone")
             
-            if st.button("Add Customer"):
+            if st.button("Add Customer", key="add_customer_form_button"):
                 if new_name and new_email:
                     new_customer = loyalty_program.add_customer(new_name, new_email, new_phone)
                     st.success(f"Added new customer: {new_customer['name']}")
@@ -513,7 +525,7 @@ with customers_tab:
         new_email = st.text_input("Customer Email")
         new_phone = st.text_input("Customer Phone")
         
-        if st.button("Add Customer"):
+        if st.button("Add Customer", key="add_first_customer_button"):
             if new_name and new_email:
                 new_customer = loyalty_program.add_customer(new_name, new_email, new_phone)
                 st.success(f"Added new customer: {new_customer['name']}")
@@ -532,15 +544,15 @@ with settings_tab:
     with col1:
         st.write("### Basic Settings")
         
-        enabled = st.toggle("Enable Loyalty Program", value=current_settings["enabled"])
+        enabled = st.toggle("Enable Loyalty Program", value=current_settings["enabled"], key="program_toggle_settings")
         points_per_dollar = st.number_input("Points Per Dollar", min_value=1, value=current_settings["points_per_dollar"])
         redemption_threshold = st.number_input("Redemption Threshold (Points)", min_value=1, value=current_settings["redemption_threshold"])
         redemption_value = st.text_input("Redemption Value", value=current_settings["redemption_value"])
         
         # Offline mode
-        offline_mode = st.toggle("Offline Mode", value=current_settings.get("offline_mode", False))
+        offline_mode = st.toggle("Offline Mode", value=current_settings.get("offline_mode", False), key="offline_mode_toggle")
         
-        if st.button("Save Basic Settings"):
+        if st.button("Save Basic Settings", key="save_basic_settings_button"):
             settings_updates = {
                 "enabled": enabled,
                 "points_per_dollar": points_per_dollar,
@@ -566,14 +578,14 @@ with settings_tab:
             
             for event_id, event_name in event_options:
                 is_double = event_name in double_points_events
-                if st.checkbox(f"Double points for {event_name}", value=is_double):
+                if st.checkbox(f"Double points for {event_name}", value=is_double, key=f"event_checkbox_{event_id}"):
                     if event_name not in double_points_events:
                         double_points_events.append(event_name)
                 else:
                     if event_name in double_points_events:
                         double_points_events.remove(event_name)
             
-            if st.button("Save Event Settings"):
+            if st.button("Save Event Settings", key="save_event_settings_button"):
                 settings_updates = {
                     "double_points_events": double_points_events
                 }
@@ -591,7 +603,7 @@ with settings_tab:
         value=", ".join(current_settings.get("notification_emails", []))
     )
     
-    if st.button("Save Notification Settings"):
+    if st.button("Save Notification Settings", key="save_notification_settings_button"):
         email_list = [email.strip() for email in notification_emails.split(",") if email.strip()]
         
         settings_updates = {

@@ -266,6 +266,7 @@ class PerishableInventoryTracker:
             dict: Scanned item information or None if not found
         """
         found_item = None
+        found_idx = -1
         
         # Find the item
         for i, item in enumerate(self.inventory_data["inventory_items"]):
@@ -277,7 +278,7 @@ class PerishableInventoryTracker:
                 found_idx = i
                 break
                 
-        if not found_item:
+        if not found_item or found_idx == -1:
             return None
             
         # Update last scanned timestamp
