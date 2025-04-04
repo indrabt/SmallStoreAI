@@ -199,7 +199,7 @@ with tab2:
                         col1, col2 = st.columns(2)
                         
                         with col1:
-                        st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
+                            st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
                             # Fix potentially problematic f-string with conditional
                             symbol_value = "%" if promo['type'] == 'percent_off' else ""
                             st.write(f"**Value:** {promo['value']}{symbol_value}")
@@ -207,7 +207,7 @@ with tab2:
                             st.write(f"**Description:** {promo['description']}")
                             
                             if promo['related_event']:
-                            st.write(f"**Related Event:** {promo['event_name']}")
+                                st.write(f"**Related Event:** {promo['event_name']}")
                         
                         with col2:
                             # Display impact visualization
@@ -238,7 +238,7 @@ with tab2:
                         col1, col2 = st.columns(2)
                         
                         with col1:
-                        st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
+                            st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
                             # Fix potentially problematic f-string with conditional
                             symbol_value = "%" if promo['type'] == 'percent_off' else ""
                             st.write(f"**Value:** {promo['value']}{symbol_value}")
@@ -246,7 +246,7 @@ with tab2:
                             st.write(f"**Description:** {promo['description']}")
                             
                             if promo['related_event']:
-                            st.write(f"**Related Event:** {promo['event_name']}")
+                                st.write(f"**Related Event:** {promo['event_name']}")
                             
                             # Allow adjustment before applying
                             if promo['type'] == 'percent_off':
@@ -292,7 +292,7 @@ with tab2:
                 st.write("### Upcoming Promotions")
                 for promo in upcoming_promotions:
                     with st.expander(f"{promo['name']} (Starting {promo['start_date']})"):
-                    st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
+                        st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
                         # Fix potentially problematic f-string with conditional
                         symbol_value = "%" if promo['type'] == 'percent_off' else ""
                         st.write(f"**Value:** {promo['value']}{symbol_value}")
@@ -301,7 +301,7 @@ with tab2:
                         st.write(f"**Period:** {promo['start_date']} to {promo['end_date']}")
                         
                         if promo['related_event']:
-                        st.write(f"**Related Event:** {promo['event_name']}")
+                            st.write(f"**Related Event:** {promo['event_name']}")
     
     with promo_tab2:
         st.write("### Create New Promotion")
@@ -437,9 +437,7 @@ with tab2:
                     "Period": f"{entry['start_date']} to {entry['end_date']}",
                     "Category": entry['category'],
                     # Fix potentially problematic f-string with conditional
-                    "Value": # Fix potentially problematic f-string with conditional
-symbol_value = "%" if 'percent' in entry['promotion_name'].lower() else ""
-f"{entry['applied_value']}{symbol_value}",
+                    "Value": f"{entry['applied_value']}{'%' if 'percent' in entry['promotion_name'].lower() else ''}",
                     "Event": entry['event_name'] if entry['event_name'] else "-"
                 })
             
