@@ -202,7 +202,7 @@ with fifo_tab:
                 selected_batch = st.selectbox(
                     "Select Batch", 
                     options=[item["batch_number"] for item in items], 
-                    format_func=lambda x: f"{x} ({next((i["expiration_date"] for i in items if i["batch_number"] == x), '')})"
+                    format_func=lambda x: f"{x} ({next((i['expiration_date'] for i in items if i['batch_number'] == x), '')})"
                 )
                 
                 # Find the selected item
