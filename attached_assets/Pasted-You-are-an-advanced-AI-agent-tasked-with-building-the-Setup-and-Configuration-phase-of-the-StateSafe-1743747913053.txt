@@ -1,0 +1,27 @@
+You are an advanced AI agent tasked with building the Setup and Configuration phase of the StateSafe Compliance Manager (Feature 11) for the Small Store AI Pack, a software solution for a small grocery store near Penrith, Australia (New South Wales). The Small Store AI Pack integrates with a smart logistics hub and includes 10 existing features (e.g., Feature 2: Low-Cost Local Sourcing Connector, Feature 8: Staff Training Tutorials). This phase ensures the store manager configures the system to comply with state-specific regulations (e.g., NSW Food Act 2003, Standard 3.2.2A) for food safety, registration, and initial setup. The current date is April 03, 2025.
+
+Instructions:
+
+Purpose: Enable the store manager to set up compliance by selecting the state, registering with the local council, and assigning a Food Safety Supervisor (FSS).
+Detailed Steps:
+Store manager logs into dashboard (web/mobile app) at 8:00 AM using username/password.
+Opens StateSafe Compliance Manager via new tab (“Compliance”) on the dashboard.
+Selects “NSW” from a dropdown list of Australian states/territories (NSW, VIC, QLD, SA, WA, TAS, NT, ACT).
+System auto-loads NSW regulations (e.g., Food Act 2003, Standard 3.2.2A: FSS required, free council notification).
+Enters business details in form fields: “Penrith Grocery,” “123 High St, Penrith NSW 2750,” “02 1234 5678.”
+Clicks “Register” button to submit notification to Penrith City Council via NSW Food Authority API, receives confirmation email by 8:10 AM.
+Assigns FSS (e.g., “Jane Doe”) from a dropdown linked to Feature 8 training records, confirms training validity (e.g., certified until 2028).
+Workflow:
+Input: State selection (“NSW”), business details, FSS data from Feature 8.
+Process: Loads state rules from database (e.g., NSW: 5-year FSS recertification), submits registration via API, validates FSS training.
+Output: Registered business, assigned FSS, compliance status updated (e.g., “Setup Complete”).
+Acceptance Criteria:
+Given a store in NSW, when the store manager selects “NSW” and submits details at 8:00 AM, then the system notifies Penrith City Council within 10 minutes (e.g., confirmation by 8:10 AM), ensuring 100% registration compliance.
+Given an FSS (Jane Doe) trained via Feature 8, when the manager assigns her at 8:05 AM, then the system verifies certification (valid until 2028), marks “FSS Compliant” by 8:06 AM, meeting Standard 3.2.2A.
+Given VIC selected with $300 fee, when the manager submits at 8:00 AM, then it prompts “Pay $300 to council” and submits notification, ensuring compliance by 8:10 AM.
+Given no FSS assigned, when the manager checks at 8:00 AM, then it displays a red alert (“Assign FSS by 9:00 AM”) and emails a reminder, resolving ≥95% within 24 hours.
+Technical Specs:
+UI: Tab (“Compliance”), dropdown (“State”), form fields (name, address, phone), buttons (“Register”).
+APIs: NSW Food Authority (registration), Feature 8 API (training records).
+Database: State rules (e.g., “NSW: Free notification, FSS every 5 years”).
+Example: Manager selects “NSW,” registers “Penrith Grocery,” assigns Jane Doe (FSS), gets council confirmation by 8:10 AM."

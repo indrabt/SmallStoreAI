@@ -47,6 +47,7 @@ page = st.sidebar.radio(
         "Real-Time Dashboard",
         "Integration Kit",
         "Partnerships Integration",
+        "StateSafe Compliance Manager",
         "Settings"
     ]
 )
@@ -688,6 +689,12 @@ elif page == "Partnerships Integration":
     # Redirect to the partnerships integration page
     st.info("Opening Partnerships & Ecosystem Integration...")
     st.switch_page("pages/partnerships_integration.py")
+
+# StateSafe Compliance Manager Page
+elif page == "StateSafe Compliance Manager":
+    # Redirect to the compliance manager page
+    st.info("Opening StateSafe Compliance Manager...")
+    st.switch_page("pages/compliance_manager.py")
 
 # Settings Page
 elif page == "Settings":

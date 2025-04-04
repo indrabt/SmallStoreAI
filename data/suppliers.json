@@ -58,7 +58,7 @@
       "reliability_score": 9.5,
       "sustainability_score": 8.9,
       "date_added": "2024-10-06T00:33:45.520606",
-      "last_order_date": "2025-04-03T00:33:45.520609",
+      "last_order_date": "2025-04-04T06:22:46.352093",
       "coordinates": {
         "latitude": -33.759,
         "longitude": 150.702
@@ -388,6 +388,46 @@
           "message": "Order #c3d4e5f6: 25 Multigrain Loaf, pickup 2025-04-04 08:00 - 2025-04-04 09:00, Penrith Grocery",
           "status": "simulated",
           "note": "SendGrid credentials not found"
+        }
+      ],
+      "driver_assigned": false
+    },
+    {
+      "id": "f47e0a50-92ed-40a9-85eb-3ba033ecd939",
+      "supplier_id": "995e1066-796e-4a9c-9ede-702a5001fb13",
+      "supplier_name": "Penrith Dairy Co-op",
+      "supplier_contact": {
+        "name": "James Smith",
+        "phone": "+61 2 5555 2345",
+        "email": "orders@penrithdairy.com.au"
+      },
+      "product": {
+        "name": "Full Cream Milk 2L",
+        "price": 2.4,
+        "unit": "each"
+      },
+      "quantity": 10,
+      "total_amount": 24.0,
+      "pickup_window": {
+        "start": "2025-04-04 08:00",
+        "end": "2025-04-04 11:00"
+      },
+      "order_date": "2025-04-04T06:22:46.352093",
+      "status": "pending",
+      "status_history": [
+        {
+          "status": "pending",
+          "timestamp": "2025-04-04T06:22:46.352093",
+          "note": "Order created"
+        }
+      ],
+      "notification_history": [
+        {
+          "type": "sms",
+          "timestamp": "2025-04-04T06:22:46.896309",
+          "message": "Order #f47e0a50: 10 Full Cream Milk 2L, pickup 2025-04-04 08:00 - 2025-04-04 11:00, Penrith Grocery",
+          "status": "simulated",
+          "note": "Twilio credentials not found"
         }
       ],
       "driver_assigned": false
