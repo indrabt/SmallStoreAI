@@ -55,7 +55,7 @@ def show_dashboard(waste_manager):
     with col2:
         st.metric("Total Waste", f"{summary['total_wasted']} units")
     with col3:
-        st.metric("Cost Savings", f"${{summary['cost_savings']:.2f}")
+        st.metric("Cost Savings", f"${summary['cost_savings']:.2f}")
     with col4:
         st.metric("Pending Adjustments", summary['pending_adjustments'])
     

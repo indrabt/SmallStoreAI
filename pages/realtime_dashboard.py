@@ -36,8 +36,8 @@ def app():
                 }.get(notification["level"], "gray")
                 
                 st.markdown(
-                    f"<div style=f'border-left: 4px solid {level_color}; padding-left: 10px; margin-bottom: 10px;">"
-                    f"<span style=f'font-weight: bold; color: {level_color};">{notification['title']}</span><br>"
+    f"<div style='border-left: 4px solid {level_color}; padding-left: 10px; margin-bottom: 10px;'>"
+                    f"<span style='font-weight: bold; color: {level_color};'>{notification['title']}</span><br>"
                     f"<span style='color: gray;'>{notification['timestamp']}</span><br>"
                     f"{notification['message']}"
                     "</div>",
