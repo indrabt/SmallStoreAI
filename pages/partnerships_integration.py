@@ -202,7 +202,7 @@ def show_overview(partnerships):
             st.session_state['refresh_events'] = True
             st.session_state['refresh_suppliers'] = True
             st.success("Refreshing all integration data...")
-            st.experimental_rerun()
+            st.rerun()
     
     with col2:
         if st.button("Run Health Check", key="health_check"):
@@ -213,7 +213,7 @@ def show_overview(partnerships):
     with col3:
         if st.button("View Analytics", key="view_analytics"):
             st.session_state['selected_section'] = "Data Quality"
-            st.experimental_rerun()
+            st.rerun()
 
 def show_integration_card(title, status, icon):
     """Display a card with integration status"""
@@ -296,7 +296,7 @@ def show_weather_integration(partnerships):
             partnerships.configure_weather_integration(api_key, enable_integration)
             st.success(f"Weather integration {'enabled' if enable_integration else 'disabled'} successfully")
             time.sleep(1)
-            st.experimental_rerun()
+            st.rerun()
     
     # View current data
     st.subheader("Current Weather Data")
@@ -309,7 +309,7 @@ def show_weather_integration(partnerships):
     # Show refresh button
     if st.button("Refresh Data", key="refresh_weather_data"):
         st.session_state['refresh_weather'] = True
-        st.experimental_rerun()
+        st.rerun()
     
     # Get weather data
     weather_data = partnerships.get_weather_data(force_refresh=refresh_weather)
@@ -436,7 +436,7 @@ def show_weather_integration(partnerships):
         partnerships.reset_integration("weather")
         st.success("Weather integration has been reset")
         time.sleep(1)
-        st.experimental_rerun()
+        st.rerun()
 
 def show_event_integration(partnerships):
     """Display the event integration configuration"""
@@ -489,7 +489,7 @@ def show_event_integration(partnerships):
             partnerships.configure_events_integration(api_key, enable_integration)
             st.success(f"Event calendar integration {'enabled' if enable_integration else 'disabled'} successfully")
             time.sleep(1)
-            st.experimental_rerun()
+            st.rerun()
     
     # View current data
     st.subheader("Upcoming Events")
@@ -502,7 +502,7 @@ def show_event_integration(partnerships):
     # Show refresh button
     if st.button("Refresh Data", key="refresh_events_data"):
         st.session_state['refresh_events'] = True
-        st.experimental_rerun()
+        st.rerun()
     
     # Get events data
     events_data = partnerships.get_events_data(force_refresh=refresh_events)
@@ -683,7 +683,7 @@ def show_event_integration(partnerships):
         partnerships.reset_integration("events")
         st.success("Event calendar integration has been reset")
         time.sleep(1)
-        st.experimental_rerun()
+        st.rerun()
 
 def show_supplier_integration(partnerships):
     """Display the supplier integration configuration"""
@@ -712,9 +712,11 @@ def show_supplier_integration(partnerships):
     # Supplier selection or new supplier input
     supplier_options = ["Add New Supplier"]
     
+    # Get the configuration
+    config = partnerships.config
+    
     # Get existing suppliers
     try:
-        config = partnerships.config
         if "credentials" in config["integrations"]["suppliers"]:
             supplier_options.extend(list(config["integrations"]["suppliers"]["credentials"].keys()))
     except (KeyError, AttributeError):
@@ -810,7 +812,7 @@ def show_supplier_integration(partnerships):
                 partnerships.configure_supplier_integration(supplier_name, credentials, enable_integration)
                 st.success(f"Supplier {supplier_name} {'enabled' if enable_integration else 'disabled'} successfully")
                 time.sleep(1)
-                st.experimental_rerun()
+                st.rerun()
             else:
                 st.error("Please enter a supplier name and username")
     
@@ -825,7 +827,7 @@ def show_supplier_integration(partnerships):
     # Show refresh button
     if st.button("Refresh Data", key="refresh_supplier_data"):
         st.session_state['refresh_suppliers'] = True
-        st.experimental_rerun()
+        st.rerun()
     
     # Get supplier data
     supplier_data = partnerships.get_supplier_data(force_refresh=refresh_suppliers)
@@ -927,7 +929,7 @@ def show_supplier_integration(partnerships):
         partnerships.reset_integration("suppliers")
         st.success("Supplier integration has been reset")
         time.sleep(1)
-        st.experimental_rerun()
+        st.rerun()
 
 def show_data_quality(partnerships):
     """Display the data quality metrics"""

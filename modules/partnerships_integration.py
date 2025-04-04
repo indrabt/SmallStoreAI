@@ -1099,14 +1099,16 @@ class PartnershipsIntegration:
                 "status": self.config["integrations"]["weather"]["status"],
                 "last_updated": self.config["integrations"]["weather"]["last_updated"],
                 "operational": self.status["status"]["weather"]["operational"],
-                "message": self.status["status"]["weather"]["message"]
+                "message": self.status["status"]["weather"]["message"],
+                "api_key": self.config["integrations"]["weather"].get("api_key", "")
             },
             "events": {
                 "enabled": self.config["integrations"]["events"]["enabled"],
                 "status": self.config["integrations"]["events"]["status"],
                 "last_updated": self.config["integrations"]["events"]["last_updated"],
                 "operational": self.status["status"]["events"]["operational"],
-                "message": self.status["status"]["events"]["message"]
+                "message": self.status["status"]["events"]["message"],
+                "api_key": self.config["integrations"]["events"].get("api_key", "")
             },
             "suppliers": {
                 "enabled": self.config["integrations"]["suppliers"]["enabled"],
