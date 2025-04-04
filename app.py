@@ -14,6 +14,7 @@ from modules.event_recommender import EventRecommender
 from modules.hub_integration import LogisticsHubIntegration
 from modules.waste_management import WasteManagement
 from modules.integration_kit import IntegrationKit
+from modules.partnerships_integration import PartnershipsIntegration
 
 # Set page configuration
 st.set_page_config(
@@ -45,6 +46,7 @@ page = st.sidebar.radio(
         "Logistics Hub",
         "Real-Time Dashboard",
         "Integration Kit",
+        "Partnerships Integration",
         "Settings"
     ]
 )
@@ -61,6 +63,7 @@ event_recommender = EventRecommender()
 logistics_hub = LogisticsHubIntegration()
 waste_manager = WasteManagement()
 integration_kit = IntegrationKit()
+partnerships_integration = PartnershipsIntegration()
 
 # Cache the weather data to avoid repeated API calls
 @st.cache_data(ttl=3600)
@@ -678,6 +681,12 @@ elif page == "Integration Kit":
     # Redirect to the integration kit page
     st.info("Opening Plug-and-Play Integration Kit...")
     st.switch_page("pages/integration_kit.py")
+
+# Partnerships Integration Page
+elif page == "Partnerships Integration":
+    # Redirect to the partnerships integration page
+    st.info("Opening Partnerships & Ecosystem Integration...")
+    st.switch_page("pages/partnerships_integration.py")
 
 # Settings Page
 elif page == "Settings":

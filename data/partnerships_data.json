@@ -1,0 +1,48 @@
+{
+    "integrations": {
+        "weather": {
+            "enabled": false,
+            "api_key": "",
+            "last_updated": null,
+            "status": "not_configured"
+        },
+        "events": {
+            "enabled": false,
+            "api_key": "",
+            "last_updated": null,
+            "status": "not_configured"
+        },
+        "suppliers": {
+            "enabled": false,
+            "credentials": {},
+            "last_updated": null,
+            "status": "not_configured"
+        }
+    },
+    "statistics": {
+        "accuracy_improvement": {
+            "baseline": 0,
+            "with_integrations": 0,
+            "percentage_improvement": 0
+        },
+        "partnership_savings": 0,
+        "active_partnerships": 0
+    },
+    "data_quality": {
+        "weather": {
+            "completeness": 0,
+            "timeliness": 0,
+            "accuracy": 0
+        },
+        "events": {
+            "completeness": 0,
+            "timeliness": 0,
+            "accuracy": 0
+        },
+        "suppliers": {
+            "completeness": 0,
+            "timeliness": 0,
+            "accuracy": 0
+        }
+    }
+}
