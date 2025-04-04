@@ -41,11 +41,24 @@ class LocalSourcingManager:
                     "Organic",
                     "Specialty Foods"
                 ],
-                "orders": []
+                "orders": self._load_sample_orders()
             }
             
             with open(self.data_file, 'w') as f:
                 json.dump(initial_data, f, indent=2)
+                
+    def _load_sample_orders(self):
+        """Load sample orders from a JSON file if available"""
+        sample_file = "data/sample_orders.json"
+        
+        if os.path.exists(sample_file):
+            try:
+                with open(sample_file, 'r') as f:
+                    sample_data = json.load(f)
+                return sample_data.get('orders', [])
+            except:
+                return []
+        return []
     
     def _generate_sample_suppliers(self):
         """Generate sample supplier data for first-time setup"""

@@ -1,7 +1,7 @@
 {
   "suppliers": [
     {
-      "id": "29056d46-c9b5-4465-a6e5-1bd5274bed49",
+      "id": "249aaa63-9a46-4ee3-80d2-564fa0b69e6a",
       "name": "Local Organic Farms",
       "contact_name": "Sarah Johnson",
       "phone": "+61 2 5555 1234",
@@ -17,8 +17,8 @@
       "is_local": true,
       "reliability_score": 9.2,
       "sustainability_score": 9.7,
-      "date_added": "2024-12-04T22:54:56.162813",
-      "last_order_date": "2025-03-31T22:54:56.162821",
+      "date_added": "2024-12-05T00:33:45.520572",
+      "last_order_date": "2025-04-01T00:33:45.520591",
       "coordinates": {
         "latitude": -33.751,
         "longitude": 150.694
@@ -42,7 +42,7 @@
       ]
     },
     {
-      "id": "c03a7a23-ee42-4968-a659-1e2a12e992ae",
+      "id": "995e1066-796e-4a9c-9ede-702a5001fb13",
       "name": "Penrith Dairy Co-op",
       "contact_name": "James Smith",
       "phone": "+61 2 5555 2345",
@@ -57,8 +57,8 @@
       "is_local": true,
       "reliability_score": 9.5,
       "sustainability_score": 8.9,
-      "date_added": "2024-10-05T22:54:56.162833",
-      "last_order_date": "2025-04-02T22:54:56.162835",
+      "date_added": "2024-10-06T00:33:45.520606",
+      "last_order_date": "2025-04-03T00:33:45.520609",
       "coordinates": {
         "latitude": -33.759,
         "longitude": 150.702
@@ -82,7 +82,7 @@
       ]
     },
     {
-      "id": "d98c4c0e-2694-482a-be53-a168ecefa786",
+      "id": "3c796f16-0124-4b13-8d29-aa9e90937e64",
       "name": "Penrith Bakehouse",
       "contact_name": "Emma Wong",
       "phone": "+61 2 5555 3456",
@@ -97,8 +97,8 @@
       "is_local": true,
       "reliability_score": 9.0,
       "sustainability_score": 8.5,
-      "date_added": "2025-01-03T22:54:56.162844",
-      "last_order_date": "2025-04-02T22:54:56.162846",
+      "date_added": "2025-01-04T00:33:45.520619",
+      "last_order_date": "2025-04-03T00:33:45.520621",
       "coordinates": {
         "latitude": -33.755,
         "longitude": 150.689
@@ -122,7 +122,7 @@
       ]
     },
     {
-      "id": "2a14d345-ac7d-49d2-beb4-dad844d5dff0",
+      "id": "3b40e184-32f0-46fe-b777-98a793d64ee8",
       "name": "Happy Hens Farm",
       "contact_name": "Michael Zhang",
       "phone": "+61 2 5555 4567",
@@ -138,8 +138,8 @@
       "is_local": true,
       "reliability_score": 8.8,
       "sustainability_score": 9.6,
-      "date_added": "2024-11-04T22:54:56.162853",
-      "last_order_date": "2025-04-01T22:54:56.162855",
+      "date_added": "2024-11-05T00:33:45.520637",
+      "last_order_date": "2025-04-02T00:33:45.520641",
       "coordinates": {
         "latitude": -33.867,
         "longitude": 150.639
@@ -158,7 +158,7 @@
       ]
     },
     {
-      "id": "b1847418-f47b-421c-850b-7c4f1cffbf99",
+      "id": "0361db76-dfd0-4c20-9740-f96ee5c6b9d5",
       "name": "NSW Poultry",
       "contact_name": "David Chen",
       "phone": "+61 2 5555 5678",
@@ -173,8 +173,8 @@
       "is_local": true,
       "reliability_score": 8.9,
       "sustainability_score": 7.8,
-      "date_added": "2024-09-15T22:54:56.162862",
-      "last_order_date": "2025-03-27T22:54:56.162864",
+      "date_added": "2024-09-16T00:33:45.520669",
+      "last_order_date": "2025-03-28T00:33:45.520674",
       "coordinates": {
         "latitude": -33.806,
         "longitude": 150.866
@@ -198,7 +198,7 @@
       ]
     },
     {
-      "id": "29202b8f-b26f-47ff-b066-2b12b30f56c6",
+      "id": "c0253fec-81eb-49be-b36e-57a4d31dcfcc",
       "name": "National Distributors",
       "contact_name": "Lisa Taylor",
       "phone": "+61 2 8888 1234",
@@ -215,8 +215,8 @@
       "is_local": false,
       "reliability_score": 9.7,
       "sustainability_score": 6.5,
-      "date_added": "2024-04-03T22:54:56.162872",
-      "last_order_date": "2025-03-29T22:54:56.162876",
+      "date_added": "2024-04-04T00:33:45.520689",
+      "last_order_date": "2025-03-30T00:33:45.520693",
       "coordinates": {
         "latitude": -33.865,
         "longitude": 151.082
@@ -250,5 +250,147 @@
     "Organic",
     "Specialty Foods"
   ],
-  "orders": []
+  "orders": [
+    {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "supplier_id": "3b5c8d76-af12-4e56-8901-2345cdef6789",
+      "supplier_name": "National Distributors",
+      "supplier_contact": {
+        "name": "Lisa Taylor",
+        "phone": "+61 2 8888 1234",
+        "email": "orders@nationaldist.com.au"
+      },
+      "product": {
+        "name": "Bottled Water 24-Pack",
+        "price": 8.5,
+        "unit": "each"
+      },
+      "quantity": 80,
+      "total_amount": 680.0,
+      "pickup_window": {
+        "start": "2025-04-04 10:00",
+        "end": "2025-04-04 13:00"
+      },
+      "order_date": "2025-04-04T00:02:34.123456",
+      "status": "confirmed",
+      "status_history": [
+        {
+          "status": "pending",
+          "timestamp": "2025-04-04T00:02:34.123456",
+          "note": "Order created"
+        },
+        {
+          "status": "confirmed",
+          "timestamp": "2025-04-04T00:05:12.654321",
+          "note": "Supplier confirmed: Confirmed, ready by 2025-04-04 10:00"
+        }
+      ],
+      "notification_history": [
+        {
+          "type": "sms",
+          "timestamp": "2025-04-04T00:02:45.123456",
+          "message": "Order #a1b2c3d4: 80 Bottled Water 24-Pack, pickup 2025-04-04 10:00 - 2025-04-04 13:00, Penrith Grocery",
+          "status": "simulated",
+          "note": "Twilio credentials not found"
+        }
+      ],
+      "driver_assigned": true,
+      "driver": {
+        "name": "John Smith",
+        "assigned_at": "2025-04-04T08:15:00.123456"
+      }
+    },
+    {
+      "id": "b2c3d4e5-f6g7-8901-abcd-ef2345678901",
+      "supplier_id": "4c6d9e87-bf23-5f67-9012-3456defg7890",
+      "supplier_name": "Local Organic Farms",
+      "supplier_contact": {
+        "name": "Sarah Johnson",
+        "phone": "+61 2 5555 1234",
+        "email": "info@localorganicfarms.com.au"
+      },
+      "product": {
+        "name": "Organic Apples",
+        "price": 1.2,
+        "unit": "kg"
+      },
+      "quantity": 50,
+      "total_amount": 60.0,
+      "pickup_window": {
+        "start": "2025-04-04 14:00",
+        "end": "2025-04-04 16:00"
+      },
+      "order_date": "2025-04-04T00:10:22.123456",
+      "status": "pending",
+      "status_history": [
+        {
+          "status": "pending",
+          "timestamp": "2025-04-04T00:10:22.123456",
+          "note": "Order created"
+        }
+      ],
+      "notification_history": [
+        {
+          "type": "email",
+          "timestamp": "2025-04-04T00:10:30.123456",
+          "message": "Order #b2c3d4e5: 50 Organic Apples, pickup 2025-04-04 14:00 - 2025-04-04 16:00, Penrith Grocery",
+          "status": "simulated",
+          "note": "SendGrid credentials not found"
+        }
+      ],
+      "driver_assigned": false
+    },
+    {
+      "id": "c3d4e5f6-g7h8-9012-abcd-ef3456789012",
+      "supplier_id": "5d7e0f98-cg34-6h78-0123-4567efgh8901",
+      "supplier_name": "Penrith Bakehouse",
+      "supplier_contact": {
+        "name": "Emma Wong",
+        "phone": "+61 2 5555 3456",
+        "email": "orders@penrithbakehouse.com.au"
+      },
+      "product": {
+        "name": "Multigrain Loaf",
+        "price": 3.8,
+        "unit": "each"
+      },
+      "quantity": 25,
+      "total_amount": 95.0,
+      "pickup_window": {
+        "start": "2025-04-04 08:00",
+        "end": "2025-04-04 09:00"
+      },
+      "order_date": "2025-04-03T18:45:12.123456",
+      "status": "rejected",
+      "status_history": [
+        {
+          "status": "pending",
+          "timestamp": "2025-04-03T18:45:12.123456",
+          "note": "Order created"
+        },
+        {
+          "status": "rejected",
+          "timestamp": "2025-04-03T19:01:45.654321",
+          "note": "Supplier rejected: Cannot fulfill this order due to equipment failure"
+        }
+      ],
+      "notification_history": [
+        {
+          "type": "sms",
+          "timestamp": "2025-04-03T18:45:30.123456",
+          "message": "Order #c3d4e5f6: 25 Multigrain Loaf, pickup 2025-04-04 08:00 - 2025-04-04 09:00, Penrith Grocery",
+          "status": "simulated",
+          "note": "Twilio credentials not found"
+        },
+        {
+          "type": "email",
+          "timestamp": "2025-04-03T19:10:22.123456",
+          "message": "Order #c3d4e5f6: 25 Multigrain Loaf, pickup 2025-04-04 08:00 - 2025-04-04 09:00, Penrith Grocery",
+          "status": "simulated",
+          "note": "SendGrid credentials not found"
+        }
+      ],
+      "driver_assigned": false
+    }
+  ]
 }

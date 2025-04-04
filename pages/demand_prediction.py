@@ -164,7 +164,7 @@ with tab1:
                 key=f"edit_{product}",
                 label_visibility="collapsed",
                 on_change=update_quantity,
-                args=(product, st.session_state[f"edit_{product}"])
+                args=(product, edited_value)
             )
             
             # Confidence and factors

@@ -1,0 +1,322 @@
+{
+  "product_weather_impacts": [
+    {
+      "product_name": "Bottled Water 24-Pack",
+      "temperature_impacts": [
+        {
+          "min_temp": 30,
+          "max_temp": 45,
+          "impact_percentage": 100,
+          "base_units": 50
+        },
+        {
+          "min_temp": 25,
+          "max_temp": 30,
+          "impact_percentage": 50,
+          "base_units": 30
+        }
+      ],
+      "condition_impacts": [
+        {
+          "condition": "Sunny",
+          "impact_percentage": 20,
+          "base_units": 10
+        },
+        {
+          "condition": "Thunderstorm",
+          "impact_percentage": -10,
+          "base_units": -5
+        }
+      ],
+      "last_analysis": "2025-04-04T00:29:12.242107",
+      "confidence_score": 0.85
+    },
+    {
+      "product_name": "Ice Cream - Vanilla 1L",
+      "temperature_impacts": [
+        {
+          "min_temp": 30,
+          "max_temp": 45,
+          "impact_percentage": 120,
+          "base_units": 40
+        },
+        {
+          "min_temp": 25,
+          "max_temp": 30,
+          "impact_percentage": 60,
+          "base_units": 25
+        }
+      ],
+      "condition_impacts": [
+        {
+          "condition": "Sunny",
+          "impact_percentage": 30,
+          "base_units": 15
+        },
+        {
+          "condition": "Cloudy",
+          "impact_percentage": -15,
+          "base_units": -5
+        }
+      ],
+      "last_analysis": "2025-04-04T00:29:12.242117",
+      "confidence_score": 0.82
+    },
+    {
+      "product_name": "Umbrellas",
+      "temperature_impacts": [],
+      "condition_impacts": [
+        {
+          "condition": "Light rain",
+          "impact_percentage": 150,
+          "base_units": 20
+        },
+        {
+          "condition": "Moderate rain",
+          "impact_percentage": 250,
+          "base_units": 30
+        },
+        {
+          "condition": "Heavy rain",
+          "impact_percentage": 350,
+          "base_units": 40
+        },
+        {
+          "condition": "Thunderstorm",
+          "impact_percentage": 300,
+          "base_units": 35
+        }
+      ],
+      "last_analysis": "2025-04-04T00:29:12.242120",
+      "confidence_score": 0.9
+    },
+    {
+      "product_name": "Soft Drinks 12-Pack",
+      "temperature_impacts": [
+        {
+          "min_temp": 30,
+          "max_temp": 45,
+          "impact_percentage": 80,
+          "base_units": 30
+        },
+        {
+          "min_temp": 25,
+          "max_temp": 30,
+          "impact_percentage": 40,
+          "base_units": 20
+        }
+      ],
+      "condition_impacts": [
+        {
+          "condition": "Sunny",
+          "impact_percentage": 25,
+          "base_units": 10
+        }
+      ],
+      "last_analysis": "2025-04-04T00:29:12.242121",
+      "confidence_score": 0.78
+    },
+    {
+      "product_name": "BBQ Supplies",
+      "temperature_impacts": [
+        {
+          "min_temp": 25,
+          "max_temp": 45,
+          "impact_percentage": 70,
+          "base_units": 15
+        }
+      ],
+      "condition_impacts": [
+        {
+          "condition": "Sunny",
+          "impact_percentage": 90,
+          "base_units": 20
+        },
+        {
+          "condition": "Partly cloudy",
+          "impact_percentage": 40,
+          "base_units": 10
+        },
+        {
+          "condition": "Light rain",
+          "impact_percentage": -60,
+          "base_units": -15
+        }
+      ],
+      "last_analysis": "2025-04-04T00:29:12.242123",
+      "confidence_score": 0.81
+    }
+  ],
+  "product_event_impacts": [
+    {
+      "product_name": "Bottled Water 24-Pack",
+      "event_impacts": [
+        {
+          "event_type": "festival",
+          "impact_percentage": 120,
+          "base_units": 60
+        },
+        {
+          "event_type": "sports",
+          "impact_percentage": 80,
+          "base_units": 40
+        },
+        {
+          "event_type": "market",
+          "impact_percentage": 50,
+          "base_units": 25
+        }
+      ],
+      "last_analysis": "2025-04-04T00:29:12.242125",
+      "confidence_score": 0.85
+    },
+    {
+      "product_name": "Snack Chips Large Bag",
+      "event_impacts": [
+        {
+          "event_type": "festival",
+          "impact_percentage": 90,
+          "base_units": 30
+        },
+        {
+          "event_type": "sports",
+          "impact_percentage": 100,
+          "base_units": 35
+        },
+        {
+          "event_type": "school_holiday",
+          "impact_percentage": 70,
+          "base_units": 25
+        }
+      ],
+      "last_analysis": "2025-04-04T00:29:12.242127",
+      "confidence_score": 0.88
+    },
+    {
+      "product_name": "Fresh Sandwiches",
+      "event_impacts": [
+        {
+          "event_type": "market",
+          "impact_percentage": 110,
+          "base_units": 40
+        },
+        {
+          "event_type": "fair",
+          "impact_percentage": 80,
+          "base_units": 30
+        }
+      ],
+      "last_analysis": "2025-04-04T00:29:12.242129",
+      "confidence_score": 0.82
+    },
+    {
+      "product_name": "Juice Boxes 10-Pack",
+      "event_impacts": [
+        {
+          "event_type": "school_holiday",
+          "impact_percentage": 130,
+          "base_units": 50
+        },
+        {
+          "event_type": "fair",
+          "impact_percentage": 90,
+          "base_units": 35
+        }
+      ],
+      "last_analysis": "2025-04-04T00:29:12.242130",
+      "confidence_score": 0.9
+    },
+    {
+      "product_name": "Sunscreen SPF50+",
+      "event_impacts": [
+        {
+          "event_type": "festival",
+          "impact_percentage": 150,
+          "base_units": 30
+        },
+        {
+          "event_type": "school_holiday",
+          "impact_percentage": 120,
+          "base_units": 25
+        },
+        {
+          "event_type": "sports",
+          "impact_percentage": 100,
+          "base_units": 20
+        }
+      ],
+      "last_analysis": "2025-04-04T00:29:12.242132",
+      "confidence_score": 0.87
+    }
+  ],
+  "past_predictions": [],
+  "prediction_accuracy": {},
+  "default_regional_patterns": {
+    "high_temperature_products": [
+      {
+        "product": "Bottled Water 24-Pack",
+        "base_units": 80,
+        "error_margin": 0.15
+      },
+      {
+        "product": "Ice Cream Assorted",
+        "base_units": 60,
+        "error_margin": 0.15
+      },
+      {
+        "product": "Soft Drinks 12-Pack",
+        "base_units": 70,
+        "error_margin": 0.15
+      }
+    ],
+    "rainy_weather_products": [
+      {
+        "product": "Umbrellas",
+        "base_units": 25,
+        "error_margin": 0.15
+      },
+      {
+        "product": "Rain Ponchos",
+        "base_units": 20,
+        "error_margin": 0.15
+      }
+    ],
+    "event_products": {
+      "festival": [
+        {
+          "product": "Bottled Water 24-Pack",
+          "base_units": 60,
+          "error_margin": 0.15
+        },
+        {
+          "product": "Snack Chips",
+          "base_units": 45,
+          "error_margin": 0.15
+        },
+        {
+          "product": "Sunscreen",
+          "base_units": 30,
+          "error_margin": 0.15
+        }
+      ],
+      "school_holiday": [
+        {
+          "product": "Juice Boxes 10-Pack",
+          "base_units": 50,
+          "error_margin": 0.15
+        },
+        {
+          "product": "Snack Packs",
+          "base_units": 55,
+          "error_margin": 0.15
+        },
+        {
+          "product": "Ice Cream Assorted",
+          "base_units": 40,
+          "error_margin": 0.15
+        }
+      ]
+    }
+  },
+  "confirmed_orders": []
+}
