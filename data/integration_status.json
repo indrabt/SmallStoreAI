@@ -1,0 +1,62 @@
+{
+  "square_integration": {
+    "connected": false,
+    "last_sync": null,
+    "auth_token": null,
+    "sync_status": "disconnected",
+    "error_count": 0,
+    "last_error": null,
+    "items_synced": 0,
+    "sync_accuracy": 0,
+    "test_results": null,
+    "retry_count": 0
+  },
+  "hub_integration": {
+    "feature_1": {
+      "name": "Hyper-Local Route Optimization",
+      "connected": false,
+      "api_key": null,
+      "last_sync": null,
+      "error_count": 0
+    },
+    "feature_2": {
+      "name": "Predictive Resilience",
+      "connected": false,
+      "api_key": null,
+      "last_sync": null,
+      "error_count": 0
+    },
+    "feature_5": {
+      "name": "Multi-Modal Logistics Orchestration",
+      "connected": false,
+      "api_key": null,
+      "last_sync": null,
+      "error_count": 0
+    },
+    "feature_9": {
+      "name": "Real-Time Client Dashboard",
+      "connected": false,
+      "api_key": null,
+      "last_sync": null,
+      "error_count": 0
+    },
+    "feature_10": {
+      "name": "Partnerships and Ecosystem Integration",
+      "connected": false,
+      "api_key": null,
+      "last_sync": null, 
+      "error_count": 0
+    }
+  },
+  "integration_metrics": {
+    "uptime_percentage": 0,
+    "connection_time": 0,
+    "average_sync_time": 0,
+    "total_syncs": 0,
+    "total_errors": 0,
+    "last_system_check": null,
+    "cost_savings": 0,
+    "cached_data_usage": 0
+  },
+  "integration_logs": []
+}

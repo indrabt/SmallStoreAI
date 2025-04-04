@@ -672,6 +672,166 @@ elif page == "Integration Kit":
     # Redirect to the integration kit page
     st.info("Opening Plug-and-Play Integration Kit...")
     st.switch_page("pages/integration_kit.py")
+    
+    with tab1:
+        st.subheader("Hyper-Local Route Optimization")
+        
+        # Get route optimization data
+        routes = logistics_hub.get_optimized_routes()
+        
+        if routes:
+            # Display route map
+            st.subheader("Local Delivery Routes")
+            route_map = logistics_hub.get_route_map()
+            st.pyplot(route_map)
+            
+            # Route details
+            st.subheader("Optimized Routes")
+            
+            for route in routes:
+                with st.expander(f"Route {route['id']} - {route['vehicle']}"):
+                    st.write(f"**Driver**: {route['driver']}")
+                    st.write(f"**Estimated Time**: {route['estimated_time']} minutes")
+                    st.write(f"**Total Distance**: {route['total_distance']} km")
+                    st.write(f"**Stops**: {route['stop_count']}")
+                    
+                    # Stop details
+                    st.write("**Delivery Sequence:**")
+                    for i, stop in enumerate(route['stops']):
+                        st.write(f"{i+1}. {stop['name']} - {stop['address']} ({stop['delivery_window']})")
+                    
+                    # Dispatch button
+                    if st.button("Dispatch Route", key=f"dispatch_{route['id']}"):
+                        result = logistics_hub.dispatch_route(route['id'])
+                        st.success(f"Route {route['id']} has been dispatched!")
+            
+            # Route optimization metrics
+            col1, col2, col3 = st.columns(3)
+            
+            with col1:
+                st.metric("Total Routes", logistics_hub.get_total_routes())
+            
+            with col2:
+                st.metric("Avg. Distance Saved", f"{logistics_hub.get_avg_distance_saved():.1f} km")
+            
+            with col3:
+                st.metric("Estimated Fuel Savings", f"${logistics_hub.get_fuel_savings():.2f}")
+    
+    with tab2:
+        st.subheader("Predictive Resilience")
+        
+        # Get resilience data
+        resilience_data = logistics_hub.get_resilience_insights()
+        
+        if resilience_data:
+            # Display risk map
+            st.subheader("Supply Chain Risk Map")
+            risk_map = logistics_hub.get_risk_map()
+            st.pyplot(risk_map)
+            
+            # Risk metrics
+            col1, col2, col3 = st.columns(3)
+            
+            with col1:
+                st.metric("Overall Risk Score", f"{resilience_data['overall_risk_score']}/10")
+            
+            with col2:
+                st.metric("High Risk Suppliers", resilience_data['high_risk_suppliers'])
+            
+            with col3:
+                st.metric("Risk Mitigations", resilience_data['risk_mitigations'])
+            
+            # Risk details
+            st.subheader("Supply Chain Risk Factors")
+            
+            for risk in resilience_data['risk_factors']:
+                severity_color = "red" if risk['severity'] == "High" else "orange" if risk['severity'] == "Medium" else "green"
+                
+                st.markdown(f"**{risk['factor']}** - <span style='color:{severity_color}'>{risk['severity']}</span>", unsafe_allow_html=True)
+                st.write(f"_{risk['description']}_")
+                
+                # Mitigation strategies
+                if risk['mitigation_strategies']:
+                    st.write("**Mitigation Strategies:**")
+                    for strategy in risk['mitigation_strategies']:
+                        st.write(f"- {strategy}")
+                
+                st.write("---")
+            
+            # Backup suppliers
+            st.subheader("Backup Supplier Recommendations")
+            
+            backup_suppliers = logistics_hub.get_backup_suppliers()
+            
+            for primary, backups in backup_suppliers.items():
+                st.write(f"**Primary Supplier**: {primary}")
+                st.write("**Recommended Backups:**")
+                for backup in backups:
+                    st.write(f"- {backup['name']} (Reliability Score: {backup['reliability_score']}/10)")
+                st.write("---")
+    
+    with tab3:
+        st.subheader("Multi-Modal Logistics Orchestration")
+        
+        # Get logistics options
+        logistics_options = logistics_hub.get_logistics_options()
+        
+        if logistics_options:
+            # Display options comparison
+            st.subheader("Logistics Options Comparison")
+            
+            option_df = pd.DataFrame(logistics_options)
+            st.dataframe(option_df)
+            
+            # Recommendation
+            recommended = logistics_hub.get_recommended_logistics_option()
+            
+            st.subheader("Recommended Option")
+            st.success(f"**{recommended['name']}**")
+            
+            col1, col2, col3 = st.columns(3)
+            
+            with col1:
+                st.metric("Cost", f"${recommended['cost']:.2f}")
+            
+            with col2:
+                st.metric("Time", f"{recommended['time']} hrs")
+            
+            with col3:
+                st.metric("Carbon Footprint", f"{recommended['carbon_footprint']} kg CO2")
+            
+            st.write(f"**Details**: {recommended['details']}")
+            
+            # Select and apply option
+            selected_option = st.selectbox("Select Logistics Option", [opt['name'] for opt in logistics_options])
+            
+            if st.button("Apply Selected Logistics Option"):
+                result = logistics_hub.apply_logistics_option(selected_option)
+                st.success(f"Applied {selected_option} logistics option!")
+                
+            # Partnership integrations
+            st.subheader("Logistics Partnerships")
+            
+            partnerships = logistics_hub.get_partnerships()
+            
+            for partner in partnerships:
+                with st.expander(f"{partner['name']} - {partner['type']}"):
+                    st.write(f"**Services**: {partner['services']}")
+                    st.write(f"**Integration Status**: {partner['integration_status']}")
+                    st.write(f"**Contact**: {partner['contact']}")
+                    
+                    if partner['integration_status'] == "Active":
+                        st.success("Integrated")
+                    elif partner['integration_status'] == "Pending":
+                        st.warning("Pending Integration")
+                    else:
+                        st.error("Not Integrated")
+                    
+                    if partner['integration_status'] != "Active":
+                        if st.button("Integrate", key=f"integrate_{partner['id']}"):
+                            result = logistics_hub.integrate_partner(partner['id'])
+                            st.success(f"Integration with {partner['name']} initiated!")
+                            st.rerun()
 
 # Settings Page
 elif page == "Settings":

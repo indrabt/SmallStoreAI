@@ -1,0 +1,6 @@
+# Integration Kit Page
+elif page == "Integration Kit":
+    # Redirect to the integration kit page
+    st.info("Opening Plug-and-Play Integration Kit...")
+    st.switch_page("pages/integration_kit.py")
+
