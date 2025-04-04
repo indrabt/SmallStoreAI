@@ -297,11 +297,11 @@ with tab2:
                         st.write(f"**Value:** {promo['value']}{symbol_value}")
                         st.write(f"**Category:** {promo['category']}")
                         st.write(f"**Description:** {promo['description']}")
-                        st.write("**Description:** " + str({promo['description']) + "}")
-                        st.write("**Period:** " + str({promo['start_date']) + "} to {promo['end_date']}")
-                            st.write(f"**Related Event:** {promo['event_name']}")
+                        # Description is already displayed above
+                        st.write(f"**Period:** {promo['start_date']} to {promo['end_date']}")
+                        # Related Event is handled in the condition below
                         if promo['related_event']:
-                            st.write("**Related Event:** " + str({promo['event_name']) + "}")
+                            st.write(f"**Related Event:** {promo['event_name']}")
     
     with promo_tab2:
         st.write("### Create New Promotion")
