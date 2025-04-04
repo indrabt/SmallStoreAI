@@ -42,87 +42,140 @@ class PartnershipsIntegration:
     def _ensure_data_files_exist(self):
         """Ensure all required data files exist"""
         # Create partnerships data file if it doesn't exist
+        default_partnerships_data = {
+            "integrations": {
+                "weather": {
+                    "enabled": False,
+                    "api_key": "",
+                    "last_updated": None,
+                    "status": "not_configured"
+                },
+                "events": {
+                    "enabled": False,
+                    "api_key": "",
+                    "last_updated": None,
+                    "status": "not_configured"
+                },
+                "suppliers": {
+                    "enabled": False,
+                    "credentials": {},
+                    "last_updated": None,
+                    "status": "not_configured"
+                }
+            },
+            "statistics": {
+                "accuracy_improvement": {
+                    "baseline": 0,
+                    "with_integrations": 0,
+                    "percentage_improvement": 0
+                },
+                "partnership_savings": 0,
+                "active_partnerships": 0
+            },
+            "data_quality": {
+                "weather": {
+                    "completeness": 0,
+                    "timeliness": 0,
+                    "accuracy": 0
+                },
+                "events": {
+                    "completeness": 0,
+                    "timeliness": 0,
+                    "accuracy": 0
+                },
+                "suppliers": {
+                    "completeness": 0,
+                    "timeliness": 0,
+                    "accuracy": 0
+                }
+            }
+        }
+        
         if not PARTNERSHIPS_DATA_FILE.exists():
             with open(PARTNERSHIPS_DATA_FILE, 'w') as f:
-                json.dump({
-                    "integrations": {
-                        "weather": {
-                            "enabled": False,
-                            "api_key": "",
-                            "last_updated": None,
-                            "status": "not_configured"
-                        },
-                        "events": {
-                            "enabled": False,
-                            "api_key": "",
-                            "last_updated": None,
-                            "status": "not_configured"
-                        },
-                        "suppliers": {
-                            "enabled": False,
-                            "credentials": {},
-                            "last_updated": None,
-                            "status": "not_configured"
-                        }
-                    },
-                    "statistics": {
-                        "accuracy_improvement": {
-                            "baseline": 0,
-                            "with_integrations": 0,
-                            "percentage_improvement": 0
-                        },
-                        "partnership_savings": 0,
-                        "active_partnerships": 0
-                    },
-                    "data_quality": {
-                        "weather": {
-                            "completeness": 0,
-                            "timeliness": 0,
-                            "accuracy": 0
-                        },
-                        "events": {
-                            "completeness": 0,
-                            "timeliness": 0,
-                            "accuracy": 0
-                        },
-                        "suppliers": {
-                            "completeness": 0,
-                            "timeliness": 0,
-                            "accuracy": 0
-                        }
-                    }
-                }, f, indent=4)
+                json.dump(default_partnerships_data, f, indent=4)
+        else:
+            # Verify the partnerships data file has the expected structure
+            try:
+                with open(PARTNERSHIPS_DATA_FILE, 'r') as f:
+                    partnerships_data = json.load(f)
+                
+                # Check if the required keys exist
+                required_keys = ["integrations", "statistics", "data_quality"]
+                if not all(key in partnerships_data for key in required_keys):
+                    # Recreate the partnerships data file with the correct structure
+                    with open(PARTNERSHIPS_DATA_FILE, 'w') as f:
+                        json.dump(default_partnerships_data, f, indent=4)
+            except (json.JSONDecodeError, IOError, FileNotFoundError):
+                # Recreate the partnerships data file if it's corrupted or unreadable
+                with open(PARTNERSHIPS_DATA_FILE, 'w') as f:
+                    json.dump(default_partnerships_data, f, indent=4)
         
         # Create integration status file if it doesn't exist
+        default_status = {
+            "last_check": datetime.datetime.now().isoformat(),
+            "status": {
+                "weather": {"operational": False, "message": "Not configured"},
+                "events": {"operational": False, "message": "Not configured"},
+                "suppliers": {"operational": False, "message": "Not configured"}
+            },
+            "notifications": []
+        }
+        
         if not INTEGRATION_STATUS_FILE.exists():
             with open(INTEGRATION_STATUS_FILE, 'w') as f:
-                json.dump({
-                    "last_check": datetime.datetime.now().isoformat(),
-                    "status": {
-                        "weather": {"operational": False, "message": "Not configured"},
-                        "events": {"operational": False, "message": "Not configured"},
-                        "suppliers": {"operational": False, "message": "Not configured"}
-                    },
-                    "notifications": []
-                }, f, indent=4)
+                json.dump(default_status, f, indent=4)
+        else:
+            # Verify the status file has the expected structure
+            try:
+                with open(INTEGRATION_STATUS_FILE, 'r') as f:
+                    status_data = json.load(f)
+                
+                # Check if the required keys exist
+                required_keys = ["status", "notifications"]
+                if not all(key in status_data for key in required_keys):
+                    # Recreate the status file with the correct structure
+                    with open(INTEGRATION_STATUS_FILE, 'w') as f:
+                        json.dump(default_status, f, indent=4)
+            except (json.JSONDecodeError, IOError, FileNotFoundError):
+                # Recreate the status file if it's corrupted or unreadable
+                with open(INTEGRATION_STATUS_FILE, 'w') as f:
+                    json.dump(default_status, f, indent=4)
         
         # Create cache files if they don't exist
+        default_cache = {
+            "last_updated": None,
+            "data": {},
+            "is_cached": True
+        }
+        
         for cache_file in [WEATHER_CACHE_FILE, EVENTS_CACHE_FILE, SUPPLIERS_CACHE_FILE]:
             if not cache_file.exists():
                 with open(cache_file, 'w') as f:
-                    json.dump({
-                        "last_updated": None,
-                        "data": {},
-                        "is_cached": True
-                    }, f, indent=4)
+                    json.dump(default_cache, f, indent=4)
     
     def load_status(self):
         """Load the current integration status"""
-        with open(PARTNERSHIPS_DATA_FILE, 'r') as f:
-            self.config = json.load(f)
+        # Ensure files exist before trying to load them
+        self._ensure_data_files_exist()
         
-        with open(INTEGRATION_STATUS_FILE, 'r') as f:
-            self.status = json.load(f)
+        try:
+            with open(PARTNERSHIPS_DATA_FILE, 'r') as f:
+                self.config = json.load(f)
+        except (json.JSONDecodeError, IOError, FileNotFoundError):
+            # If there's an error loading the file, recreate it
+            self._ensure_data_files_exist()
+            with open(PARTNERSHIPS_DATA_FILE, 'r') as f:
+                self.config = json.load(f)
+        
+        try:
+            with open(INTEGRATION_STATUS_FILE, 'r') as f:
+                self.status = json.load(f)
+        except (json.JSONDecodeError, IOError, FileNotFoundError):
+            # If there's an error loading the file, recreate it
+            self._ensure_data_files_exist()
+            with open(INTEGRATION_STATUS_FILE, 'r') as f:
+                self.status = json.load(f)
     
     def save_status(self):
         """Save the current integration status"""
@@ -1080,6 +1133,11 @@ class PartnershipsIntegration:
         Returns:
             list: Recent notifications
         """
+        # Check if the status has the expected structure, if not reinitialize it
+        if "notifications" not in self.status:
+            self.status["notifications"] = []
+            self.save_status()
+            
         return sorted(
             self.status["notifications"],
             key=lambda x: x["timestamp"],
@@ -1093,6 +1151,19 @@ class PartnershipsIntegration:
         Returns:
             dict: Integration status
         """
+        # Check if the status has the expected structure, if not reinitialize it
+        if "status" not in self.status:
+            self.status = {
+                "last_check": datetime.datetime.now().isoformat(),
+                "status": {
+                    "weather": {"operational": False, "message": "Not configured"},
+                    "events": {"operational": False, "message": "Not configured"},
+                    "suppliers": {"operational": False, "message": "Not configured"}
+                },
+                "notifications": []
+            }
+            self.save_status()
+            
         return {
             "weather": {
                 "enabled": self.config["integrations"]["weather"]["enabled"],
@@ -1164,6 +1235,19 @@ class PartnershipsIntegration:
         events_enabled = self.config["integrations"]["events"]["enabled"]
         suppliers_enabled = self.config["integrations"]["suppliers"]["enabled"]
         
+        # Check if the status has the expected structure
+        if "status" not in self.status:
+            self.status = {
+                "last_check": datetime.datetime.now().isoformat(),
+                "status": {
+                    "weather": {"operational": False, "message": "Not configured"},
+                    "events": {"operational": False, "message": "Not configured"},
+                    "suppliers": {"operational": False, "message": "Not configured"}
+                },
+                "notifications": []
+            }
+            self.save_status()
+            
         # Get operational status
         weather_operational = self.status["status"]["weather"]["operational"] if weather_enabled else None
         events_operational = self.status["status"]["events"]["operational"] if events_enabled else None
@@ -1263,6 +1347,21 @@ class PartnershipsIntegration:
         Returns:
             dict: Updated integration status
         """
+        # Ensure status has the expected structure
+        if "status" not in self.status:
+            self.status = {
+                "last_check": datetime.datetime.now().isoformat(),
+                "status": {
+                    "weather": {"operational": False, "message": "Not configured"},
+                    "events": {"operational": False, "message": "Not configured"},
+                    "suppliers": {"operational": False, "message": "Not configured"}
+                },
+                "notifications": []
+            }
+            
+        if "notifications" not in self.status:
+            self.status["notifications"] = []
+            
         if integration_type == "all":
             # Reset all integrations
             self.config["integrations"]["weather"]["enabled"] = False
