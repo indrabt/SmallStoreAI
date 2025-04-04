@@ -157,7 +157,7 @@
       },
       "margin_current": 39.9,
       "margin_competitive": 10.4,
-      "status": "pending",
+      "status": "approved",
       "applied": false,
       "alert": false,
       "alert_type": null
@@ -280,7 +280,20 @@
       "created_date": "2025-04-04"
     }
   ],
-  "price_history": [],
+  "price_history": [
+    {
+      "id": "4ff7a2f0-2931-4c75-a055-b76bc45ab0a8",
+      "product_id": "dd58b709-668c-4642-b9d3-21f0419f2222",
+      "product_name": "Bottled Water 24-Pack",
+      "suggestion_id": "e4e85c57-0554-42fb-9653-63d5887bdff3",
+      "original_price": 9.99,
+      "suggested_price": 9.49,
+      "applied_price": 9.49,
+      "timestamp": "2025-04-04T00:46:31.265102",
+      "supplier_savings": -41.7,
+      "estimated_sales_increase": 25
+    }
+  ],
   "promotion_history": [],
   "sync_history": [],
   "pos_settings": {

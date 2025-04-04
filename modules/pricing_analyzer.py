@@ -215,6 +215,11 @@ class PricingAnalyzer:
         for _, product in higher_priced.iterrows():
             # Calculate a recommended price (closer to competition but maintaining margin)
             target_price = round(product['avg_competitor_price'] * 1.03, 2)  # 3% above competition
+            
+            # Skip if cost_price is not available
+            if 'cost_price' not in product:
+                continue
+                
             min_price = product['cost_price'] * 1.15  # Ensure minimum 15% margin
             
             suggested_price = max(target_price, min_price)
@@ -236,6 +241,10 @@ class PricingAnalyzer:
             # Calculate a recommended price (increase but stay below competition)
             target_price = round(product['avg_competitor_price'] * 0.95, 2)  # 5% below competition
             
+            # Skip if cost_price is not available
+            if 'cost_price' not in product:
+                continue
+                
             # Only recommend if the change is significant and maintains good margin
             if (target_price - product['selling_price']) > 0.10:
                 new_margin = ((target_price - product['cost_price']) / target_price * 100)
