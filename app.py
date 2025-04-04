@@ -28,8 +28,7 @@ if 'current_page' not in st.session_state:
     st.session_state['current_page'] = 'Dashboard'
 
 # Sidebar navigation
-st.sidebar.title("Small Store AI Pack")
-st.sidebar.image("https://www.svgrepo.com/show/530443/grocery-store.svg", width=100)
+st.sidebar.title("🏪 Small Store AI Pack")
 
 # Navigation
 page = st.sidebar.radio(

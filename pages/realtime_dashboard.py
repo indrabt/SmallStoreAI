@@ -174,14 +174,14 @@ def show_deliveries_tab(dashboard_manager, dashboard):
     st.header("Delivery Tracking")
     
     # Connection status
-    connection_status = dashboard["delivery_status"]["metrics"]["connection_status"]
+    connection_status = dashboard["delivery_status"].get("connection_status", "connected")
     
     if connection_status == "connected":
         st.success("✅ Connected to delivery tracking system")
     else:
         st.warning("⚠️ Disconnected from delivery tracking system - Using cached data")
     
-    st.write(f"Last updated: {dashboard['delivery_status']['metrics']['last_sync']}")
+    st.write(f"Last updated: {dashboard['last_updated']}")
     
     # Active deliveries
     st.subheader("Active Deliveries")
@@ -299,7 +299,7 @@ def show_sales_tab(dashboard_manager, dashboard):
     else:
         st.warning("⚠️ Disconnected from Square POS - Using cached data")
     
-    st.write(f"Last updated: {dashboard['sales_data']['last_sync']}")
+    st.write(f"Last updated: {dashboard['last_updated']}")
     st.write(f"Data accuracy: {dashboard['sales_data']['accuracy_percentage']}% (matches Square POS)")
     
     # Sales metrics
@@ -393,7 +393,7 @@ def show_inventory_tab(dashboard_manager, dashboard):
     else:
         st.warning("⚠️ Disconnected from inventory system - Using cached data")
     
-    st.write(f"Last updated: {dashboard['inventory_status']['last_sync']}")
+    st.write(f"Last updated: {dashboard['last_updated']}")
     
     # Inventory metrics
     col1, col2 = st.columns(2)
@@ -500,7 +500,7 @@ def show_operations_tab(dashboard_manager, dashboard):
     else:
         st.warning("⚠️ Disconnected from operations system - Using cached data")
     
-    st.write(f"Last updated: {dashboard['operational_summary']['last_sync']}")
+    st.write(f"Last updated: {dashboard['last_updated']}")
     
     # Operations metrics
     col1, col2, col3 = st.columns(3)

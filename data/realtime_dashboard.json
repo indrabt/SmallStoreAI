@@ -1,31 +1,350 @@
 {
-  "last_updated": "2025-04-04 04:01:00",
+  "last_updated": "2025-04-04 04:06:37",
   "delivery_status": {
-    "active_deliveries": [],
+    "active_deliveries": [
+      {
+        "id": "b0ec2b71-5774-4574-acde-ca633a1e1f1c",
+        "driver": "Jordan",
+        "distance": 1.1,
+        "items": 100,
+        "product_type": "Bottles",
+        "estimated_arrival": "2025-04-04 04:09:37",
+        "scheduled_arrival": "2025-04-04 04:09:37",
+        "status": "in transit",
+        "last_updated": "2025-04-04 04:06:37"
+      }
+    ],
     "completed_deliveries": [],
-    "on_time_percentage": 98.5,
-    "connection_status": "connected"
+    "on_time_percentage": 97.0,
+    "connection_status": "connected",
+    "metrics": {
+      "connection_status": "connected",
+      "last_sync": "2025-04-04 04:04:00"
+    },
+    "last_sync": "2025-04-04 04:06:37"
   },
   "sales_data": {
-    "today_sales": 850.25,
-    "yesterday_sales": 1200.75,
-    "week_sales": 7500.50,
-    "month_sales": 32000.00,
-    "top_items": [],
-    "accuracy_percentage": 99.2,
-    "connection_status": "connected"
+    "today_sales": 119.57,
+    "yesterday_sales": 1043.82,
+    "week_sales": 6341.63,
+    "month_sales": 35922.19,
+    "top_items": [
+      {
+        "product": "Organic Chicken",
+        "quantity": 50,
+        "amount": 698.29
+      },
+      {
+        "product": "Free-Range Eggs",
+        "quantity": 24,
+        "amount": 150.87
+      },
+      {
+        "product": "Bottled Water (500ml)",
+        "quantity": 98,
+        "amount": 1076.98
+      },
+      {
+        "product": "Gluten-Free Pasta",
+        "quantity": 28,
+        "amount": 169.19
+      },
+      {
+        "product": "Fresh Coffee",
+        "quantity": 56,
+        "amount": 470.48
+      }
+    ],
+    "accuracy_percentage": 99.5,
+    "connection_status": "connected",
+    "last_sync": "2025-04-04 04:06:37"
   },
   "inventory_status": {
-    "low_stock_items": [],
-    "total_items": 175,
-    "low_stock_percentage": 8.5
+    "low_stock_items": [
+      {
+        "id": "22c90227-3c81-4c9f-91a5-ace058709a54",
+        "name": "Tea",
+        "category": "Beverages",
+        "current_stock": 16,
+        "max_stock": 100,
+        "stock_percentage": 16.0,
+        "urgency": "low",
+        "last_updated": "2025-04-04 04:06:37"
+      },
+      {
+        "id": "64fac2d9-c455-4f15-bb2c-c52db806dd99",
+        "name": "Bottled Water",
+        "category": "Beverages",
+        "current_stock": 6,
+        "max_stock": 100,
+        "stock_percentage": 6.0,
+        "urgency": "high",
+        "last_updated": "2025-04-04 04:06:37"
+      },
+      {
+        "id": "8f713665-aa43-4f4c-8b1f-cadecd3b5bc9",
+        "name": "Rolls",
+        "category": "Bakery",
+        "current_stock": 22,
+        "max_stock": 100,
+        "stock_percentage": 22.0,
+        "urgency": "low",
+        "last_updated": "2025-04-04 04:06:37"
+      },
+      {
+        "id": "10a421a8-a828-4558-8e9b-a8387154310b",
+        "name": "Flour",
+        "category": "Dry Goods",
+        "current_stock": 14,
+        "max_stock": 100,
+        "stock_percentage": 14.000000000000002,
+        "urgency": "medium",
+        "last_updated": "2025-04-04 04:06:37"
+      },
+      {
+        "id": "7da2dfea-1f5c-41a4-b153-3d8e8f84c5a2",
+        "name": "Bagels",
+        "category": "Bakery",
+        "current_stock": 24,
+        "max_stock": 100,
+        "stock_percentage": 24.0,
+        "urgency": "low",
+        "last_updated": "2025-04-04 04:06:37"
+      },
+      {
+        "id": "7d3376c9-e801-4d08-8154-ea4a729b11e4",
+        "name": "Yogurt",
+        "category": "Dairy",
+        "current_stock": 19,
+        "max_stock": 100,
+        "stock_percentage": 19.0,
+        "urgency": "low",
+        "last_updated": "2025-04-04 04:06:37"
+      },
+      {
+        "id": "79301d4e-3acf-4b87-a10f-f9dc76c89ebe",
+        "name": "Apples",
+        "category": "Produce",
+        "current_stock": 12,
+        "max_stock": 100,
+        "stock_percentage": 12.0,
+        "urgency": "medium",
+        "last_updated": "2025-04-04 04:06:37"
+      },
+      {
+        "id": "e0600a37-6cae-4419-84d0-be63e3b06be7",
+        "name": "Rolls",
+        "category": "Bakery",
+        "current_stock": 11,
+        "max_stock": 100,
+        "stock_percentage": 11.0,
+        "urgency": "medium",
+        "last_updated": "2025-04-04 04:06:37"
+      },
+      {
+        "id": "3ab87c16-c793-4057-8552-5f08ed3384d0",
+        "name": "Muffins",
+        "category": "Bakery",
+        "current_stock": 21,
+        "max_stock": 100,
+        "stock_percentage": 21.0,
+        "urgency": "low",
+        "last_updated": "2025-04-04 04:06:37"
+      },
+      {
+        "id": "b41b6d43-ec9c-48de-bafd-c56d91c19f31",
+        "name": "Sugar",
+        "category": "Dry Goods",
+        "current_stock": 7,
+        "max_stock": 100,
+        "stock_percentage": 7.000000000000001,
+        "urgency": "high",
+        "last_updated": "2025-04-04 04:06:37"
+      }
+    ],
+    "total_items": 181,
+    "low_stock_percentage": 5.5,
+    "connection_status": "connected",
+    "last_sync": "2025-04-04 04:06:37"
   },
   "operational_summary": {
-    "deliveries_on_time": 18,
+    "deliveries_on_time": 19,
     "deliveries_total": 20,
-    "on_time_percentage": 90.0,
-    "cost_savings": 250.75,
-    "issues_resolved": 3
+    "on_time_percentage": 97.0,
+    "cost_savings": 521.56,
+    "issues_resolved": 4,
+    "connection_status": "connected",
+    "last_sync": "2025-04-04 04:06:37"
   },
-  "notifications": []
+  "notifications": [],
+  "cached_data": {
+    "delivery_status": {
+      "active_deliveries": [
+        {
+          "id": "b0ec2b71-5774-4574-acde-ca633a1e1f1c",
+          "driver": "Jordan",
+          "distance": 1.1,
+          "items": 100,
+          "product_type": "Bottles",
+          "estimated_arrival": "2025-04-04 04:09:37",
+          "scheduled_arrival": "2025-04-04 04:09:37",
+          "status": "in transit",
+          "last_updated": "2025-04-04 04:06:37"
+        }
+      ],
+      "completed_deliveries": [],
+      "on_time_percentage": 97.0,
+      "connection_status": "connected",
+      "metrics": {
+        "connection_status": "connected",
+        "last_sync": "2025-04-04 04:04:00"
+      },
+      "last_sync": "2025-04-04 04:06:37"
+    },
+    "sales_data": {
+      "today_sales": 119.57,
+      "yesterday_sales": 1043.82,
+      "week_sales": 6341.63,
+      "month_sales": 35922.19,
+      "top_items": [
+        {
+          "product": "Organic Chicken",
+          "quantity": 50,
+          "amount": 698.29
+        },
+        {
+          "product": "Free-Range Eggs",
+          "quantity": 24,
+          "amount": 150.87
+        },
+        {
+          "product": "Bottled Water (500ml)",
+          "quantity": 98,
+          "amount": 1076.98
+        },
+        {
+          "product": "Gluten-Free Pasta",
+          "quantity": 28,
+          "amount": 169.19
+        },
+        {
+          "product": "Fresh Coffee",
+          "quantity": 56,
+          "amount": 470.48
+        }
+      ],
+      "accuracy_percentage": 99.5,
+      "connection_status": "connected",
+      "last_sync": "2025-04-04 04:06:37"
+    },
+    "inventory_status": {
+      "low_stock_items": [
+        {
+          "id": "22c90227-3c81-4c9f-91a5-ace058709a54",
+          "name": "Tea",
+          "category": "Beverages",
+          "current_stock": 16,
+          "max_stock": 100,
+          "stock_percentage": 16.0,
+          "urgency": "low",
+          "last_updated": "2025-04-04 04:06:37"
+        },
+        {
+          "id": "64fac2d9-c455-4f15-bb2c-c52db806dd99",
+          "name": "Bottled Water",
+          "category": "Beverages",
+          "current_stock": 6,
+          "max_stock": 100,
+          "stock_percentage": 6.0,
+          "urgency": "high",
+          "last_updated": "2025-04-04 04:06:37"
+        },
+        {
+          "id": "8f713665-aa43-4f4c-8b1f-cadecd3b5bc9",
+          "name": "Rolls",
+          "category": "Bakery",
+          "current_stock": 22,
+          "max_stock": 100,
+          "stock_percentage": 22.0,
+          "urgency": "low",
+          "last_updated": "2025-04-04 04:06:37"
+        },
+        {
+          "id": "10a421a8-a828-4558-8e9b-a8387154310b",
+          "name": "Flour",
+          "category": "Dry Goods",
+          "current_stock": 14,
+          "max_stock": 100,
+          "stock_percentage": 14.000000000000002,
+          "urgency": "medium",
+          "last_updated": "2025-04-04 04:06:37"
+        },
+        {
+          "id": "7da2dfea-1f5c-41a4-b153-3d8e8f84c5a2",
+          "name": "Bagels",
+          "category": "Bakery",
+          "current_stock": 24,
+          "max_stock": 100,
+          "stock_percentage": 24.0,
+          "urgency": "low",
+          "last_updated": "2025-04-04 04:06:37"
+        },
+        {
+          "id": "7d3376c9-e801-4d08-8154-ea4a729b11e4",
+          "name": "Yogurt",
+          "category": "Dairy",
+          "current_stock": 19,
+          "max_stock": 100,
+          "stock_percentage": 19.0,
+          "urgency": "low",
+          "last_updated": "2025-04-04 04:06:37"
+        },
+        {
+          "id": "79301d4e-3acf-4b87-a10f-f9dc76c89ebe",
+          "name": "Apples",
+          "category": "Produce",
+          "current_stock": 12,
+          "max_stock": 100,
+          "stock_percentage": 12.0,
+          "urgency": "medium",
+          "last_updated": "2025-04-04 04:06:37"
+        },
+        {
+          "id": "e0600a37-6cae-4419-84d0-be63e3b06be7",
+          "name": "Rolls",
+          "category": "Bakery",
+          "current_stock": 11,
+          "max_stock": 100,
+          "stock_percentage": 11.0,
+          "urgency": "medium",
+          "last_updated": "2025-04-04 04:06:37"
+        },
+        {
+          "id": "3ab87c16-c793-4057-8552-5f08ed3384d0",
+          "name": "Muffins",
+          "category": "Bakery",
+          "current_stock": 21,
+          "max_stock": 100,
+          "stock_percentage": 21.0,
+          "urgency": "low",
+          "last_updated": "2025-04-04 04:06:37"
+        },
+        {
+          "id": "b41b6d43-ec9c-48de-bafd-c56d91c19f31",
+          "name": "Sugar",
+          "category": "Dry Goods",
+          "current_stock": 7,
+          "max_stock": 100,
+          "stock_percentage": 7.000000000000001,
+          "urgency": "high",
+          "last_updated": "2025-04-04 04:06:37"
+        }
+      ],
+      "total_items": 181,
+      "low_stock_percentage": 5.5,
+      "connection_status": "connected",
+      "last_sync": "2025-04-04 04:06:37"
+    },
+    "timestamp": "2025-04-04 04:06:37"
+  }
 }
