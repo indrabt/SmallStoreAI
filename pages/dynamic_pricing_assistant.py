@@ -241,7 +241,7 @@ with tab2:
                             st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
                             # Fix potentially problematic f-string with conditional
                             symbol_value = "%" if promo['type'] == 'percent_off' else ""
-                                                        st.write(f"**Value:** {promo['value']}{symbol_value}")
+                            st.write(f"**Value:** {promo['value']}{symbol_value}")
                             st.write(f"**Category:** {promo['category']}")
                             st.write(f"**Description:** {promo['description']}")
                             
@@ -295,7 +295,7 @@ with tab2:
                         st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
                         # Fix potentially problematic f-string with conditional
                         symbol_value = "%" if promo['type'] == 'percent_off' else ""
-                                                st.write(f"**Value:** {promo['value']}{symbol_value}")
+                        st.write(f"**Value:** {promo['value']}{symbol_value}")
                         st.write(f"**Category:** {promo['category']}")
                         st.write(f"**Description:** {promo['description']}")
                         st.write(f"**Period:** {promo['start_date']} to {promo['end_date']}")
@@ -437,8 +437,7 @@ with tab2:
                     "Period": f"{entry['start_date']} to {entry['end_date']}",
                     "Category": entry['category'],
                     # Fix potentially problematic f-string with conditional
-                    symbol_value = "%" if 'percent' in entry['promotion_name'].lower() else ""
-                                        "Value": f"{entry['applied_value']}{symbol_value}",
+                    "Value": f"{entry['applied_value']}{'%' if 'percent' in entry['promotion_name'].lower() else ''}",
                     "Event": entry['event_name'] if entry['event_name'] else "-"
                 })
             
