@@ -22,19 +22,19 @@ def fix_sprintf_errors(file_path):
         print(f"Found and fixing str({{var}}) patterns")
         content = re.sub(pattern_str_var, r'str(\1)', content)
     
-    # Fix pattern 2: f"text" + str({var}) + "text"
+    # Fix pattern 2: f"text" + str({var}}) + "text"
     pattern_mixed_fstring = r'f"([^"]*)" \+ str\(([^)]+)\) \+ "([^"]*)"'
     if re.search(pattern_mixed_fstring, content):
         changes_made = True
         print(f"Found and fixing mixed f-string and concatenation patterns")
-        content = re.sub(pattern_mixed_fstring, r'f"\1{str(\2)}\3"', content)
+        content = re.sub(pattern_mixed_fstring, r'f"\1{{str(\2)}}}\3"', content)
     
     # Fix pattern 3: "text" + str({var}) + "text"
     pattern_concat_str_var = r'"([^"]*)" \+ str\(\{([^}]+)\}\) \+ "([^"]*)"'
     if re.search(pattern_concat_str_var, content):
         changes_made = True
         print(f"Found and fixing string concatenation with str({{var}}) patterns")
-        content = re.sub(pattern_concat_str_var, r'f"\1{\2}\3"', content)
+        content = re.sub(pattern_concat_str_var, r'f"\1{{\2}}}\3"', content)
     
     # Fix pattern 4: st.write("text {var}")
     pattern_write_curly = r'st\.write\("([^"]*)(\{[^}]+\})([^"]*)"\)'
@@ -47,7 +47,7 @@ def fix_sprintf_errors(file_path):
             var_expr = match.group(2)
             suffix = match.group(3)
             # Convert to f-string
-            return f'st.write(f"{prefix}{var_expr}{suffix}")'
+            return f'st.write(f"{prefix}}{var_expr}{suffix}")'
         
         content = re.sub(pattern_write_curly, replace_st_write, content)
     
@@ -62,7 +62,7 @@ def fix_sprintf_errors(file_path):
             var_expr = match.group(2)
             suffix = match.group(3)
             # Convert to f-string
-            return f'st.markdown(f"{prefix}{var_expr}{suffix}")'
+            return f'st.markdown(f"{prefix}}{var_expr}{suffix}")'
         
         content = re.sub(pattern_markdown_curly, replace_markdown_f_string, content)
     
@@ -86,4 +86,4 @@ if __name__ == "__main__":
         try:
             fix_sprintf_errors(page_file)
         except FileNotFoundError:
-            print(f"File {page_file} not found, skipping")
+            print(f"File {page_file}} not found, skipping")

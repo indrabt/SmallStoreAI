@@ -48,8 +48,8 @@ with overview_tab:
         enabled = program_settings["enabled"]
         status_color = "green" if enabled else "red"
         st.markdown(f"""
-        <div style="background-color: {'#d4f1d4' if enabled else '#f7dddc'}; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-            <h3 style="color: {'green' if enabled else 'red'}; margin: 0;">Program Status: {"Enabled" if enabled else "Disabled"}</h3>
+        <div style="background-color: {{'#d4f1d4' if enabled else '#f7dddc'}}; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+            <h3 style="color: {{'green' if enabled else 'red'}}; margin: 0;">Program Status: {"Enabled" if enabled else "Disabled"}</h3>
             <p>Points per dollar: {program_settings["points_per_dollar"]}</p>
             <p>Redemption threshold: {program_settings["redemption_threshold"]} points</p>
             <p>Redemption value: {program_settings["redemption_value"]}</p>
@@ -66,7 +66,7 @@ with overview_tab:
                 {
                     "Customer": customer["name"],
                     "Points": customer["points"],
-                    "Total Spend": f"${customer['total_spend']:.2f}",
+                    "Total Spend": f"${{customer['total_spend']:.2f}",
                     "Visits": customer["visit_count"],
                     "Last Visit": customer["last_visit"]
                 }
@@ -276,7 +276,7 @@ with transactions_tab:
                 {
                     "Date": t["date"],
                     "Customer": t["customer_name"],
-                    "Amount": f"${t['amount']:.2f}",
+                    "Amount": f"${{t['amount']:.2f}",
                     "Points Earned": t["points_earned"],
                     "Double Points": "✅" if t["double_points"] else "❌",
                     "Event": t["event_name"] if t["event_name"] else "",
@@ -296,7 +296,7 @@ with transactions_tab:
             
             col1, col2, col3, col4 = st.columns(4)
             col1.metric("Total Transactions", total_transactions)
-            col2.metric("Total Amount", f"${total_amount:.2f}")
+            col2.metric("Total Amount", f"${{total_amount:.2f}")
             col3.metric("Total Points", total_points)
             col4.metric("Double Points Events", double_points_count)
         else:
@@ -419,7 +419,7 @@ with customers_tab:
                 "Points": c["points"],
                 "Lifetime Points": c["lifetime_points"],
                 "Visits": c["visit_count"],
-                "Total Spend": f"${c['total_spend']:.2f}",
+                "Total Spend": f"${{c['total_spend']:.2f}",
                 "Last Visit": c["last_visit"],
                 "Status": "Opted Out" if c["opted_out"] else "Active"
             }
@@ -473,7 +473,7 @@ with customers_tab:
                     if new_note:
                         current_notes = selected_customer["notes"]
                         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
-                        updated_notes = f"{current_notes}\n{timestamp}: {new_note}" if current_notes else f"{timestamp}: {new_note}"
+                        updated_notes = f"{current_notes}\n{timestamp}: {new_note}f" if current_notes else f"{timestamp}: {new_note}"
                         
                         updated_customer = loyalty_program.update_customer(
                             selected_customer_id,
@@ -578,7 +578,7 @@ with settings_tab:
             
             for event_id, event_name in event_options:
                 is_double = event_name in double_points_events
-                if st.checkbox(f"Double points for {event_name}", value=is_double, key=f"event_checkbox_{event_id}"):
+                if st.checkbox(f"Double points for {event_name}f", value=is_double, key=f"event_checkbox_{event_id}"):
                     if event_name not in double_points_events:
                         double_points_events.append(event_name)
                 else:

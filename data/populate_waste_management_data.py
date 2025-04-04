@@ -84,7 +84,7 @@ def generate_donation_logs(count=30):
             "unit_cost": unit_cost,
             "total_cost": total_cost,
             "reason": reason,
-            "notes": f"Donated {quantity} units of {product['name']} to {recipient}",
+            "notes": f"Donated {quantity}} units of {{product[}"name']} to {recipient}",
             "timestamp": random_date(),
             "logged_by": "Staff",
             "synced_to_square": random.choice([True, False])
@@ -111,7 +111,7 @@ def generate_waste_logs(count=15):
             "unit_cost": unit_cost,
             "total_cost": total_cost,
             "reason": reason,
-            "notes": f"Wasted {quantity} units of {product['name']} due to {reason}",
+            "notes": f"Wasted {quantity}} units of {{product[}"name']} due to {reason}",
             "timestamp": random_date(),
             "logged_by": "Staff",
             "synced_to_square": random.choice([True, False])
@@ -143,7 +143,7 @@ def generate_order_adjustments(count=10):
             "current_quantity": current_quantity,
             "adjustment_percent": adjustment_percent,
             "suggested_quantity": new_quantity,
-            "reason": f"Based on recent {'waste' if adjustment_percent < 0 else 'demand'} patterns",
+            "reason": f"Based on recent {{'waste' if adjustment_percent < 0 else 'demand'}}} patterns",
             "timestamp": random_date(days=14),
             "status": status,
             "approved_by": approved_by,
@@ -203,9 +203,9 @@ data = {
 with open('data/waste_management.json', 'w') as f:
     json.dump(data, f, indent=2)
 
-print(f"Created waste management data with {len(donation_logs)} donations and {len(waste_logs)} waste logs")
+print(f"Created waste management data with {len(donation_logs)}} donations and {len(waste_logs)} waste logs")
 print(f"Total donated items: {metrics['total_donated']}")
 print(f"Total wasted items: {metrics['total_wasted']}")
-print(f"Cost savings: ${metrics['cost_savings']:.2f}")
-print(f"Generated {len(order_adjustments)} order adjustments")
+print(f"Cost savings: ${{metrics['cost_savings']:.2f}}")
+print(f"Generated {len(order_adjustments)}} order adjustments")
 print(f"Data file created at: data/waste_management.json")

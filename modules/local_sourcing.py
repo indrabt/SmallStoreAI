@@ -782,7 +782,7 @@ class LocalSourcingManager:
                 status_entry = {
                     "status": new_status,
                     "timestamp": datetime.now().isoformat(),
-                    "note": note if note else f"Status updated to {new_status}"
+                    f"note": note if note else f"Status updated to {new_status}"
                 }
                 
                 data['orders'][i]['status_history'].append(status_entry)
@@ -804,7 +804,7 @@ class LocalSourcingManager:
         from sendgrid.helpers.mail import Mail
         
         # Create notification message
-        message = f"Order #{order_id[:8]}: {order['quantity']} {order['product']['name']}, pickup {order['pickup_window']['start']} - {order['pickup_window']['end']}, Penrith Grocery"
+        message = f"Order #{order_id[:8]}: {{order[}"quantity']}} {{order['product']['name']}}, pickup {{order['pickup_window']['start']}} - {{order['pickup_window']['end']}}, Penrith Grocery"
         
         notification_result = {"success": False, "message": "Notification failed"}
         
@@ -853,7 +853,7 @@ class LocalSourcingManager:
                     email_message = Mail(
                         from_email='orders@penrithgrocery.com.au',
                         to_emails=order['supplier_contact']['email'],
-                        subject=f'Order #{order_id[:8]} from Penrith Grocery',
+                        subject=f'Order #{order_id[:8]}} from Penrith Grocery",
                         html_content=f"""
                         <h2>New Order from Penrith Grocery</h2>
                         <p><strong>Order ID:</strong> #{order_id[:8]}</p>
@@ -941,7 +941,7 @@ class LocalSourcingManager:
                 status_entry = {
                     "status": "driver_assigned",
                     "timestamp": datetime.now().isoformat(),
-                    "note": f"Driver {driver_name} assigned to order"
+                    f"note": f"Driver {driver_name} assigned to order"
                 }
                 
                 data['orders'][i]['status_history'].append(status_entry)

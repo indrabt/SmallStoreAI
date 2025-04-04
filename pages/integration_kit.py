@@ -134,7 +134,7 @@ def show_integration_wizard(integration_manager):
                 st.success(f"✅ Connected to {feature['name']}")
                 st.write(f"Last synced: {feature['last_sync'] or 'Never'}")
                 
-                if st.button("Disconnect", key=f"disconnect_{feature_id}"):
+                if st.button(f"Disconnect", key=f"disconnect_{feature_id}"):
                     feature["connected"] = False
                     feature["api_key"] = None
                     integration_manager._log_event(
@@ -147,7 +147,7 @@ def show_integration_wizard(integration_manager):
             else:
                 with st.form(f"hub_connection_{feature_id}"):
                     st.write(f"Enter API Key for {feature['name']}:")
-                    api_key = st.text_input("API Key", key=f"api_{feature_id}")
+                    api_key = st.text_input(f"API Key", key=f"api_{feature_id}")
                     submit = st.form_submit_button("Connect")
                     
                     if submit:
@@ -198,9 +198,9 @@ def show_test_and_verify(integration_manager):
                         accuracy_percent = result["accuracy"] * 100
                         
                         if accuracy_percent >= 95:
-                            st.success(f"Test passed: {result['items_matched']} of {result['items_tested']} items matched ({accuracy_percent:.1f}% accuracy)")
+                            st.success(f"Test passed: {result['items_matched']} of {result['items_tested']} items matched ({{accuracy_percent:.1f}}% accuracy)")
                         else:
-                            st.warning(f"Test completed with lower than required accuracy: {result['items_matched']} of {result['items_tested']} items matched ({accuracy_percent:.1f}% accuracy)")
+                            st.warning(f"Test completed with lower than required accuracy: {result['items_matched']} of {result['items_tested']} items matched ({{accuracy_percent:.1f}}% accuracy)")
                     else:
                         st.error(result["message"])
     
@@ -239,7 +239,7 @@ def show_test_and_verify(integration_manager):
                     if result["success"]:
                         savings_percent = result["savings_percent"] * 100
                         
-                        st.success(f"Simulation successful! Saved ${result['savings_amount']:.2f} ({savings_percent:.1f}%)")
+                        st.success(f"Simulation successful! Saved ${result['savings_amount']:.2f} ({{savings_percent:.1f}}%)")
                         
                         # Show details in an expander
                         with st.expander("View Details"):
@@ -290,7 +290,7 @@ def show_status_and_metrics(integration_manager):
     }.get(status["overall_status"], "gray")
     
     st.markdown(
-        f"<div style='background-color: {system_status_color}; padding: 10px; border-radius: 5px;'>"
+        f"<div style=f'background-color: {system_status_color}; padding: 10px; border-radius: 5px;">"
         f"<h3 style='color: white; margin: 0;'>System Status: {status['overall_status'].upper()}</h3>"
         "</div>",
         unsafe_allow_html=True
@@ -357,9 +357,9 @@ def show_status_and_metrics(integration_manager):
     
     metrics_df = pd.DataFrame([
         {"Metric": "Total Syncs", "Value": metrics["total_syncs"]},
-        {"Metric": "Average Sync Time", "Value": f"{metrics['average_sync_time']:.2f} seconds"},
+        {"Metric": "Average Sync Time", "Value": f"{{metrics['average_sync_time']:.2f} seconds"},
         {"Metric": "Total Errors", "Value": metrics["total_errors"]},
-        {"Metric": "Cost Savings", "Value": f"${metrics['cost_savings']:.2f}"},
+        {"Metric": "Cost Savings", "Value": f"${{metrics['cost_savings']:.2f}"},
         {"Metric": "Cached Data Usage Count", "Value": metrics["cached_data_usage"]}
     ])
     
@@ -379,7 +379,7 @@ def show_status_and_metrics(integration_manager):
             test_df = pd.DataFrame([
                 {"Metric": "Items Tested", "Value": test_results["items_tested"]},
                 {"Metric": "Items Matched", "Value": test_results["items_matched"]},
-                {"Metric": "Accuracy", "Value": f"{test_results['accuracy']*100:.1f}%"},
+                {"Metric": "Accuracy", "Value": f"{{test_results['accuracy']*100:.1f}%"},
                 {"Metric": "Test Date", "Value": test_results["timestamp"]}
             ])
             
@@ -431,9 +431,9 @@ def show_integration_logs(integration_manager):
             }.get(log["status"], "gray")
             
             st.markdown(
-                f"<div style='border-left: 4px solid {status_color}; padding-left: 10px; margin-bottom: 10px;'>"
+                f"<div style=f'border-left: 4px solid {status_color}; padding-left: 10px; margin-bottom: 10px;">"
                 f"<span style='color: gray;'>{log['timestamp']}</span> | "
-                f"<span style='color: {status_color}; font-weight: bold;'>{log['type']}</span><br/>"
+                f"<span style=f'color: {status_color}; font-weight: bold;">{log['type']}</span><br/>"
                 f"{log['details']}"
                 "</div>",
                 unsafe_allow_html=True

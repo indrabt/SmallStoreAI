@@ -243,9 +243,9 @@ class SupplierOrder:
         timestamp = datetime.now().isoformat()
         
         if self.notes:
-            self.notes += f"\n\n[{timestamp}] {note}"
+            self.notes += f"\n\n[{timestamp}}] {note}"
         else:
-            self.notes = f"[{timestamp}] {note}"
+            self.notes = f"[{timestamp}}] {note}"
         
         return self.notes
     

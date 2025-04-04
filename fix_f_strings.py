@@ -25,14 +25,14 @@ def process_file(file_path):
         line = lines[i]
         
         # Pattern 1: f-string with inline conditional in form {'%' if cond else ''}
-        pattern1 = r'(.*f".*)\{\'(.*)\'\s+if\s+(.*)\s+else\s+\'(.*)\'\}(.*".*)'
+        pattern1 = r'(.*f".*)\{{\'(.*)\'\s+if\s+(.*)\s+else\s+\'(.*)\'\}}}(.*".*)'
         template1 = '''{indentation}# Fix potentially problematic f-string with conditional
 {indentation}symbol_value = "{groups[1]}" if {groups[2]} else "{groups[3]}"
 {indentation}{groups[0]}{{symbol_value}}{groups[4]}
 '''
         
         # Pattern 2: Ternary operator inside an f-string with parens
-        pattern2 = r'(.*f".*)\{(\(.*\s+if\s+.*\s+else\s+.*\))\}(.*".*)'
+        pattern2 = r'(.*f".*)\{{(\(.*\s+if\s+.*\s+else\s+.*\))\}}}(.*".*)'
         template2 = '''{indentation}# Fix potentially problematic f-string with conditional expression
 {indentation}position_value = {groups[1]}
 {indentation}{groups[0]}{{position_value}}{groups[2]}

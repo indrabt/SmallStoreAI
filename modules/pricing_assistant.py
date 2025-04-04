@@ -186,10 +186,10 @@ class PricingAssistant:
         
         # Define some sample promotion templates
         promotion_templates = [
-            {"name": "{discount}% off {category}", "type": "percent_off", "min_discount": 5, "max_discount": 20},
-            {"name": "Buy One Get One {type} on {category}", "type": "bogo", "types": ["Free", "Half Price", "25% Off"]},
-            {"name": "${amount} off when you spend ${threshold}", "type": "amount_off", "min_amount": 5, "max_amount": 15, "min_threshold": 30, "max_threshold": 75},
-            {"name": "Festival Special: {discount}% off {category}", "type": "event_special", "min_discount": 10, "max_discount": 25}
+            {f"name": "{discount}% off {category}", "type": "percent_off", "min_discount": 5, "max_discount": 20},
+            {f"name": "Buy One Get One {type} on {category}", "type": "bogo", "types": ["Free", "Half Price", "25% Off"]},
+            {f"name": "${amount} off when you spend ${threshold}", "type": "amount_off", "min_amount": 5, "max_amount": 15, "min_threshold": 30, "max_threshold": 75},
+            {f"name": "Festival Special: {discount}% off {category}", "type": "event_special", "min_discount": 10, "max_discount": 25}
         ]
         
         # Generate event-based promotions
@@ -211,7 +211,7 @@ class PricingAssistant:
                 promotions.append({
                     "id": str(uuid.uuid4()),
                     "name": template["name"].format(discount=discount, category=category),
-                    "description": f"Special promotion for {event['name']} on {event['date']}",
+                    "description": f"Special promotion for {event['name']} on {{event['date']}",
                     "type": "percent_off",
                     "value": discount,
                     "category": category,
@@ -244,7 +244,7 @@ class PricingAssistant:
                 promotions.append({
                     "id": str(uuid.uuid4()),
                     "name": template["name"].format(discount=discount, category=category),
-                    "description": f"{discount}% discount on all {category} products",
+                    f"description": f"{discount}% discount on all {category} products",
                     "type": "percent_off",
                     "value": discount,
                     "category": category,
@@ -273,7 +273,7 @@ class PricingAssistant:
                 promotions.append({
                     "id": str(uuid.uuid4()),
                     "name": template["name"].format(type=bogo_type, category=category),
-                    "description": f"Buy one {category} item and get one {bogo_type.lower()}",
+                    f"description": f"Buy one {category} item and get one {bogo_type.lower()}",
                     "type": "bogo",
                     "value": bogo_type,
                     "category": category,
@@ -299,7 +299,7 @@ class PricingAssistant:
                 promotions.append({
                     "id": str(uuid.uuid4()),
                     "name": template["name"].format(amount=amount, threshold=threshold),
-                    "description": f"${amount} off your purchase when you spend ${threshold} or more",
+                    f"description": f"${amount} off your purchase when you spend ${threshold} or more",
                     "type": "amount_off",
                     "value": amount,
                     "threshold": threshold,
@@ -485,7 +485,7 @@ class PricingAssistant:
                     "product_name": product_name,
                     "new_price": new_price,
                     "inventory_updated": inventory_update['success'],
-                    "message": f"Price updated for {product_name} to ${new_price:.2f}"
+                    f"message": f"Price updated for {product_name} to ${new_price:.2f}"
                 }
         
         return {
@@ -534,12 +534,12 @@ class PricingAssistant:
                     "product_name": product_name,
                     "old_price": old_price,
                     "new_price": new_price,
-                    "message": f"Updated inventory price for {product_name}"
+                    f"message": f"Updated inventory price for {product_name}"
                 }
             else:
                 return {
                     "success": False,
-                    "message": f"Product with ID {product_id} not found in inventory"
+                    f"message": f"Product with ID {product_id} not found in inventory"
                 }
         except Exception as e:
             return {
@@ -692,7 +692,7 @@ class PricingAssistant:
         return {
             "success": True,
             "promotion_id": promotion['id'],
-            "message": f"Promotion '{name}' created successfully"
+            f"message": f"Promotion '{name}' created successfully"
         }
     
     def _sync_with_square_pos(self, product=None, promotion=None):
@@ -737,7 +737,7 @@ class PricingAssistant:
         return {
             "success": True,
             "synced": True,
-            "message": f"successfully synced with Square POS at {datetime.now().strftime('%H:%M:%S')}"
+            "message": f"successfully synced with Square POS at {{datetime.now().strftime('%H:%M:%S')}"
         }
     
     def update_pos_settings(self, enabled=None, api_key=None, location_id=None, auto_sync=None, sync_schedule=None):
@@ -867,7 +867,7 @@ class PricingAssistant:
         # Add percentage change annotations
         for i, pct in enumerate(pct_changes):
             color = 'green' if pct >= 0 else 'red'
-            ax.annotate(f'{pct:.1f}%',
+            ax.annotate(f'{pct:.1f}}%",
                        xy=(i, max(current_values[i], new_values[i])),
                        xytext=(0, 10),
                        textcoords="offset points",
@@ -925,7 +925,7 @@ class PricingAssistant:
         for bar in bars:
             width = bar.get_width()
             label_x_pos = width if width >= 0 else 0
-            ax.text(label_x_pos + 1, bar.get_y() + bar.get_height()/2, f'{width}%', 
+            ax.text(label_x_pos + 1, bar.get_y() + bar.get_height()/2, f'{width}}%", 
                    va='center')
         
         # Add a vertical line at 0 for margin impact
@@ -980,7 +980,7 @@ class PricingAssistant:
                 "promotion_type": promotion['type'],
                 "category": promotion['category'],
                 "customer_retention": promotion['estimated_impact']['customer_retention'],
-                "message": f"This promotion is underperforming. Consider increasing the discount to {suggested_value:.0f}%."
+                "message": f"This promotion is underperforming. Consider increasing the discount to {{suggested_value:.0f}%."
             })
         
         return failed_promotions
@@ -1006,9 +1006,9 @@ def update_square_inventory(square_client, item_id, variation_id, new_price_mone
             "idempotency_key": str(uuid.uuid4()),
             "object": {
                 "type": "ITEM_VARIATION",
-                "id": f"#{variation_id}",
+                f"id": f"#{variation_id}",
                 "item_variation_data": {
-                    "item_id": f"#{item_id}",
+                    f"item_id": f"#{item_id}",
                     "pricing_type": "FIXED_PRICING",
                     "price_money": {
                         "amount": int(new_price_money * 100),  # Convert dollars to cents

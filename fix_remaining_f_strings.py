@@ -5,8 +5,8 @@ def fix_all_f_strings(file_path):
         content = file.read()
     
     # Convert all f-string conditionals to the simpler approach
-    # Find patterns like f"...{'some_string' if condition else 'other_string'}..."
-    pattern = r'(f".*?)\{\'(.*?)\'\s+if\s+(.*?)\s+else\s+\'(.*?)\'\}(.*?")'
+    # Find patterns like f"...{{'some_string' if condition else 'other_string'}}}..."
+    pattern = r'(f".*?)\{{\'(.*?)\'\s+if\s+(.*?)\s+else\s+\'(.*?)\'\}}}(.*?")'
     
     def repl(match):
         prefix = match.group(1)
@@ -16,7 +16,7 @@ def fix_all_f_strings(file_path):
         suffix = match.group(5)
         
         indentation = re.match(r'^(\s*)', match.group(0)).group(1)
-        return f'{indentation}# Fix potentially problematic f-string with conditional\n{indentation}symbol_value = "{true_val}" if {condition} else "{false_val}"\n{indentation}{prefix}{{symbol_value}}{suffix}'
+        return f'{indentation}}# Fix potentially problematic f-string with conditional\n{indentation}symbol_value = "{true_val}" if {condition} else "{false_val}"\n{indentation}{prefix}{{symbol_value}}{suffix}'
     
     # Replace all occurrences
     modified_content = re.sub(pattern, repl, content)

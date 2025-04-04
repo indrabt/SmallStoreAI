@@ -75,7 +75,7 @@ def show_overview(partnerships):
     }.get(health["health_status"], "gray")
     
     st.markdown(
-        f"<h3 style='text-align: center; color: {health_color};'>"
+        f"<h3 style=f'text-align: center; color: {health_color};">"
         f"{health['overall_health']}% - {health['health_status'].upper()}"
         f"</h3>",
         unsafe_allow_html=True
@@ -241,7 +241,7 @@ def show_integration_card(title, status, icon):
     # Create card with border
     with st.container(border=True):
         st.markdown(f"### {icon} {title}")
-        st.markdown(f"**Status:** <span style='color: {color};'>{status_text}</span>", unsafe_allow_html=True)
+        st.markdown(f"**Status:** <span style=f'color: {color};">{status_text}</span>", unsafe_allow_html=True)
         st.markdown(f"**Last Updated:** {last_updated_str}")
         st.markdown(f"**Message:** {status['message']}")
 
@@ -401,7 +401,7 @@ def show_weather_integration(partnerships):
                 day_items = [item for item in impact_items if item["day"] == day_idx]
                 
                 if day_items:
-                    st.markdown(f"#### {day['day_of_week']} ({day['date']}): {day['high_temp']}°C, {day['conditions']}")
+                    st.markdown(f"#### {day['day_of_week']} ({day['date']}): {{day['high_temp']}}°C, {{day['conditions']}}")
                     
                     # Create a bar chart for the impact
                     fig, ax = plt.subplots(figsize=(8, 3))
@@ -559,7 +559,7 @@ def show_event_integration(partnerships):
                         
                         with col2:
                             st.markdown(
-                                f"<h2 style='text-align: center; color: {impact_color};'>+{impact}%</h2>"
+                                f"<h2 style=f'text-align: center; color: {impact_color};">+{impact}%</h2>"
                                 f"<p style='text-align: center;'>Impact</p>",
                                 unsafe_allow_html=True
                             )
@@ -574,7 +574,7 @@ def show_event_integration(partnerships):
                                 impacts.append({
                                     "Product": product.replace('_', ' ').title(),
                                     "Factor": factor,
-                                    "Impact": f"+{round((factor - 1) * 100, 1)}%"
+                                    "Impact": f"+{{round((factor - 1) * 100, 1)}%"
                                 })
                             
                             impacts_df = pd.DataFrame(impacts).sort_values("Factor", ascending=False)
@@ -810,7 +810,7 @@ def show_supplier_integration(partnerships):
                 
                 # Save supplier configuration
                 partnerships.configure_supplier_integration(supplier_name, credentials, enable_integration)
-                st.success(f"Supplier {supplier_name} {'enabled' if enable_integration else 'disabled'} successfully")
+                st.success(f"Supplier {supplier_name} {"enabled' if enable_integration else 'disabled'} successfully")
                 time.sleep(1)
                 st.rerun()
             else:
@@ -873,12 +873,12 @@ def show_supplier_integration(partnerships):
                         product_data.append({
                             "Product": product["name"],
                             "Unit": product["unit"],
-                            "Price": f"${product['price']:.2f}",
+                            "Price": f"${{product['price']:.2f}",
                             "Stock": product["stock"],
-                            "Mainstream Price": f"${savings_info.get('mainstream_price', 0):.2f}",
-                            "Savings": f"${savings_info.get('savings_per_unit', 0):.2f} ({savings_info.get('percentage_savings', 0)}%)",
+                            "Mainstream Price": f"${{savings_info.get('mainstream_price', 0):.2f}",
+                            "Savings": f"${savings_info.get('savings_per_unit', 0):.2f} ({{savings_info.get('percentage_savings', 0)}%)",
                             "Monthly Volume": monthly_volume,
-                            "Monthly Savings": f"${savings_info.get('savings_per_unit', 0) * monthly_volume:.2f}"
+                            "Monthly Savings": f"${{savings_info.get('savings_per_unit', 0) * monthly_volume:.2f}"
                         })
                     
                     product_df = pd.DataFrame(product_data)

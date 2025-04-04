@@ -252,7 +252,8 @@ elif page == "Pricing Optimization":
             avg_diff = pricing_analyzer.calculate_average_price_difference(filtered_data)
             
             # Show a gauge chart for price competitiveness
-            st.write(f"On average, your prices are **{abs(avg_diff):.1f}%** {'higher' if avg_diff > 0 else 'lower'} than competitors")
+            higher_lower = "higher" if avg_diff > 0 else "lower"
+            st.write(f"On average, your prices are **{abs(avg_diff):.1f}%** {higher_lower} than competitors")
             
             # Show detailed price position for selected products
             position_data = pricing_analyzer.get_price_position_chart(filtered_data)
@@ -411,11 +412,11 @@ elif page == "Local Sourcing":
             for i in range(st.session_state.product_rows):
                 col1, col2, col3 = st.columns(3)
                 with col1:
-                    product_name = st.text_input("Product Name", key=f"prod_name_{i}")
+                    product_name = st.text_input(f"Product Name", key=f"prod_name_{i}")
                 with col2:
-                    price = st.number_input("Price ($)", min_value=0.0, format="%.2f", key=f"prod_price_{i}")
+                    price = st.number_input(f"Price ($)", min_value=0.0, format="%.2f", key=f"prod_price_{i}")
                 with col3:
-                    unit = st.selectbox("Unit", ["kg", "g", "lb", "oz", "each", "bunch", "carton"], key=f"prod_unit_{i}")
+                    unit = st.selectbox(f"Unit", ["kg", "g", "lb", "oz", "each", "bunch", "carton"], key=f"prod_unit_{i}")
                 
                 products.append({
                     "name": product_name,

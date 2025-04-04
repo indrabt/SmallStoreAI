@@ -1,390 +1,330 @@
 {
-  "last_updated": "2025-04-04 04:34:54",
+  "last_updated": "2025-04-04 04:38:50",
   "delivery_status": {
     "active_deliveries": [
       {
-        "id": "48b29e72-e786-49cb-8de9-92043b1d9adc",
-        "driver": "Casey",
-        "distance": 13.5,
-        "items": 64,
-        "product_type": "Pallets",
-        "estimated_arrival": "2025-04-04 05:14:54",
-        "scheduled_arrival": "2025-04-04 05:14:54",
+        "id": "9f33ed2d-1b09-4ce0-a257-0f2df443628b",
+        "driver": "Sam",
+        "distance": 14.2,
+        "items": 56,
+        "product_type": "Cases",
+        "estimated_arrival": "2025-04-04 05:20:50",
+        "scheduled_arrival": "2025-04-04 05:20:50",
         "status": "in transit",
-        "last_updated": "2025-04-04 04:34:54"
+        "last_updated": "2025-04-04 04:38:50"
       }
     ],
     "completed_deliveries": [],
-    "on_time_percentage": 96.8,
+    "on_time_percentage": 95.5,
     "connection_status": "connected",
     "metrics": {
       "connection_status": "connected",
       "last_sync": "2025-04-04 04:04:00"
     },
-    "last_sync": "2025-04-04 04:34:54"
+    "last_sync": "2025-04-04 04:38:50"
   },
   "sales_data": {
-    "today_sales": 94.01,
-    "yesterday_sales": 1091.12,
-    "week_sales": 6567.3,
-    "month_sales": 30285.55,
+    "today_sales": 110.7,
+    "yesterday_sales": 1012.03,
+    "week_sales": 7036.58,
+    "month_sales": 25030.67,
     "top_items": [
       {
         "product": "Organic Chicken",
-        "quantity": 37,
-        "amount": 228.68
+        "quantity": 83,
+        "amount": 853.58
       },
       {
         "product": "Free-Range Eggs",
-        "quantity": 35,
-        "amount": 176.78
+        "quantity": 59,
+        "amount": 322.63
       },
       {
         "product": "Bottled Water (500ml)",
-        "quantity": 75,
-        "amount": 834.14
+        "quantity": 25,
+        "amount": 107.19
       },
       {
         "product": "Gluten-Free Pasta",
-        "quantity": 85,
-        "amount": 926.49
+        "quantity": 45,
+        "amount": 356.01
       },
       {
         "product": "Fresh Coffee",
-        "quantity": 58,
-        "amount": 824.45
+        "quantity": 93,
+        "amount": 925.82
       }
     ],
-    "accuracy_percentage": 99.7,
+    "accuracy_percentage": 98.0,
     "connection_status": "connected",
-    "last_sync": "2025-04-04 04:34:54"
+    "last_sync": "2025-04-04 04:38:50"
   },
   "inventory_status": {
     "low_stock_items": [
       {
-        "id": "9ad775f1-316c-475b-a14b-04888be3a871",
-        "name": "Apples",
-        "category": "Produce",
+        "id": "3f5bbe29-e916-454a-af41-d1337da8a11c",
+        "name": "Coffee",
+        "category": "Beverages",
+        "current_stock": 10,
+        "max_stock": 100,
+        "stock_percentage": 10.0,
+        "urgency": "medium",
+        "last_updated": "2025-04-04 04:38:50"
+      },
+      {
+        "id": "d5c683e7-f636-47a5-866b-c2c313f0dea1",
+        "name": "Pastries",
+        "category": "Bakery",
         "current_stock": 19,
         "max_stock": 100,
         "stock_percentage": 19.0,
         "urgency": "low",
-        "last_updated": "2025-04-04 04:34:54"
+        "last_updated": "2025-04-04 04:38:50"
       },
       {
-        "id": "3c5b55aa-0cb5-4f10-b044-752be48e7d4e",
-        "name": "Lotion",
-        "category": "Health & Beauty",
-        "current_stock": 16,
+        "id": "b08e6c5d-489c-469a-9019-421c5a88a776",
+        "name": "Tea",
+        "category": "Beverages",
+        "current_stock": 22,
         "max_stock": 100,
-        "stock_percentage": 16.0,
+        "stock_percentage": 22.0,
         "urgency": "low",
-        "last_updated": "2025-04-04 04:34:54"
+        "last_updated": "2025-04-04 04:38:50"
       },
       {
-        "id": "67427e8f-b6dd-4d3b-a4e6-51a86be17ae7",
-        "name": "Muffins",
-        "category": "Bakery",
-        "current_stock": 15,
-        "max_stock": 100,
-        "stock_percentage": 15.0,
-        "urgency": "low",
-        "last_updated": "2025-04-04 04:34:54"
-      },
-      {
-        "id": "99247f9e-da0d-496b-932c-335746b2590b",
-        "name": "Cheese",
-        "category": "Dairy",
-        "current_stock": 21,
-        "max_stock": 100,
-        "stock_percentage": 21.0,
-        "urgency": "low",
-        "last_updated": "2025-04-04 04:34:54"
-      },
-      {
-        "id": "21f4c652-3ff0-44c1-b058-546022216733",
-        "name": "Salmon",
-        "category": "Meat & Seafood",
+        "id": "4fbec92a-6a73-4bc4-af58-8ba73214da77",
+        "name": "Nuts",
+        "category": "Snacks",
         "current_stock": 24,
         "max_stock": 100,
         "stock_percentage": 24.0,
         "urgency": "low",
-        "last_updated": "2025-04-04 04:34:54"
+        "last_updated": "2025-04-04 04:38:50"
       },
       {
-        "id": "3aeccb0f-6a9a-4bb7-ab9a-f993bc2f587f",
-        "name": "Eggs",
-        "category": "Dairy",
-        "current_stock": 15,
-        "max_stock": 100,
-        "stock_percentage": 15.0,
-        "urgency": "low",
-        "last_updated": "2025-04-04 04:34:54"
-      },
-      {
-        "id": "c389d259-a11e-4f4d-bc28-b42e4f3e61e3",
-        "name": "Nuts",
-        "category": "Snacks",
-        "current_stock": 25,
-        "max_stock": 100,
-        "stock_percentage": 25.0,
-        "urgency": "low",
-        "last_updated": "2025-04-04 04:34:54"
-      },
-      {
-        "id": "337a980c-d20c-4876-ac5b-4ef2ac44ca92",
-        "name": "Soap",
-        "category": "Health & Beauty",
-        "current_stock": 18,
-        "max_stock": 100,
-        "stock_percentage": 18.0,
-        "urgency": "low",
-        "last_updated": "2025-04-04 04:34:54"
-      },
-      {
-        "id": "ef87814b-5a9f-4792-b6d3-5393d974ca54",
-        "name": "Shrimp",
-        "category": "Meat & Seafood",
-        "current_stock": 7,
-        "max_stock": 100,
-        "stock_percentage": 7.000000000000001,
-        "urgency": "high",
-        "last_updated": "2025-04-04 04:34:54"
-      },
-      {
-        "id": "2fe36ef1-6de4-4bc1-934c-f59851224afc",
-        "name": "Yogurt",
-        "category": "Dairy",
-        "current_stock": 12,
-        "max_stock": 100,
-        "stock_percentage": 12.0,
-        "urgency": "medium",
-        "last_updated": "2025-04-04 04:34:54"
-      },
-      {
-        "id": "72ec369a-b55c-4d00-ba5a-f482b740a0c3",
-        "name": "Ice Cream",
-        "category": "Frozen Foods",
-        "current_stock": 12,
-        "max_stock": 100,
-        "stock_percentage": 12.0,
-        "urgency": "medium",
-        "last_updated": "2025-04-04 04:34:54"
-      },
-      {
-        "id": "806c3927-e3be-4936-89dd-1f3bf7c15cef",
-        "name": "Chicken",
-        "category": "Meat & Seafood",
+        "id": "56858f86-66e0-4c71-80ee-10b8a11d47a7",
+        "name": "Pasta",
+        "category": "Dry Goods",
         "current_stock": 16,
         "max_stock": 100,
         "stock_percentage": 16.0,
         "urgency": "low",
-        "last_updated": "2025-04-04 04:34:54"
+        "last_updated": "2025-04-04 04:38:50"
+      },
+      {
+        "id": "6a02a11d-0150-4e4f-b16f-15a778775d3a",
+        "name": "Toilet Paper",
+        "category": "Household",
+        "current_stock": 10,
+        "max_stock": 100,
+        "stock_percentage": 10.0,
+        "urgency": "medium",
+        "last_updated": "2025-04-04 04:38:50"
+      },
+      {
+        "id": "d253b742-e772-4c93-b080-0968e35dcc67",
+        "name": "Toothpaste",
+        "category": "Health & Beauty",
+        "current_stock": 12,
+        "max_stock": 100,
+        "stock_percentage": 12.0,
+        "urgency": "medium",
+        "last_updated": "2025-04-04 04:38:50"
+      },
+      {
+        "id": "e0d23c01-4638-4a00-acb6-e0d9e6dd5521",
+        "name": "Bread",
+        "category": "Bakery",
+        "current_stock": 20,
+        "max_stock": 100,
+        "stock_percentage": 20.0,
+        "urgency": "low",
+        "last_updated": "2025-04-04 04:38:50"
+      },
+      {
+        "id": "d87f29de-a576-4151-adfd-4076a36801ed",
+        "name": "Muffins",
+        "category": "Bakery",
+        "current_stock": 14,
+        "max_stock": 100,
+        "stock_percentage": 14.000000000000002,
+        "urgency": "medium",
+        "last_updated": "2025-04-04 04:38:50"
       }
     ],
-    "total_items": 189,
-    "low_stock_percentage": 6.3,
+    "total_items": 184,
+    "low_stock_percentage": 4.9,
     "connection_status": "connected",
-    "last_sync": "2025-04-04 04:34:54"
+    "last_sync": "2025-04-04 04:38:50"
   },
   "operational_summary": {
-    "deliveries_on_time": 21,
-    "deliveries_total": 22,
-    "on_time_percentage": 96.8,
-    "cost_savings": 580.58,
-    "issues_resolved": 1,
+    "deliveries_on_time": 14,
+    "deliveries_total": 15,
+    "on_time_percentage": 95.5,
+    "cost_savings": 449.85,
+    "issues_resolved": 4,
     "connection_status": "connected",
-    "last_sync": "2025-04-04 04:34:54"
+    "last_sync": "2025-04-04 04:38:50"
   },
   "notifications": [],
   "cached_data": {
     "delivery_status": {
       "active_deliveries": [
         {
-          "id": "48b29e72-e786-49cb-8de9-92043b1d9adc",
-          "driver": "Casey",
-          "distance": 13.5,
-          "items": 64,
-          "product_type": "Pallets",
-          "estimated_arrival": "2025-04-04 05:14:54",
-          "scheduled_arrival": "2025-04-04 05:14:54",
+          "id": "9f33ed2d-1b09-4ce0-a257-0f2df443628b",
+          "driver": "Sam",
+          "distance": 14.2,
+          "items": 56,
+          "product_type": "Cases",
+          "estimated_arrival": "2025-04-04 05:20:50",
+          "scheduled_arrival": "2025-04-04 05:20:50",
           "status": "in transit",
-          "last_updated": "2025-04-04 04:34:54"
+          "last_updated": "2025-04-04 04:38:50"
         }
       ],
       "completed_deliveries": [],
-      "on_time_percentage": 96.8,
+      "on_time_percentage": 95.5,
       "connection_status": "connected",
       "metrics": {
         "connection_status": "connected",
         "last_sync": "2025-04-04 04:04:00"
       },
-      "last_sync": "2025-04-04 04:34:54"
+      "last_sync": "2025-04-04 04:38:50"
     },
     "sales_data": {
-      "today_sales": 94.01,
-      "yesterday_sales": 1091.12,
-      "week_sales": 6567.3,
-      "month_sales": 30285.55,
+      "today_sales": 110.7,
+      "yesterday_sales": 1012.03,
+      "week_sales": 7036.58,
+      "month_sales": 25030.67,
       "top_items": [
         {
           "product": "Organic Chicken",
-          "quantity": 37,
-          "amount": 228.68
+          "quantity": 83,
+          "amount": 853.58
         },
         {
           "product": "Free-Range Eggs",
-          "quantity": 35,
-          "amount": 176.78
+          "quantity": 59,
+          "amount": 322.63
         },
         {
           "product": "Bottled Water (500ml)",
-          "quantity": 75,
-          "amount": 834.14
+          "quantity": 25,
+          "amount": 107.19
         },
         {
           "product": "Gluten-Free Pasta",
-          "quantity": 85,
-          "amount": 926.49
+          "quantity": 45,
+          "amount": 356.01
         },
         {
           "product": "Fresh Coffee",
-          "quantity": 58,
-          "amount": 824.45
+          "quantity": 93,
+          "amount": 925.82
         }
       ],
-      "accuracy_percentage": 99.7,
+      "accuracy_percentage": 98.0,
       "connection_status": "connected",
-      "last_sync": "2025-04-04 04:34:54"
+      "last_sync": "2025-04-04 04:38:50"
     },
     "inventory_status": {
       "low_stock_items": [
         {
-          "id": "9ad775f1-316c-475b-a14b-04888be3a871",
-          "name": "Apples",
-          "category": "Produce",
+          "id": "3f5bbe29-e916-454a-af41-d1337da8a11c",
+          "name": "Coffee",
+          "category": "Beverages",
+          "current_stock": 10,
+          "max_stock": 100,
+          "stock_percentage": 10.0,
+          "urgency": "medium",
+          "last_updated": "2025-04-04 04:38:50"
+        },
+        {
+          "id": "d5c683e7-f636-47a5-866b-c2c313f0dea1",
+          "name": "Pastries",
+          "category": "Bakery",
           "current_stock": 19,
           "max_stock": 100,
           "stock_percentage": 19.0,
           "urgency": "low",
-          "last_updated": "2025-04-04 04:34:54"
+          "last_updated": "2025-04-04 04:38:50"
         },
         {
-          "id": "3c5b55aa-0cb5-4f10-b044-752be48e7d4e",
-          "name": "Lotion",
-          "category": "Health & Beauty",
-          "current_stock": 16,
+          "id": "b08e6c5d-489c-469a-9019-421c5a88a776",
+          "name": "Tea",
+          "category": "Beverages",
+          "current_stock": 22,
           "max_stock": 100,
-          "stock_percentage": 16.0,
+          "stock_percentage": 22.0,
           "urgency": "low",
-          "last_updated": "2025-04-04 04:34:54"
+          "last_updated": "2025-04-04 04:38:50"
         },
         {
-          "id": "67427e8f-b6dd-4d3b-a4e6-51a86be17ae7",
-          "name": "Muffins",
-          "category": "Bakery",
-          "current_stock": 15,
-          "max_stock": 100,
-          "stock_percentage": 15.0,
-          "urgency": "low",
-          "last_updated": "2025-04-04 04:34:54"
-        },
-        {
-          "id": "99247f9e-da0d-496b-932c-335746b2590b",
-          "name": "Cheese",
-          "category": "Dairy",
-          "current_stock": 21,
-          "max_stock": 100,
-          "stock_percentage": 21.0,
-          "urgency": "low",
-          "last_updated": "2025-04-04 04:34:54"
-        },
-        {
-          "id": "21f4c652-3ff0-44c1-b058-546022216733",
-          "name": "Salmon",
-          "category": "Meat & Seafood",
+          "id": "4fbec92a-6a73-4bc4-af58-8ba73214da77",
+          "name": "Nuts",
+          "category": "Snacks",
           "current_stock": 24,
           "max_stock": 100,
           "stock_percentage": 24.0,
           "urgency": "low",
-          "last_updated": "2025-04-04 04:34:54"
+          "last_updated": "2025-04-04 04:38:50"
         },
         {
-          "id": "3aeccb0f-6a9a-4bb7-ab9a-f993bc2f587f",
-          "name": "Eggs",
-          "category": "Dairy",
-          "current_stock": 15,
-          "max_stock": 100,
-          "stock_percentage": 15.0,
-          "urgency": "low",
-          "last_updated": "2025-04-04 04:34:54"
-        },
-        {
-          "id": "c389d259-a11e-4f4d-bc28-b42e4f3e61e3",
-          "name": "Nuts",
-          "category": "Snacks",
-          "current_stock": 25,
-          "max_stock": 100,
-          "stock_percentage": 25.0,
-          "urgency": "low",
-          "last_updated": "2025-04-04 04:34:54"
-        },
-        {
-          "id": "337a980c-d20c-4876-ac5b-4ef2ac44ca92",
-          "name": "Soap",
-          "category": "Health & Beauty",
-          "current_stock": 18,
-          "max_stock": 100,
-          "stock_percentage": 18.0,
-          "urgency": "low",
-          "last_updated": "2025-04-04 04:34:54"
-        },
-        {
-          "id": "ef87814b-5a9f-4792-b6d3-5393d974ca54",
-          "name": "Shrimp",
-          "category": "Meat & Seafood",
-          "current_stock": 7,
-          "max_stock": 100,
-          "stock_percentage": 7.000000000000001,
-          "urgency": "high",
-          "last_updated": "2025-04-04 04:34:54"
-        },
-        {
-          "id": "2fe36ef1-6de4-4bc1-934c-f59851224afc",
-          "name": "Yogurt",
-          "category": "Dairy",
-          "current_stock": 12,
-          "max_stock": 100,
-          "stock_percentage": 12.0,
-          "urgency": "medium",
-          "last_updated": "2025-04-04 04:34:54"
-        },
-        {
-          "id": "72ec369a-b55c-4d00-ba5a-f482b740a0c3",
-          "name": "Ice Cream",
-          "category": "Frozen Foods",
-          "current_stock": 12,
-          "max_stock": 100,
-          "stock_percentage": 12.0,
-          "urgency": "medium",
-          "last_updated": "2025-04-04 04:34:54"
-        },
-        {
-          "id": "806c3927-e3be-4936-89dd-1f3bf7c15cef",
-          "name": "Chicken",
-          "category": "Meat & Seafood",
+          "id": "56858f86-66e0-4c71-80ee-10b8a11d47a7",
+          "name": "Pasta",
+          "category": "Dry Goods",
           "current_stock": 16,
           "max_stock": 100,
           "stock_percentage": 16.0,
           "urgency": "low",
-          "last_updated": "2025-04-04 04:34:54"
+          "last_updated": "2025-04-04 04:38:50"
+        },
+        {
+          "id": "6a02a11d-0150-4e4f-b16f-15a778775d3a",
+          "name": "Toilet Paper",
+          "category": "Household",
+          "current_stock": 10,
+          "max_stock": 100,
+          "stock_percentage": 10.0,
+          "urgency": "medium",
+          "last_updated": "2025-04-04 04:38:50"
+        },
+        {
+          "id": "d253b742-e772-4c93-b080-0968e35dcc67",
+          "name": "Toothpaste",
+          "category": "Health & Beauty",
+          "current_stock": 12,
+          "max_stock": 100,
+          "stock_percentage": 12.0,
+          "urgency": "medium",
+          "last_updated": "2025-04-04 04:38:50"
+        },
+        {
+          "id": "e0d23c01-4638-4a00-acb6-e0d9e6dd5521",
+          "name": "Bread",
+          "category": "Bakery",
+          "current_stock": 20,
+          "max_stock": 100,
+          "stock_percentage": 20.0,
+          "urgency": "low",
+          "last_updated": "2025-04-04 04:38:50"
+        },
+        {
+          "id": "d87f29de-a576-4151-adfd-4076a36801ed",
+          "name": "Muffins",
+          "category": "Bakery",
+          "current_stock": 14,
+          "max_stock": 100,
+          "stock_percentage": 14.000000000000002,
+          "urgency": "medium",
+          "last_updated": "2025-04-04 04:38:50"
         }
       ],
-      "total_items": 189,
-      "low_stock_percentage": 6.3,
+      "total_items": 184,
+      "low_stock_percentage": 4.9,
       "connection_status": "connected",
-      "last_sync": "2025-04-04 04:34:54"
+      "last_sync": "2025-04-04 04:38:50"
     },
-    "timestamp": "2025-04-04 04:34:54"
+    "timestamp": "2025-04-04 04:38:50"
   }
 }

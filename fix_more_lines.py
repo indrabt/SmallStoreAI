@@ -12,14 +12,14 @@ def fix_line(file_path, line_number, new_line):
 
 if __name__ == "__main__":
     # Fix additional lines
-    fix_line("pages/dynamic_pricing_assistant.py", 244, '                            st.write(f"**Value:** {promo[\'value\']}{symbol_value}")')
-    fix_line("pages/dynamic_pricing_assistant.py", 245, '                            st.write(f"**Category:** {promo[\'category\']}")')
-    fix_line("pages/dynamic_pricing_assistant.py", 246, '                            st.write(f"**Description:** {promo[\'description\']}")')
-    fix_line("pages/dynamic_pricing_assistant.py", 249, '                                st.write(f"**Related Event:** {promo[\'event_name\']}")')
+    fix_line("pages/dynamic_pricing_assistant.py", 244, '                            st.write(f"**Value:** {{promo[\'value\']}}}{symbol_value}")')
+    fix_line("pages/dynamic_pricing_assistant.py", 245, '                            st.write(f"**Category:** {{promo[\'category\']}}}")")
+    fix_line("pages/dynamic_pricing_assistant.py", 246, '                            st.write(f"**Description:** {{promo[\'description\']}}}")")
+    fix_line("pages/dynamic_pricing_assistant.py", 249, '                                st.write(f"**Related Event:** {{promo[\'event_name\']}}}")")
     
     # Other pending_promotions section lines
-    fix_line("pages/dynamic_pricing_assistant.py", 295, '                        st.write(f"**Type:** {promo[\'type\'].replace(\'_\', \' \').title()}")')
-    fix_line("pages/dynamic_pricing_assistant.py", 297, '                        st.write(f"**Value:** {promo[\'value\']}{symbol_value}")')
-    fix_line("pages/dynamic_pricing_assistant.py", 298, '                        st.write(f"**Category:** {promo[\'category\']}")')
-    fix_line("pages/dynamic_pricing_assistant.py", 299, '                        st.write(f"**Description:** {promo[\'description\']}")')
-    fix_line("pages/dynamic_pricing_assistant.py", 302, '                            st.write(f"**Related Event:** {promo[\'event_name\']}")')
+    fix_line("pages/dynamic_pricing_assistant.py", 295, '                        st.write(f"**Type:** {{promo[\'type\'].replace(\'_\', \' \').title()}}}")")
+    fix_line("pages/dynamic_pricing_assistant.py", 297, '                        st.write(f"**Value:** {{promo[\'value\']}}}{symbol_value}")')
+    fix_line("pages/dynamic_pricing_assistant.py", 298, '                        st.write(f"**Category:** {{promo[\'category\']}}}")")
+    fix_line("pages/dynamic_pricing_assistant.py", 299, '                        st.write(f"**Description:** {{promo[\'description\']}}}")")
+    fix_line("pages/dynamic_pricing_assistant.py", 302, '                            st.write(f"**Related Event:** {{promo[\'event_name\']}}}")")

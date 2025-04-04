@@ -18,10 +18,10 @@ def format_currency(value, include_symbol=True, decimal_places=2):
     if pd.isna(value):
         return "N/A"
     
-    formatted = f"{abs(value):.{decimal_places}f}"
+    formatted = f"{abs(value):.{decimal_places}}f}"
     
     if include_symbol:
-        return f"${formatted}" if value >= 0 else f"-${formatted}"
+        return f"${formatted}}" if value >= 0 else f"-${formatted}"
     else:
         return formatted if value >= 0 else f"-{formatted}"
 

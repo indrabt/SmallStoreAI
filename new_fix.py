@@ -25,7 +25,7 @@ def fix_all_st_write_statements(file_path):
                 expr = match.group(2)
                 suffix = match.group(3)
                 whitespace = re.match(r'^\s*', line).group(0)
-                fixed_line = f'{whitespace}st.write(f"{prefix}**{{{expr}}}**{suffix}")\n'
+                fixed_line = f'{whitespace}}st.write(f"{prefix}**{{{expr}}}**{suffix}")\n'
                 fixed_lines.append(fixed_line)
             else:
                 # Handle more complex patterns
@@ -36,7 +36,7 @@ def fix_all_st_write_statements(file_path):
                     expr = match.group(2)
                     suffix = match.group(3)
                     whitespace = re.match(r'^\s*', line).group(0)
-                    fixed_line = f'{whitespace}st.write(f"{prefix}{{{expr}}}{suffix}")\n'
+                    fixed_line = f'{whitespace}}st.write(f"{prefix}{{{expr}}}{suffix}")\n'
                     fixed_lines.append(fixed_line)
                 else:
                     fixed_lines.append(line)

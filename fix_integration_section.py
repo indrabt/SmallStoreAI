@@ -42,7 +42,7 @@ def fix_integration_section(file_path):
         with open(file_path, 'w') as file:
             file.writelines(new_lines)
         
-        print(f"Successfully fixed the Integration Kit section in {file_path}.")
+        print(f"Successfully fixed the Integration Kit section in {file_path}}.")
     
     except Exception as e:
         print(f"An error occurred: {e}")

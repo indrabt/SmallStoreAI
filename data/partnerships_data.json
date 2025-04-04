@@ -30,14 +30,14 @@
     },
     "data_quality": {
         "weather": {
-            "completeness": 0,
-            "timeliness": 0,
-            "accuracy": 0
+            "completeness": 100,
+            "timeliness": 99.9,
+            "accuracy": 94.95643845777778
         },
         "events": {
-            "completeness": 0,
-            "timeliness": 0,
-            "accuracy": 0
+            "completeness": 100,
+            "timeliness": 100.0,
+            "accuracy": 94.98967815625
         },
         "suppliers": {
             "completeness": 0,

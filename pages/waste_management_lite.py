@@ -55,7 +55,7 @@ def show_dashboard(waste_manager):
     with col2:
         st.metric("Total Waste", f"{summary['total_wasted']} units")
     with col3:
-        st.metric("Cost Savings", f"${summary['cost_savings']:.2f}")
+        st.metric("Cost Savings", f"${{summary['cost_savings']:.2f}")
     with col4:
         st.metric("Pending Adjustments", summary['pending_adjustments'])
     
@@ -201,7 +201,7 @@ def show_log_form(waste_manager):
                     # Check if order adjustment recommended
                     analysis = waste_manager.analyze_product_waste(product_name)
                     if analysis["needs_adjustment"] and analysis["suggested_adjustment_percent"] != 0:
-                        st.info(f"Recommendation: Adjust future orders of {product_name} by {analysis['suggested_adjustment_percent']}%.")
+                        st.info(f"Recommendation: Adjust future orders of {product_name} by {{analysis[}"suggested_adjustment_percent']}%.")
                         
                         # Option to create adjustment
                         if st.button("Create Order Adjustment", key="create_donation_adjustment"):
@@ -250,7 +250,7 @@ def show_log_form(waste_manager):
                     # Check if order adjustment recommended
                     analysis = waste_manager.analyze_product_waste(product_name)
                     if analysis["needs_adjustment"] and analysis["suggested_adjustment_percent"] != 0:
-                        st.info(f"Recommendation: Adjust future orders of {product_name} by {analysis['suggested_adjustment_percent']}%.")
+                        st.info(f"Recommendation: Adjust future orders of {product_name} by {{analysis[}"suggested_adjustment_percent']}%.")
                         
                         # Option to create adjustment
                         if st.button("Create Order Adjustment", key="create_waste_adjustment"):
@@ -344,7 +344,7 @@ def show_order_adjustments(waste_manager):
                 )
                 
                 # Show success message
-                st.success(f"Order adjustment created for {product_name}. Suggested quantity: {adjustment['suggested_quantity']}")
+                st.success(f"Order adjustment created for {product_name}. Suggested quantity: {{adjustment[}"suggested_quantity']}")
 
 def show_adjustments_by_status(waste_manager, status):
     # Get adjustments
@@ -539,7 +539,7 @@ def show_cost_savings(waste_manager):
         
         # Total cost savings
         total_savings = cost_df['total_cost'].sum()
-        st.metric("Total Cost Savings", f"${total_savings:.2f}")
+        st.metric("Total Cost Savings", f"${{total_savings:.2f}")
         
         # Cost savings by recipient
         st.write("Cost Savings by Recipient")
@@ -609,9 +609,9 @@ def show_product_insights(waste_manager):
         with col1:
             st.metric("Total Quantity", total_qty)
         with col2:
-            st.metric("Donated", f"{donation_qty} ({donation_pct:.1f}%)")
+            st.metric(f"Donated", f"{donation_qty} ({donation_pct:.1f}%)")
         with col3:
-            st.metric("Wasted", f"{waste_qty} ({waste_pct:.1f}%)")
+            st.metric(f"Wasted", f"{waste_qty} ({waste_pct:.1f}%)")
         
         # Create visualization
         fig, ax = plt.subplots(figsize=(10, 5))
@@ -678,14 +678,14 @@ def show_settings(waste_manager):
             if not new_recipient:
                 st.error("Please enter a recipient name.")
             elif new_recipient in recipients:
-                st.error(f"Recipient '{new_recipient}' already exists.")
+                st.error(f"Recipient f'{new_recipient}' already exists.")
             else:
                 success = waste_manager.add_donation_recipient(new_recipient)
                 if success:
-                    st.success(f"Added '{new_recipient}' to donation recipients.")
+                    st.success(f"Added f'{new_recipient}' to donation recipients.")
                     st.rerun()
                 else:
-                    st.error(f"Failed to add '{new_recipient}'.")
+                    st.error(f"Failed to add f'{new_recipient}'.")
 
 if __name__ == "__main__":
     app()

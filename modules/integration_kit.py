@@ -351,7 +351,7 @@ class IntegrationKit:
                 status = "success" if success else "error"
                 self._log_event(
                     "Hub Test", 
-                    f"Test for {feature['name']}: {'Passed' if success else 'Failed'}", 
+                    f"Test for {feature['name']}: {"Passed' if success else 'Failed'}", 
                     status
                 )
         
@@ -523,12 +523,31 @@ class IntegrationKit:
         Returns:
             dict: Current integration status
         """
+        # Initialize status if missing expected structure
+        if "square_integration" not in self.status:
+            self.status["square_integration"] = {
+                "connected": False,
+                "last_sync": None,
+                "status": "not_configured",
+                "token": None
+            }
+            
+        if "hub_integration" not in self.status:
+            self.status["hub_integration"] = {
+                "hyper_local_route": {"connected": False, "last_sync": None, "status": "not_configured"},
+                "predictive_resilience": {"connected": False, "last_sync": None, "status": "not_configured"},
+                "multi_modal": {"connected": False, "last_sync": None, "status": "not_configured"},
+                "real_time_dashboard": {"connected": False, "last_sync": None, "status": "not_configured"},
+                "partnerships": {"connected": False, "last_sync": None, "status": "not_configured"}
+            }
+            self.save_status()
+        
         # Calculate overall status
         square_connected = self.status["square_integration"]["connected"]
         
         hub_features_connected = sum(
             1 for feature in self.status["hub_integration"].values() 
-            if feature["connected"]
+            if feature.get("connected", False)
         )
         hub_features_total = len(self.status["hub_integration"])
         

@@ -443,7 +443,7 @@ class WasteManagement:
             bool: Success status
         """
         # This would make actual API calls to Square in a real implementation
-        print(f"Syncing with Square POS: {log_entry['product_name']} x {log_entry['quantity']}")
+        print(f"Syncing with Square POS: {log_entry['product_name']} x {{log_entry[}"quantity']}")
         
         # Find and update the log entry
         for i, log in enumerate(self.waste_data["donation_logs"]):
