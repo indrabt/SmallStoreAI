@@ -81,7 +81,7 @@ with tab1:
         try:
             if not weather_forecast.empty:
                 today = weather_forecast.iloc[0]
-                st.write(f"**Today's Weather:** {today['condition']}, {{today['temp_c']}°C")
+                st.write(f"**Today's Weather:** {today['condition']}, {today['temp_c']}°C")
                 
                 # Upcoming events in the next 2 days
                 upcoming_2days = [e for e in upcoming_events if 
@@ -232,7 +232,7 @@ with tab3:
         
         for event in upcoming_events:
             event_date = datetime.strptime(event['date'], '%Y-%m-%d').strftime('%A, %B %d')
-            expander = st.expander(f"{event[f'name']} - {event_date}")
+            expander = st.expander(f"{event['name']} - {event_date}")
             with expander:
                 st.write(f"**Location:** {event['location']}")
                 st.write(f"**Expected Attendance:** {event['expected_attendance']} people")
@@ -249,7 +249,7 @@ with tab3:
                     if st.button("Update Event Status", key=f"update_{event['id']}"):
                         result = demand_predictor.update_event(event['id'], new_status.lower())
                         if result:
-                            st.success(f"Event status updated to f'{new_status}'. Stock recommendations will be adjusted.")
+                            st.success(f"Event status updated to '{new_status}'. Stock recommendations will be adjusted.")
         
         # Display event-based predictions
         event_predictions = demand_predictor.get_event_based_predictions(upcoming_events)
