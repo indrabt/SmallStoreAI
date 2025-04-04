@@ -295,8 +295,8 @@ with tab4:
             else:
                 adjustment_text = "New addition"
             
-            st.write(f"**{order[f'product_name']}** - Confirmed at {confirmation_time}")
-            st.write(f"Original: +{order[f'original_quantity']} → Adjusted: +{{order[}"adjusted_quantity']} ({adjustment_text})")
+            st.write(f"**{order['product_name']}** - Confirmed at {confirmation_time}")
+            st.write(f"Original: +{order['original_quantity']} → Adjusted: +{order['adjusted_quantity']} ({adjustment_text})")
             st.write("---")
     else:
         st.info("No confirmed orders yet. Use the 'Today's Predictions' tab to confirm stock orders.")
