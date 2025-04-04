@@ -174,7 +174,7 @@ with fifo_tab:
     
     # Display each product group
     for product_name, items in product_groups.items():
-        with st.expander(f"{product_name} ({sum(item["quantity"] for item in items)} units)", expanded=True):
+        with st.expander(f"{product_name} ({sum(item['quantity'] for item in items)} units)", expanded=True):
             # Convert to DataFrame for display
             items_data = []
             for item in items:

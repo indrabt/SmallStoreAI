@@ -12,11 +12,10 @@ def fix_line(file_path, line_number, new_line):
         file.writelines(lines)
 
 if __name__ == "__main__":
-    # Fix the syntax errors in perishable_inventory_tracker.py
+    # Fix syntax issues in perishable_inventory_tracker.py
     fixes = [
-        (177, '        with st.expander(f"{product_name} ({sum(item[\"quantity\"] for item in items)} units)", expanded=True):'),
-        (191, '                    "Current Price": f"${item[\"current_price\"]:.2f}",'),
-        (205, '                    format_func=lambda x: f"{x} ({next((i[\"expiration_date\"] for i in items if i[\"batch_number\"] == x), \'\')})"')
+        # Fix the f-string with nested quotes issues
+        (177, "        with st.expander(f\"{product_name} ({sum(item['quantity'] for item in items)} units)\", expanded=True):"),
     ]
     
     for line_number, new_line in fixes:
