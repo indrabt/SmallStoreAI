@@ -669,33 +669,33 @@
   "recent_forecasts": [
     {
       "date": "2025-04-04",
-      "condition": "Sunny",
-      "temp_c": 13.9,
-      "precip_mm": 0.0
+      "condition": "Light rain",
+      "temp_c": 14.4,
+      "precip_mm": 2.1
     },
     {
       "date": "2025-04-05",
-      "condition": "Sunny",
-      "temp_c": 16.0,
+      "condition": "Partly cloudy",
+      "temp_c": 14.7,
       "precip_mm": 0.0
     },
     {
       "date": "2025-04-06",
-      "condition": "Sunny",
-      "temp_c": 18.1,
+      "condition": "Cloudy",
+      "temp_c": 19.8,
       "precip_mm": 0.0
     },
     {
       "date": "2025-04-07",
       "condition": "Sunny",
-      "temp_c": 15.4,
+      "temp_c": 20.1,
       "precip_mm": 0.0
     },
     {
       "date": "2025-04-08",
-      "condition": "Light rain",
-      "temp_c": 21.7,
-      "precip_mm": 2.9
+      "condition": "Partly cloudy",
+      "temp_c": 16.3,
+      "precip_mm": 0.0
     }
   ],
   "recommendations_history": []

@@ -1,55 +1,88 @@
 {
-    "last_check": "2025-04-04T04:38:48.626761",
-    "status": {
-        "weather": {
-            "operational": false,
-            "message": "Not configured"
-        },
-        "events": {
-            "operational": false,
-            "message": "Not configured"
-        },
-        "suppliers": {
-            "operational": false,
-            "message": "Not configured"
-        }
+  "last_check": "2025-04-04T04:38:48.626761",
+  "status": {
+    "weather": {
+      "operational": false,
+      "message": "Not configured"
     },
-    "notifications": [
-        {
-            "timestamp": "2025-04-04T04:37:30.207977",
-            "type": "cache",
-            "source": "weather",
-            "message": "Using cached weather data because integration is not configured or enabled"
-        },
-        {
-            "timestamp": "2025-04-04T04:37:33.198863",
-            "type": "cache",
-            "source": "events",
-            "message": "Using cached events data because integration is not configured or enabled"
-        },
-        {
-            "timestamp": "2025-04-04T04:37:39.080675",
-            "type": "cache",
-            "source": "suppliers",
-            "message": "Using cached suppliers data because integration is not configured or enabled"
-        },
-        {
-            "timestamp": "2025-04-04T04:38:46.424667",
-            "type": "cache",
-            "source": "suppliers",
-            "message": "Using cached suppliers data because integration is not configured or enabled"
-        },
-        {
-            "timestamp": "2025-04-04T04:38:47.517011",
-            "type": "cache",
-            "source": "events",
-            "message": "Using cached events data because integration is not configured or enabled"
-        },
-        {
-            "timestamp": "2025-04-04T04:38:48.617885",
-            "type": "cache",
-            "source": "weather",
-            "message": "Using cached weather data because integration is not configured or enabled"
-        }
-    ]
+    "events": {
+      "operational": false,
+      "message": "Not configured"
+    },
+    "suppliers": {
+      "operational": false,
+      "message": "Not configured"
+    }
+  },
+  "notifications": [
+    {
+      "timestamp": "2025-04-04T04:37:30.207977",
+      "type": "cache",
+      "source": "weather",
+      "message": "Using cached weather data because integration is not configured or enabled"
+    },
+    {
+      "timestamp": "2025-04-04T04:37:33.198863",
+      "type": "cache",
+      "source": "events",
+      "message": "Using cached events data because integration is not configured or enabled"
+    },
+    {
+      "timestamp": "2025-04-04T04:37:39.080675",
+      "type": "cache",
+      "source": "suppliers",
+      "message": "Using cached suppliers data because integration is not configured or enabled"
+    },
+    {
+      "timestamp": "2025-04-04T04:38:46.424667",
+      "type": "cache",
+      "source": "suppliers",
+      "message": "Using cached suppliers data because integration is not configured or enabled"
+    },
+    {
+      "timestamp": "2025-04-04T04:38:47.517011",
+      "type": "cache",
+      "source": "events",
+      "message": "Using cached events data because integration is not configured or enabled"
+    },
+    {
+      "timestamp": "2025-04-04T04:38:48.617885",
+      "type": "cache",
+      "source": "weather",
+      "message": "Using cached weather data because integration is not configured or enabled"
+    }
+  ],
+  "square_integration": {
+    "connected": false,
+    "last_sync": null,
+    "status": "not_configured",
+    "token": null
+  },
+  "hub_integration": {
+    "hyper_local_route": {
+      "connected": false,
+      "last_sync": null,
+      "status": "not_configured"
+    },
+    "predictive_resilience": {
+      "connected": false,
+      "last_sync": null,
+      "status": "not_configured"
+    },
+    "multi_modal": {
+      "connected": false,
+      "last_sync": null,
+      "status": "not_configured"
+    },
+    "real_time_dashboard": {
+      "connected": false,
+      "last_sync": null,
+      "status": "not_configured"
+    },
+    "partnerships": {
+      "connected": false,
+      "last_sync": null,
+      "status": "not_configured"
+    }
+  }
 }

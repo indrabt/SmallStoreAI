@@ -540,6 +540,18 @@ class IntegrationKit:
                 "real_time_dashboard": {"connected": False, "last_sync": None, "status": "not_configured"},
                 "partnerships": {"connected": False, "last_sync": None, "status": "not_configured"}
             }
+            
+        if "integration_metrics" not in self.status:
+            self.status["integration_metrics"] = {
+                "uptime_percentage": 0,
+                "connection_time": 0,
+                "average_sync_time": 0,
+                "total_syncs": 0,
+                "total_errors": 0,
+                "last_system_check": None,
+                "cost_savings": 0,
+                "cached_data_usage": 0
+            }
             self._save_status()
         
         # Calculate overall status
