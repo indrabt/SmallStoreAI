@@ -293,6 +293,7 @@ with tab2:
                 for promo in upcoming_promotions:
                     with st.expander(f"{promo['name']} (Starting {promo['start_date']})"):
                         st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
+                        symbol_value = "%" if promo['type'] == 'percent_off' else ""
                         # Fix potentially problematic f-string with conditional
                         st.write(f"**Value:** {promo['value']}{symbol_value}")
                         st.write(f"**Category:** {promo['category']}")
