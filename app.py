@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 # Import modules
 from modules.inventory_manager import InventoryManager
 from modules.pricing_analyzer import PricingAnalyzer
+from modules.pricing_assistant import PricingAssistant
 from modules.local_sourcing import LocalSourcingManager
 from modules.weather_integration import WeatherIntegration
 from modules.event_recommender import EventRecommender
@@ -35,6 +36,7 @@ page = st.sidebar.radio(
         "Dashboard", 
         "Inventory Management", 
         "Pricing Optimization",
+        "Dynamic Pricing Assistant",
         "Local Sourcing", 
         "Weather Forecasting", 
         "Event Recommendations",
@@ -48,6 +50,7 @@ st.session_state['current_page'] = page
 # Initialize modules
 inventory_manager = InventoryManager()
 pricing_analyzer = PricingAnalyzer()
+pricing_assistant = PricingAssistant()
 local_sourcing = LocalSourcingManager()
 weather_integration = WeatherIntegration(location="Penrith, Australia")
 event_recommender = EventRecommender()
@@ -95,8 +98,12 @@ if page == "Dashboard":
                 st.write(f"**{category}**:")
                 for item in items:
                     st.write(f"- {item['name']}: {item['recommendation']}")
-    # Add link to the new demand prediction page
-    st.info("📊 Check out our new [Weather & Event Demand Prediction](/demand_prediction) tool for more detailed stock recommendations!")
+    # Add links to the new features
+    col1, col2 = st.columns(2)
+    with col1:
+        st.info("📊 Check out our new [Weather & Event Demand Prediction](/demand_prediction) tool for more detailed stock recommendations!")
+    with col2:
+        st.info("💰 Try our new [Dynamic Pricing Assistant](/dynamic_pricing_assistant) for AI-powered pricing and promotions!")
     
     # Upcoming events and recommendations
     st.subheader("🎉 Upcoming Events")
@@ -304,6 +311,12 @@ elif page == "Pricing Optimization":
                         st.rerun()
             else:
                 st.success(f"All products are meeting or exceeding the target margin of {target_margin}%")
+
+# Dynamic Pricing Assistant Page
+elif page == "Dynamic Pricing Assistant":
+    # Add link to the dynamic pricing assistant page
+    st.info("Opening Dynamic Pricing Assistant...")
+    st.switch_page("pages/dynamic_pricing_assistant.py")
 
 # Local Sourcing Page
 elif page == "Local Sourcing":
