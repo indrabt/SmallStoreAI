@@ -357,9 +357,9 @@ def show_status_and_metrics(integration_manager):
     
     metrics_df = pd.DataFrame([
         {"Metric": "Total Syncs", "Value": metrics["total_syncs"]},
-        {"Metric": "Average Sync Time", "Value": f"{{metrics['average_sync_time']:.2f} seconds"},
+        {"Metric": "Average Sync Time", "Value": f"{metrics['average_sync_time']:.2f} seconds"},
         {"Metric": "Total Errors", "Value": metrics["total_errors"]},
-        {"Metric": "Cost Savings", "Value": f"${{metrics['cost_savings']:.2f}"},
+        {"Metric": "Cost Savings", "Value": f"${metrics['cost_savings']:.2f}"},
         {"Metric": "Cached Data Usage Count", "Value": metrics["cached_data_usage"]}
     ])
     
@@ -379,7 +379,7 @@ def show_status_and_metrics(integration_manager):
             test_df = pd.DataFrame([
                 {"Metric": "Items Tested", "Value": test_results["items_tested"]},
                 {"Metric": "Items Matched", "Value": test_results["items_matched"]},
-                {"Metric": "Accuracy", "Value": f"{{test_results['accuracy']*100:.1f}%"},
+                {"Metric": "Accuracy", "Value": f"{test_results['accuracy']*100:.1f}%"},
                 {"Metric": "Test Date", "Value": test_results["timestamp"]}
             ])
             
