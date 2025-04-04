@@ -202,7 +202,7 @@ with tab2:
                             st.write(f"**Type:** {promo['type'].replace('_', ' ').title()}")
                             # Fix potentially problematic f-string with conditional
                             symbol_value = "%" if promo['type'] == 'percent_off' else ""
-                            st.write(f"**Value:** {promo[f'value']}{symbol_value}")
+                            st.write(f"**Value:** {promo['value']}{symbol_value}")
                             st.write(f"**Category:** {promo['category']}")
                             st.write(f"**Description:** {promo['description']}")
                             

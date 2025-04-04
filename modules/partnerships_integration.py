@@ -747,7 +747,7 @@ class PartnershipsIntegration:
                     end_event_date = event_date + datetime.timedelta(days=duration-1)
                     
                     events.append({
-                        "id": f"{template['name'].lower().replace(' ', '-')}-{{event_date.strftime(}"%Y%m%d')}",
+                        "id": f"{template['name'].lower().replace(' ', '-')}-{event_date.strftime('%Y%m%d')}",
                         "name": template["name"],
                         "type": template["type"],
                         "start_date": event_date.strftime("%Y-%m-%d"),
@@ -1029,7 +1029,7 @@ class PartnershipsIntegration:
             "delivery_schedule": delivery_schedule,
             "minimum_order": min_order,
             "contact": {
-                "name": f"{random.choice(['John', 'Sarah', 'David', 'Emma', 'Michael'])} {{random.choice([}"Smith', 'Jones', 'Wilson', 'Taylor', 'Brown'])}",
+                "name": f"{random.choice(['John', 'Sarah', 'David', 'Emma', 'Michael'])} {random.choice(['Smith', 'Jones', 'Wilson', 'Taylor', 'Brown'])}",
                 "phone": f"04{random.randint(10, 99)} {random.randint(100, 999)} {random.randint(100, 999)}",
                 "email": f"contact@{supplier_name.lower().replace(' ', '')}.com.au"
             },

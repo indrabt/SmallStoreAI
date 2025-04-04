@@ -201,7 +201,7 @@ def show_log_form(waste_manager):
                     # Check if order adjustment recommended
                     analysis = waste_manager.analyze_product_waste(product_name)
                     if analysis["needs_adjustment"] and analysis["suggested_adjustment_percent"] != 0:
-                        st.info(f"Recommendation: Adjust future orders of {product_name} by {{analysis[}"suggested_adjustment_percent']}%.")
+                        st.info(f"Recommendation: Adjust future orders of {product_name} by {analysis['suggested_adjustment_percent']}%.")
                         
                         # Option to create adjustment
                         if st.button("Create Order Adjustment", key="create_donation_adjustment"):
@@ -250,7 +250,7 @@ def show_log_form(waste_manager):
                     # Check if order adjustment recommended
                     analysis = waste_manager.analyze_product_waste(product_name)
                     if analysis["needs_adjustment"] and analysis["suggested_adjustment_percent"] != 0:
-                        st.info(f"Recommendation: Adjust future orders of {product_name} by {{analysis[}"suggested_adjustment_percent']}%.")
+                        st.info(f"Recommendation: Adjust future orders of {product_name} by {analysis['suggested_adjustment_percent']}%.")
                         
                         # Option to create adjustment
                         if st.button("Create Order Adjustment", key="create_waste_adjustment"):
@@ -344,7 +344,7 @@ def show_order_adjustments(waste_manager):
                 )
                 
                 # Show success message
-                st.success(f"Order adjustment created for {product_name}. Suggested quantity: {{adjustment[}"suggested_quantity']}")
+                st.info(f"Recommendation: Adjust future orders of {product_name} by {analysis['suggested_adjustment_percent']}%.")
 
 def show_adjustments_by_status(waste_manager, status):
     # Get adjustments

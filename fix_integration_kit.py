@@ -12,8 +12,9 @@ def fix_line(file_path, line_number, new_line):
         file.writelines(lines)
 
 if __name__ == "__main__":
-    # Fix the f-string issue in partnerships_integration.py
+    # Fix the f-string issues in integration_kit.py
     fix_line(
-        "modules/partnerships_integration.py", 
-        750, 
-        '                        "id": f"{template[\'name\'].lower().replace(\' \', \'-\')}-{event_date.strftime(\'%Y%m%d\')}",')
+        "pages/integration_kit.py", 
+        293, 
+        '        f"<div style=\'background-color: {system_status_color}; padding: 10px; border-radius: 5px;\'>"'
+    )

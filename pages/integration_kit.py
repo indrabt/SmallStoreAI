@@ -290,7 +290,7 @@ def show_status_and_metrics(integration_manager):
     }.get(status["overall_status"], "gray")
     
     st.markdown(
-        f"<div style=f'background-color: {system_status_color}; padding: 10px; border-radius: 5px;">"
+        f"<div style='background-color: {system_status_color}; padding: 10px; border-radius: 5px;'>"
         f"<h3 style='color: white; margin: 0;'>System Status: {status['overall_status'].upper()}</h3>"
         "</div>",
         unsafe_allow_html=True

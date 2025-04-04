@@ -12,8 +12,9 @@ def fix_line(file_path, line_number, new_line):
         file.writelines(lines)
 
 if __name__ == "__main__":
-    # Fix the f-string issue in partnerships_integration.py
+    # Fix the syntax error in partnerships_integration.py
     fix_line(
         "modules/partnerships_integration.py", 
-        750, 
-        '                        "id": f"{template[\'name\'].lower().replace(\' \', \'-\')}-{event_date.strftime(\'%Y%m%d\')}",')
+        1032, 
+        '                "name": f"{random.choice([\'John\', \'Sarah\', \'David\', \'Emma\', \'Michael\'])} {random.choice([\'Smith\', \'Jones\', \'Wilson\', \'Taylor\', \'Brown\'])}",'
+    )

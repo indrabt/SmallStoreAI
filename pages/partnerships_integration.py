@@ -75,7 +75,7 @@ def show_overview(partnerships):
     }.get(health["health_status"], "gray")
     
     st.markdown(
-        f"<h3 style=f'text-align: center; color: {health_color};">"
+        f"<h3 style='text-align: center; color: {health_color};'>"
         f"{health['overall_health']}% - {health['health_status'].upper()}"
         f"</h3>",
         unsafe_allow_html=True
