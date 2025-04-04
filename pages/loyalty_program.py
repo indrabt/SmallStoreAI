@@ -66,7 +66,7 @@ with overview_tab:
                 {
                     "Customer": customer["name"],
                     "Points": customer["points"],
-                    "Total Spend": f"${{customer['total_spend']:.2f}",
+                    "Total Spend": f"${customer['total_spend']:.2f}",
                     "Visits": customer["visit_count"],
                     "Last Visit": customer["last_visit"]
                 }
@@ -276,7 +276,7 @@ with transactions_tab:
                 {
                     "Date": t["date"],
                     "Customer": t["customer_name"],
-                    "Amount": f"${{t['amount']:.2f}",
+                    "Amount": f"${t['amount']:.2f}",
                     "Points Earned": t["points_earned"],
                     "Double Points": "✅" if t["double_points"] else "❌",
                     "Event": t["event_name"] if t["event_name"] else "",
@@ -296,7 +296,7 @@ with transactions_tab:
             
             col1, col2, col3, col4 = st.columns(4)
             col1.metric("Total Transactions", total_transactions)
-            col2.metric("Total Amount", f"${{total_amount:.2f}")
+            col2.metric("Total Amount", f"${total_amount:.2f}")
             col3.metric("Total Points", total_points)
             col4.metric("Double Points Events", double_points_count)
         else:
@@ -419,7 +419,7 @@ with customers_tab:
                 "Points": c["points"],
                 "Lifetime Points": c["lifetime_points"],
                 "Visits": c["visit_count"],
-                "Total Spend": f"${{c['total_spend']:.2f}",
+                "Total Spend": f"${c['total_spend']:.2f}",
                 "Last Visit": c["last_visit"],
                 "Status": "Opted Out" if c["opted_out"] else "Active"
             }

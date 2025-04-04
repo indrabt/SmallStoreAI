@@ -174,7 +174,7 @@ with fifo_tab:
     
     # Display each product group
     for product_name, items in product_groups.items():
-        with st.expander(f"{product_name} ({{sum(item[}"quantity'] for item in items)} units)", expanded=True):
+        with st.expander(f"{product_name} ({sum(item["quantity"] for item in items)} units)", expanded=True):
             # Convert to DataFrame for display
             items_data = []
             for item in items:
@@ -188,7 +188,7 @@ with fifo_tab:
                     "Expiration Date": item["expiration_date"],
                     "Days to Expiry": days_to_expiry,
                     "Location": item["location"],
-                    "Current Price": f"${{item['current_price']:.2f}",
+                    "Current Price": f"${item["current_price"]:.2f}",
                     "Discount": f"{item['discount_rate']}%" if item["discount_applied"] else "None",
                     "Last Scanned": item["last_scanned"]
                 })
@@ -202,7 +202,7 @@ with fifo_tab:
                 selected_batch = st.selectbox(
                     "Select Batch", 
                     options=[item["batch_number"] for item in items], 
-                    format_func=lambda x: f"{x} ({{next((i[}"expiration_date'] for i in items if i['batch_number'] == x), '')})"
+                    format_func=lambda x: f"{x} ({next((i["expiration_date"] for i in items if i["batch_number"] == x), '')})"
                 )
                 
                 # Find the selected item
