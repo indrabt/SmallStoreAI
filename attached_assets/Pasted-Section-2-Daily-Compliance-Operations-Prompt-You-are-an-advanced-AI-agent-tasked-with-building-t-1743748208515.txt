@@ -1,0 +1,29 @@
+Section 2: Daily Compliance Operations
+Prompt:
+
+"You are an advanced AI agent tasked with building the Daily Compliance Operations phase of the StateSafe Compliance Manager (Feature 11) for the Small Store AI Pack, a software solution for a small grocery store near Penrith, Australia (New South Wales). This phase enables the logistics manager to perform daily compliance tasks—logging supplier receipts, checking inventory, and ensuring inspection readiness—aligned with state regulations (e.g., NSW Food Act 2003, Standard 3.2.2A). The current date is April 03, 2025, and the system integrates with Features 2, 4, and 9.
+
+Instructions:
+
+Purpose: Automate daily compliance tasks to maintain food safety, record-keeping, and audit readiness.
+Detailed Steps:
+Logistics manager logs into dashboard at 9:00 AM daily.
+Opens “Compliance” tab, views checklist: “FSS assigned: Yes,” “Supplier logs: 80 bottles from Supplier A,” “Training due: None.”
+Uploads supplier receipt (e.g., PDF for 80 water bottles, $0.80/bottle) via “Upload” button, linked to Feature 2 order data.
+Logs inventory check (e.g., “80 bottles, expires in 30 days”) via Feature 4 integration, clicks “Verify” button.
+Reviews inspection readiness (e.g., “Scores on Doors: 4/5”) via Feature 9 real-time tile.
+Generates compliance report (PDF) with supplier, inventory, and training logs via “Export” button by 5:00 PM.
+Workflow:
+Input: Supplier data (Feature 2), inventory logs (Feature 4), real-time metrics (Feature 9).
+Process: Aggregates logs, checks FSANZ labeling (e.g., water bottle origin), updates checklist, prepares report.
+Output: Daily compliance status (e.g., “All tasks complete”), audit-ready report.
+Acceptance Criteria:
+Given 80 water bottles ordered (Feature 2), when the logistics manager uploads the receipt at 9:00 AM, then the system logs it with FSANZ details (e.g., origin: Australia), ensuring ≥95% traceability (19/20 orders logged).
+Given inventory at 80 bottles (Feature 4), when the manager verifies at 9:05 AM, then it confirms expiry (30 days), marks “Stock Compliant” by 9:06 AM, meeting NSW rules.
+Given a council inspection scheduled, when the manager exports a report at 5:00 PM, then it includes all logs, passes audit with ≥90% score (e.g., 4/5 Scores on Doors).
+Given a supplier receipt missing in QLD, when the manager uploads inventory at 9:00 AM, then it prompts “Upload receipt” with a 24-hour deadline, maintaining ≥90% compliance.
+Technical Specs:
+UI: Checklist (tiles), “Upload” button, “Verify” button, “Export” button.
+APIs: Feature 2 (supplier data), Feature 4 (inventory), Feature 9 (real-time status), FSANZ database (labeling).
+Database: Daily logs (e.g., “80 bottles, Supplier A, uploaded 9:00 AM”).
+Example: Manager uploads receipt for 80 bottles, verifies inventory, exports report by 5:00 PM, achieves 4/5 Scores on Doors.

@@ -1,0 +1,115 @@
+{
+  "NSW": {
+    "name": "New South Wales",
+    "legislation": [
+      "Food Act 2003",
+      "Food Standards Code",
+      "Standard 3.2.2A"
+    ],
+    "fss_required": true,
+    "fss_certification_period_years": 5,
+    "registration_fee": 0,
+    "registration_required": true,
+    "notification_required": true,
+    "notification_api": "NSW Food Authority",
+    "notification_method": "API"
+  },
+  "VIC": {
+    "name": "Victoria",
+    "legislation": [
+      "Food Act 1984",
+      "Food Standards Code"
+    ],
+    "fss_required": true,
+    "fss_certification_period_years": 5,
+    "registration_fee": 300,
+    "registration_required": true,
+    "notification_required": true,
+    "notification_api": "VIC Health",
+    "notification_method": "Manual Payment"
+  },
+  "QLD": {
+    "name": "Queensland",
+    "legislation": [
+      "Food Act 2006",
+      "Food Standards Code"
+    ],
+    "fss_required": true,
+    "fss_certification_period_years": 2,
+    "registration_fee": 150,
+    "registration_required": true,
+    "notification_required": true,
+    "notification_api": "QLD Health",
+    "notification_method": "Email"
+  },
+  "SA": {
+    "name": "South Australia",
+    "legislation": [
+      "Food Act 2001",
+      "Food Standards Code"
+    ],
+    "fss_required": false,
+    "fss_certification_period_years": 0,
+    "registration_fee": 120,
+    "registration_required": true,
+    "notification_required": true,
+    "notification_api": "SA Health",
+    "notification_method": "Email"
+  },
+  "WA": {
+    "name": "Western Australia",
+    "legislation": [
+      "Food Act 2008",
+      "Food Standards Code"
+    ],
+    "fss_required": false,
+    "fss_certification_period_years": 0,
+    "registration_fee": 140,
+    "registration_required": true,
+    "notification_required": true,
+    "notification_api": "WA Health",
+    "notification_method": "Form"
+  },
+  "TAS": {
+    "name": "Tasmania",
+    "legislation": [
+      "Food Act 2003",
+      "Food Standards Code"
+    ],
+    "fss_required": false,
+    "fss_certification_period_years": 0,
+    "registration_fee": 100,
+    "registration_required": true,
+    "notification_required": true,
+    "notification_api": "TAS Health",
+    "notification_method": "Email"
+  },
+  "NT": {
+    "name": "Northern Territory",
+    "legislation": [
+      "Food Act 2004",
+      "Food Standards Code"
+    ],
+    "fss_required": false,
+    "fss_certification_period_years": 0,
+    "registration_fee": 90,
+    "registration_required": true,
+    "notification_required": true,
+    "notification_api": "NT Health",
+    "notification_method": "Email"
+  },
+  "ACT": {
+    "name": "Australian Capital Territory",
+    "legislation": [
+      "Food Act 2001",
+      "Food Standards Code"
+    ],
+    "fss_required": false,
+    "fss_certification_period_years": 0,
+    "registration_fee": 110,
+    "registration_required": true,
+    "notification_required": true,
+    "notification_api": "ACT Health",
+    "notification_method": "Online Form"
+  }
+}
