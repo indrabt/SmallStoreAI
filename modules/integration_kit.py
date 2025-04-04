@@ -540,7 +540,7 @@ class IntegrationKit:
                 "real_time_dashboard": {"connected": False, "last_sync": None, "status": "not_configured"},
                 "partnerships": {"connected": False, "last_sync": None, "status": "not_configured"}
             }
-            self.save_status()
+            self._save_status()
         
         # Calculate overall status
         square_connected = self.status["square_integration"]["connected"]
