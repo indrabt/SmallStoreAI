@@ -4,8 +4,9 @@ import pandas as pd
 import numpy as np
 from matplotlib.figure import Figure
 import streamlit as st
+import logging
 
-def get_color_scale(values, cmap='YlGnBu', reverse=False):
+def get_color_scale(values, cmap=f'YlGnBu', reverse=False):
     """
     Generate a color scale based on values
     
@@ -117,7 +118,7 @@ def create_trend_chart(data, x_column, y_columns, title=None, colors=None):
     for i, col in enumerate(y_columns):
         color = colors[i % len(colors)]
         ax.plot(data[x_column], data[col], marker='o', markersize=4, linewidth=2, 
-               label=col, color=color)
+            label=col, color=color)
     
     # Format the chart
     return format_chart(fig, title=title, x_label=x_column, y_label='Value')
@@ -254,7 +255,7 @@ def plot_calendar_heatmap(data, date_column, value_column, title=None):
     
     # Set month names for x-axis
     month_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
-                  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     ax.set_xticklabels([month_names[m-1] for m in sorted(data['month'].unique())])
     
     # Set title

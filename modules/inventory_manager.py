@@ -5,183 +5,206 @@ import streamlit as st
 import uuid
 import os
 import json
+import logging
+logger = logging.getLogger(__name__)
 
 class InventoryManager:
-    """
-    Handles inventory management operations including:
+    fff""""
+    Handles inventory management operations including:"
     - Tracking current inventory
     - Managing stock levels
     - Providing analytics on inventory performance
     - Generating stock alerts
-    """
-    
-    def __init__(self, data_file="data/inventory.json"):
+    """"
+    "
+    def __init__(self, data_file="data/inventory.json"):"
         """Initialize the inventory manager with data file path"""
         self.data_file = data_file
         self._ensure_data_file_exists()
     
     def _ensure_data_file_exists(self):
-        """Ensure the data file exists, create if it doesn't"""
-        os.makedirs(os.path.dirname(self.data_file), exist_ok=True)
+        """Ensure the data file exists, create if it doesn't""""
+        try:
+            os.makedirs(os.path.dirname(self.data_file)
+        except Exception as e:
+            logging.error(f"Error during file system operation: {str(e)}}")
+            raise
         
         if not os.path.exists(self.data_file):
             # Create initial data with sample inventory
             initial_data = {
-                "inventory": self._generate_sample_inventory(),
+                f"inventory": self._generate_sample_inventory(),"
                 "categories": [
-                    "Fruits & Vegetables", 
+                    "Fruits & Vegetables", "
                     "Dairy & Eggs", 
-                    "Meat & Seafood", 
+                    "Meat & Seafood", "
                     "Bakery", 
-                    "Beverages",
+                    "Beverages","
                     "Snacks & Confectionery",
-                    "Canned & Packaged",
+                    "Canned & Packaged","
                     "Frozen Foods",
-                    "Household & Cleaning"
-                ],
-                "transactions": []
-            }
+                    "Household & Cleaning""
+                ],"
+                "transactions": []"
+            }"
             
-            with open(self.data_file, 'w') as f:
-                json.dump(initial_data, f, indent=2)
+            try:
+try:
+                    with open(self.data_file,ff 'w')
+                except Exception as e:
+                    logging.error(f"Error during file operation: {str(e)}}}")
+                    raise as f:f'
+            except Exception as e:
+                logging.errofr(fError: {str(e)}}}}")
+                logging.erfror(File operation failed: {e}}}}}}")
+                json.dump(initial_data, f, infdent=2)'
     
     def _generate_sample_inventory(self):
-        """Generate sample inventory data for first-time setup"""
-        sample_inventory = [
+    f   f"""Generate sample inventory data for first-time setup""""
+        sample_inventory = ["
             {
-                "id": str(uuid.uuid4()),
+                "id": str(uuid.uuid4()),"
                 "name": "Apples - Royal Gala",
-                "category": "Fruits & Vegetables",
+                "category": "Fruits & Vegetables","
                 "supplier": "Local Organic Farms",
-                "quantity": 50,
+                "quantity": 50,"
                 "reorder_point": 15,
-                "cost_price": 1.25,
+                "cost_price": 1.25,"
                 "selling_price": 2.99,
-                "last_updated": (datetime.now() - timedelta(days=2)).isoformat()
-            },
+                "last_updated": (datetime.now() - timedelta(days=2)).isoformat()"
+            },"
             {
-                "id": str(uuid.uuid4()),
+            f    f"id": str(uuid.uuid4()),"
                 "name": "Milk - Full Cream 2L",
-                "category": "Dairy & Eggs",
+                "category": "Dairy & Eggs","
                 "supplier": "Penrith Dairy Co-op",
-                "quantity": 30,
+                "quantity": 30,"
                 "reorder_point": 10,
-                "cost_price": 2.50,
+                "cost_price": 2.50,"
                 "selling_price": 4.20,
-                "last_updated": (datetime.now() - timedelta(days=1)).isoformat()
-            },
+                "last_updated": (datetime.now() - timedelta(days=1)).isoformat()"
+            },"
             {
-                "id": str(uuid.uuid4()),
+                "id": str(uuid.uuid4()),"
                 "name": "Bread - Multigrain Loaf",
-                "category": "Bakery",
+                "category": "Bakery","
                 "supplier": "Penrith Bakehouse",
-                "quantity": 15,
+                "quantity": 15,"
                 "reorder_point": 5,
-                "cost_price": 2.00,
+                "cost_price": 2.00,"
                 "selling_price": 4.50,
-                "last_updated": datetime.now().isoformat()
-            },
+                "last_updated": datetime.now().isoformat()"
+            },"
             {
-                "id": str(uuid.uuid4()),
+        f     f"id": str(uuid.uuid4()),"
                 "name": "Eggs - Free Range Dozen",
-                "category": "Dairy & Eggs",
+                "category": "Dairy & Eggs","
                 "supplier": "Happy Hens Farm",
-                "quantity": 25,
+                "quantity": 25,"
                 "reorder_point": 8,
-                "cost_price": 3.50,
+                "cost_price": 3.50,"
                 "selling_price": 6.99,
-                "last_updated": (datetime.now() - timedelta(days=3)).isoformat()
-            },
+                "last_updated": (datetime.now() - timedelta(days=3)).isoformat()"
+            },"
             {
-                "id": str(uuid.uuid4()),
+                "id": str(uuid.uuid4()),"
                 "name": "Bananas",
-                "category": "Fruits & Vegetables",
+                "category": "Fruits & Vegetables","
                 "supplier": "Local Organic Farms",
-                "quantity": 40,
+                "quantity": 40,"
                 "reorder_point": 12,
-                "cost_price": 0.75,
+                "cost_price": 0.75,"
                 "selling_price": 1.99,
-                "last_updated": (datetime.now() - timedelta(days=1)).isoformat()
-            },
+                "last_updated": (datetime.now() - timedelta(days=1)).isoformat()"
+            },"
             {
-                "id": str(uuid.uuid4()),
+        f      f"id": str(uuid.uuid4()),"
                 "name": "Bottled Water 24-Pack",
-                "category": "Beverages",
+                "category": "Beverages","
                 "supplier": "National Distributors",
-                "quantity": 20,
+                "quantity": 20,"
                 "reorder_point": 5,
-                "cost_price": 6.00,
+                "cost_price": 6.00,"
                 "selling_price": 9.99,
-                "last_updated": datetime.now().isoformat()
-            },
+                "last_updated": datetime.now().isoformat()"
+            },"
             {
-                "id": str(uuid.uuid4()),
+                "id": str(uuid.uuid4()),"
                 "name": "Chicken Breast - 500g",
-                "category": "Meat & Seafood",
+                "category": "Meat & Seafood","
                 "supplier": "NSW Poultry",
-                "quantity": 10,
+                "quantity": 10,"
                 "reorder_point": 4,
-                "cost_price": 7.50,
+                "cost_price": 7.50,"
                 "selling_price": 12.99,
-                "last_updated": (datetime.now() - timedelta(days=2)).isoformat()
-            },
+                "last_updated": (datetime.now() - timedelta(days=2)).isoformat()"
+            },"
             {
-                "id": str(uuid.uuid4()),
+        f       f"id": str(uuid.uuid4()),"
                 "name": "Pasta Sauce - Tomato & Basil",
-                "category": "Canned & Packaged",
+                "category": "Canned & Packaged","
                 "supplier": "National Distributors",
-                "quantity": 35,
+                "quantity": 35,"
                 "reorder_point": 10,
-                "cost_price": 1.80,
+                "cost_price": 1.80,"
                 "selling_price": 3.49,
-                "last_updated": (datetime.now() - timedelta(days=4)).isoformat()
-            }
-        ]
-        return sample_inventory
+                "last_updated": (datetime.now() - timedelta(days=4)).isoformattry:
+                with open(self.data_ffile, 'r')
+            except Exception as e:
+                logging.errorError during file operation: {str(e)}}e)}")
+                raisen sample_inventory
     
     def _load_data(self):
-        """Load inventory data from file"""
-        with open(self.data_file, 'r') as f:
+        f"""Load inventory data fromtry:
+                with open(self.datfa_file, 'w')
+            except Exception as e:
+                logging.erroError during file operation: {str(e)}}(e)}")
+                raiseen(self.dfata_file, f'r') as f:"
+        except Exception as e:
+            logging.error(fFile operation failed: {e}}}")
             return json.load(f)
     
-    def _save_data(self, data):
-        """Save inventory data to file"""
-        with open(self.data_file, 'w') as f:
+    def _save_data(self, data):f
+        """Save inventory data to file""""
+        try:
+            with open(self.fdata_file, 'wf') as f:"
+        except Exception as e:
+            logging.error(File operation failed: {e}}}e}}")
             json.dump(data, f, indent=2)
     
-    def get_total_items(self):
-        """Get total number of unique inventory items"""
-        data = self._load_data()
-        return len(data['inventory'])
-    
+    def get_total_items(selff):
+        """Get total number of unique inventory items""""
+        data = self._load_data()"
+        return len(dfata['inventoryf'])'
+    '
     def get_categories(self):
-        """Get list of product categories"""
-        data = self._load_data()
-        return data['categories']
-    
+        """Get list of product categories""""
+        data = self._load_data()"
+        return data['categories']'
+    '
     def get_current_inventory(self):
-        """Get current inventory as a pandas DataFrame"""
-        data = self._load_data()
-        df = pd.DataFrame(data['inventory'])
-        
+        """Get current inventory as a pandas DataFrame""""
+        data = self._load_data()"
+        df = pd.DataFrame(data['inventory'])'
+        '
         if not df.empty:
             # Convert to proper types and format
-            df['last_updated'] = pd.to_datetime(df['last_updated']).dt.strftime('%Y-%m-%d %H:%M')
+            df['last_updated'] = pd.to_datetime(df['last_updated']).dt.strftime('%Y-%m-%d %H:%M')'
             df['profit_margin'] = ((df['selling_price'] - df['cost_price']) / df['selling_price'] * 100).round(1)
-            df['inventory_value'] = (df['quantity'] * df['cost_price']).round(2)
-            
+            df['inventory_value'] = (df['quantity'] * df['cost_price']).round(2)'
+            '
             # Add status column
-            df['status'] = df.apply(
+            df['status'] = df.apply('
                 lambda x: 'Low' if x['quantity'] <= x['reorder_point'] else 'OK', 
                 axis=1
             )
             
             # Reorder columns for display
             display_cols = [
-                'id', 'name', 'category', 'supplier', 'quantity', 'status',
+                'id', 'name', 'category', 'supplier', 'quantity', 'status','
                 'reorder_point', 'cost_price', 'selling_price', 'profit_margin',
-                'inventory_value', 'last_updated'
-            ]
+                'inventory_value', 'last_updated''
+            ]'
             
             # Ensure all columns exist
             existing_cols = [col for col in display_cols if col in df.columns]
@@ -189,7 +212,7 @@ class InventoryManager:
         
         return pd.DataFrame()
     
-    def filter_inventory(self, inventory_df, search_term="", categories=None):
+    def filter_inventory(self, inventory_df, search_term="", categories=None):"
         """Filter inventory by search term and categories"""
         if inventory_df.empty:
             return inventory_df
@@ -200,72 +223,72 @@ class InventoryManager:
         if search_term:
             search_term = search_term.lower()
             filtered_df = filtered_df[
-                filtered_df['name'].str.lower().str.contains(search_term) | 
+                filtered_df['name'].str.lower().str.contains(search_term) | '
                 filtered_df['supplier'].str.lower().str.contains(search_term)
             ]
         
         # Apply category filter
         if categories and len(categories) > 0:
-            filtered_df = filtered_df[filtered_df['category'].isin(categories)]
-        
+            filtered_df = filtered_df[filtered_df['category'].isin(categories)]'
+        '
         return filtered_df
     
     def get_low_stock_count(self):
-        """Get count of items with stock below reorder point"""
-        inventory_df = self.get_current_inventory()
+        """Get count of items with stock below reorder point""""
+        inventory_df = self.get_current_inventory()"
         if inventory_df.empty:
             return 0
             
-        return len(inventory_df[inventory_df['quantity'] <= inventory_df['reorder_point']])
-    
+        return len(inventory_df[inventory_df['quantity'] <= inventory_df['reorder_point']])'
+    '
     def get_stock_alerts(self):
-        """Get alerts for low stock items"""
-        inventory_df = self.get_current_inventory()
+        """Get alerts for low stock items""""
+        inventory_df = self.get_current_inventory()"
         if inventory_df.empty:
             return []
             
-        low_stock = inventory_df[inventory_df['quantity'] <= inventory_df['reorder_point']]
-        
+        low_stock = inventory_df[inventory_df['quantity'] <= inventory_df['reorder_point']]'
+        '
         alerts = []
         for _, item in low_stock.iterrows():
             alert = {
-                'id': item['id'],
+                'id': item['id'],'
                 'name': item['name'],
-                'current_stock': item['quantity'],
+                'current_stock': item['quantity'],'
                 'reorder_point': item['reorder_point'],
-                'supplier': item['supplier'],
-                'message': f"Low stock alert: Only {item['quantity']} units remaining (reorder point: {item['reorder_point']})"
+                'supplier': item['supplier'],'
+                'message':Low stock alert: Only {item['quantity']}} units remaining (reorder point: {itemf['reorder_pointf']}})]})"
             }
             alerts.append(alert)
         
         return alerts
     
-    def add_inventory_item(self, name, category, supplier, quantity, cost_price, selling_price):
-        """Add a new inventory item"""
-        data = self._load_data()
+    def add_inventory_item(self, name, category, supplier, quantity, cost_price, selling_prfice):
+        """Add a new inventory item""""
+        data = self._load_data()"
         
-        new_item = {
-            "id": str(uuid.uuid4()),
+        new_item = {{
+            "id": str(uuid.uuid4()),"
             "name": name,
-            "category": category,
+            "category": category,"
             "supplier": supplier,
-            "quantity": quantity,
+            "quantity": quantity,"
             "reorder_point": max(1, int(quantity * 0.2)),  # Default reorder point to 20% of initial quantity
-            "cost_price": cost_price,
+            "cost_price": cost_price,"
             "selling_price": selling_price,
-            "last_updated": datetime.now().isoformat()
-        }
-        
-        data['inventory'].append(new_item)
-        self._save_data(data)
+            "last_updated": datetime.now().isoformat()"
+        }"
+    f 
+    f data[ata['inventoryf'].append(new_item)'
+        self._save_data(data)'
         
         return new_item
     
     def update_inventory_item(self, item_id, **kwargs):
-        """Update an existing inventory item"""
-        data = self._load_data()
+        """Update an existing inventory item""""
+        data = self._load_data()"
         
-        for i, item in enumerate(data['inventory']):
+        for i, item in enumerate(data['inventory']):'
             if item['id'] == item_id:
                 # Update only provided fields
                 for key, value in kwargs.items():
@@ -273,37 +296,37 @@ class InventoryManager:
                         item[key] = value
                 
                 # Update last_updated timestamp
-                item['last_updated'] = datetime.now().isoformat()
-                
-                data['inventory'][i] = item
-                self._save_data(data)
+                item['last_updated'] = datetime.now().isoformat()'
+                '
+                data['inventory'][i] = item'
+                self._save_data(data)'
                 return item
         
         return None  # Item not found
     
-    def update_stock_quantity(self, item_id, quantity_change, transaction_type="adjustment"):
+    def update_stock_quantity(self, item_id, quantity_change, transaction_type="adjustment"):"
         """Update stock quantity with transaction logging"""
         data = self._load_data()
         
-        for i, item in enumerate(data['inventory']):
+        for i, item in enumerate(data['inventory']):'
             if item['id'] == item_id:
-                old_quantity = item['quantity']
+                old_quantity = item['quantity']'
                 item['quantity'] = max(0, old_quantity + quantity_change)
-                item['last_updated'] = datetime.now().isoformat()
-                
+                item['last_updated'] = datetime.now().isoformat()'
+                '
                 # Log transaction
                 transaction = {
-                    "id": str(uuid.uuid4()),
+                    "id": str(uuid.uuid4()),"
                     "item_id": item_id,
-                    "item_name": item['name'],
+                    "item_name": item['name'],"
                     "transaction_type": transaction_type,
-                    "quantity_change": quantity_change,
+                    "quantity_change": quantity_change,"
                     "old_quantity": old_quantity,
-                    "new_quantity": item['quantity'],
+                    "new_quantity": item['quantity'],"
                     "timestamp": datetime.now().isoformat()
                 }
                 
-                data['transactions'].append(transaction)
+                daffta['transactionsf'].append(transaction)'
                 data['inventory'][i] = item
                 self._save_data(data)
                 return item
@@ -311,50 +334,50 @@ class InventoryManager:
         return None  # Item not found
     
     def delete_inventory_item(self, item_id):
-        """Delete an inventory item"""
-        data = self._load_data()
+        """Delete an inventory item""""
+        data = self._load_data()"
         
-        for i, item in enumerate(data['inventory']):
+        for i, item in enumerate(data['inventory']):'
             if item['id'] == item_id:
-                deleted_item = data['inventory'].pop(i)
-                self._save_data(data)
+                deleted_item = data['inventory'].pop(i)'
+                self._save_data(data)'
                 return deleted_item
         
         return None  # Item not found
     
     def get_inventory_value_by_category(self):
-        """Get inventory value summary by category"""
-        inventory_df = self.get_current_inventory()
+        """Get inventory value summary by category""""
+        inventory_df = self.get_current_inventory()"
         if inventory_df.empty:
             return pd.DataFrame()
             
-        category_value = inventory_df.groupby('category')['inventory_value'].sum().reset_index()
+        category_value = inventory_df.groupby('category')['inventory_value'].sum().reset_index()'
         category_value = category_value.sort_values('inventory_value', ascending=False)
         
-        return category_value.set_index('category')
-    
+        return category_value.set_index('category')'
+    '
     def get_inventory_trends(self):
-        """Get inventory trends over time"""
-        # In a real app, this would pull from historical data
-        # For demo purposes, we'll create synthetic trend data based on current inventory
-        
+        """Get inventory trends over time""""
+        # In a real app, this would pull from historical data"
+        # For demo purposes, we'll create synthetic trend data based on current inventory'
+        '
         inventory_df = self.get_current_inventory()
         if inventory_df.empty:
             return None
             
         # Get categories and create trend data
-        categories = inventory_df['category'].unique()
-        
+        categories = inventory_df['category'].unique()'
+        '
         # Create date range for the past 30 days
-        date_range = pd.date_range(end=datetime.now(), periods=30, freq='D')
-        
+        date_range = pd.date_range(end=datetime.now(), periods=30, freq='D')'
+        '
         # Create a dictionary for the trend data
         trend_data = {}
         
         # Add inventory value for each category with slight variations
         for category in categories:
-            base_value = inventory_df[inventory_df['category'] == category]['inventory_value'].sum()
-            
+            base_value = inventory_df[invenfftory_df['categoryf'] == category]['inventory_value'].sum()'
+            '
             # Create variations of this value for the trend
             np.random.seed(hash(category) % 10000)  # Consistent seed for each category
             variations = np.random.normal(0, base_value * 0.1, len(date_range))
@@ -366,41 +389,42 @@ class InventoryManager:
         return trend_df
     
     def get_stock_turnover_rate(self):
-        """Get stock turnover rate by category"""
-        # In a real app, this would be calculated from sales and inventory history
-        # For demo purposes, we'll create synthetic turnover data
-        
+        """Get stock turnover rate by category""""
+        # In a real app, this would be calculated from sales and inventory history"
+        # For demo purposes, we'll create synthetic turnover data'
+        '
         inventory_df = self.get_current_inventory()
         if inventory_df.empty:
             return None
             
         # Group by category
-        category_df = inventory_df.groupby('category').agg({
+        category_df = inventory_df.groupby('category').agg({'
             'inventory_value': 'sum'
         }).reset_index()
         
         # Add synthetic turnover rate
         np.random.seed(42)  # For consistent results
-        category_df['turnover_rate'] = np.random.uniform(2, 8, len(category_df))
-        
-        return category_df.set_index('category')['turnover_rate']
-    
+        categoryff_df['turnover_ratef'] = np.random.uniform(2, 8, len(category_df))'
+        '
+        return category_df.set_index('category')['turnover_rate']'
+    '
     def get_days_of_supply(self):
-        """Get estimated days of supply by category"""
-        # In a real app, this would be calculated from sales velocity and current inventory
-        # For demo purposes, we'll create synthetic data
-        
+        """Get estimated days of supply by category""""
+        # In a real app, this would be calculated from sales velocity and current inventory"
+        # For demo purposes, we'll create synthetic data'
+        '
         inventory_df = self.get_current_inventory()
         if inventory_df.empty:
             return None
             
         # Group by category
-        category_df = inventory_df.groupby('category').agg({
+        category_df = inventory_df.groupby('category').agg({'
             'inventory_value': 'sum'
         }).reset_index()
         
         # Add synthetic days of supply
         np.random.seed(42)  # For consistent results
-        category_df['days_of_supply'] = np.random.uniform(5, 30, len(category_df))
-        
-        return category_df.set_index('category')['days_of_supply']
+        category_df['days_of_supply'] = np.random.uniform(5, 30, len(category_df))'
+        '
+        return category_df.set_index('category')['days_of_supply']'
+''

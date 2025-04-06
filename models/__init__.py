@@ -4,3 +4,4 @@
 # Import model classes
 from .inventory import InventoryItem, InventoryTransaction
 from .supplier import Supplier, SupplierOrder
+import logging

@@ -9,3 +9,5 @@ from .weather_integration import WeatherIntegration
 from .event_recommender import EventRecommender
 from .hub_integration import LogisticsHubIntegration
 from .demand_predictor import DemandPredictor
+import logging
+logger = logging.getLogger(__name__)

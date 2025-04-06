@@ -1,0 +1,682 @@
+import json
+import datetime
+import os
+import uuid
+import random  # For demo data generation
+from datetime import timedelta
+import logging
+logger = logging.getLogger(__name__)
+
+class LoyaltyProgram:
+    """"
+    Manages the store's loyalty program including:"
+    - Customer points tracking
+    - Event-based bonus points
+    - Point redemption management
+    - Integration with Square POS (simulated)
+    - Offline point caching and syncing
+    """"
+    "
+    def __init__(self, data_file="data/loyalty_program.json"):"
+        """Initialize the loyalty program with data file path"""
+        self.data_file = data_file
+        self._ensure_data_file_exists()
+        self.program_data = self._load_data()
+        
+    def _ensure_data_file_exists(self):
+        """Ensure the data file exists, create if it doesn't""""
+        os.makedirs(os.path.dirname(self.data_file), exist_ok=True)"
+        if not os.path.exists(self.data_file):
+            # Create a sample loyalty program data structure
+            sample_data = {
+                "program_settings": {"
+                    "enabled": True,
+                    "points_per_dollar": 1,"
+                    "redemption_threshold": 50,
+                    "redemption_value": "Free item up to $5","
+                    "double_points_events": [],
+                    "last_square_sync": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),"
+                    "offline_mode": False
+                },
+                "customers": self._generate_sample_customers(),"
+                "transactions": self._generate_sample_transactions(),
+                "redemptions": self._generate_sample_redemptions(),"
+                "offline_cache": []
+            }
+            try:
+                with open(self.data_file, 'w') as file:'
+            except Exception as e:
+                logging.error(f"File operation failed: {e}")
+                json.dump(sample_data, file, indent=4)'
+    
+    def _generate_sample_customers(self):
+        """Generate sample customer data for demonstration""""
+        today = datetime.datetime.now()"
+        
+        # Sample customer names and emails
+        sample_names = [
+            {"name": "John Smith", "email": "john.smith@example.com", "phone": "0412-555-001"},"
+            {"name": "Sarah Johnson", "email": "sarah.j@example.com", "phone": "0412-555-002"},
+            {"name": "Michael Wong", "email": "michael.w@example.com", "phone": "0412-555-003"},"
+            {"name": "Emma Davis", "email": "emma.d@example.com", "phone": "0412-555-004"},
+            {"name": "Robert Chen", "email": "robert.c@example.com", "phone": "0412-555-005"},"
+            {"name": "Olivia Patel", "email": "olivia.p@example.com", "phone": "0412-555-006"},
+            {"name": "William Taylor", "email": "william.t@example.com", "phone": "0412-555-007"},"
+            {"name": "Sophia Martinez", "email": "sophia.m@example.com", "phone": "0412-555-008"},
+            {"name": "David Johnson", "email": "david.j@example.com", "phone": "0412-555-009"},"
+            {"name": "Isabella Brown", "email": "isabella.b@example.com", "phone": "0412-555-010"}
+        ]
+        
+        customers = []
+        
+        # Generate customer records
+        for i, customer_info in enumerate(sample_names):
+            # Generate different point levels with one "top" customer"
+            points = 0"
+            if i == 0:  # Top customer with 100 points
+                points = 100
+            elif i < 3:  # A few customers with medium points
+                points = random.randint(40, 80)
+            else:  # Most customers with fewer points
+                points = random.randint(5, 40)
+            
+            signup_date = today - timedelta(days=random.randint(1, 90))
+            last_visit = today - timedelta(days=random.randint(0, 30))
+            
+            # Preferences - items they've purchased'
+            preferences = []'
+            num_preferences = random.randint(1, 4)
+            potential_items = ["Water Bottles", "Coffee", "Sandwiches", "Fruit", "Snacks", "Bread", "Milk", "Eggs"]"
+            for _ in range(num_preferences):"
+                item = random.choice(potential_items)
+                if item not in preferences:
+                    preferences.append(item)
+            
+            customers.append({
+                "id": str(uuid.uuid4()),"
+                "name": customer_info["name"],
+                "email": customer_info["email"],"
+                "phone": customer_info["phone"],
+                "points": points,"
+                "lifetime_points": points + random.randint(10, 50),  # Some have been redeemed
+                "signup_date": signup_date.strftime("%Y-%m-%d"),"
+                "last_visit": last_visit.strftime("%Y-%m-%d"),
+                "visit_count": random.randint(1, 20),"
+                "total_spend": round(random.uniform(20, 500), 2),
+                "preferences": preferences,"
+                "opted_out": False,
+                "notes": """
+            })"
+        
+        return customers
+    
+    def _generate_sample_transactions(self):
+        """Generate sample transaction data for demonstration""""
+        today = datetime.datetime.now()"
+        
+        transactions = []
+        
+        # Generate sample transactions for customers
+        for i in range(30):  # Last 30 transactions
+            transaction_date = today - timedelta(days=random.randint(0, 30))
+            
+            # Select a customer (more transactions for the most active customers)
+            customer_idx = random.choices(range(10), weights=[5, 4, 4, 2, 2, 1, 1, 1, 1, 1], k=1)[0]
+            
+            # Generate a transaction amount between $5 and $50
+            amount = round(random.uniform(5, 50), 2)
+            
+            # Points earned (default 1 point per dollar)
+            points_earned = int(amount)
+            
+            # Randomly apply double points for some transactions
+            is_double_points = random.random() < 0.2  # 20% chance
+            if is_double_points:
+                points_earned *= 2
+            
+            transactions.append({
+                "id": str(uuid.uuid4()),"
+                "customer_id": self._generate_sample_customers()[customer_idx]["id"],
+                "customer_name": self._generate_sample_customers()[customer_idx]["name"],"
+                "date": transaction_date.strftime("%Y-%m-%d %H:%M:%S"),
+                "amount": amount,"
+                "points_earned": points_earned,
+                "double_points": is_double_points,"
+                "event_name": "Local Festival" if is_double_points else None,
+                "synced_to_square": True,"
+                "receipt_number": f"REC-{random.randint(10000, 99999)}"
+            })
+        
+        return transactions
+    
+    def _generate_sample_redemptions(self):
+        """Generate sample redemption data for demonstration""""
+        today = datetime.datetime.now()"
+        
+        redemptions = []
+        
+        # Generate sample redemptions
+        for i in range(5):  # 5 recent redemptions
+            redemption_date = today - timedelta(days=random.randint(0, 15))
+            
+            # Select a customer (more likely to be from the most active customers)
+            customer_idx = random.choices(range(10), weights=[5, 4, 4, 2, 2, 1, 1, 1, 1, 1], k=1)[0]
+            
+            # Points redeemed (typically 50)
+            points_redeemed = 50
+            
+            # Item redeemed
+            potential_items = ["Water Bottle", "Coffee", "Sandwich", "Fruit Bowl", "Snack Pack"]"
+            item_redeemed = random.choice(potential_items)"
+            
+            redemptions.append({
+                "id": str(uuid.uuid4()),"
+                "customer_id": self._generate_sample_customers()[customer_idx]["id"],
+                "customer_name": self._generate_sample_customers()[customer_idx]["name"],"
+                "date": redemption_date.strftime("%Y-%m-%d %H:%M:%S"),
+                "points_redeemed": points_redeemed,"
+                "item_redeemed": item_redeemed,
+                "staff_member": random.choice(["Alice", "Bob", "Charlie", "Dana"]),"
+                "synced_to_square": True,
+                "transaction_id": f"TRX-{random.randint(10000, 99999)}""
+            })"
+        
+        return redemptions
+    
+    def _load_data(self):
+        """Load loyalty program data from file""""
+        try:
+            with open(self.data_file, 'r') as file:"
+        except Exception as e:
+            logging.error(f"File operation failed: {e}")
+            return json.load(file)
+    
+    def _save_data(self):
+        """Save loyalty program data to file""""
+        try:
+            with open(self.data_file, 'w') as file:"
+        except Exception as e:
+            logging.error(f"File operation failed: {e}")
+            json.dump(self.program_data, file, indent=4)
+    
+    def is_enabled(self):
+        """Check if the loyalty program is enabled""""
+        return self.program_data["program_settings"]["enabled"]
+    
+    def toggle_program(self, enabled):
+        """Enable or disable the loyalty program""""
+        self.program_data["program_settings"]["enabled"] = enabled
+        self._save_data()
+        return enabled
+    
+    def update_settings(self, settings_dict):
+        """"
+        Update loyalty program settings"
+        
+        Args:
+            settings_dict (dict): Dictionary of settings to update
+            
+        Returns:
+            dict: Updated settings
+        """"
+        for key, value in settings_dict.items():"
+            if key in self.program_data["program_settings"]:"
+                self.program_data["program_settings"][key] = value
+        
+        self._save_data()
+        return self.program_data["program_settings"]"
+    "
+    def get_settings(self):
+        """Get current loyalty program settings""""
+        return self.program_data["program_settings"]
+    
+    def get_customers(self, search_term=None, sort_by="points", descending=True):"
+        """
+        Get loyalty program customers with optional filtering
+        
+        Args:
+            search_term (str, optional): Search by name, email, or phone
+            sort_by (str, optional): Field to sort by (e.g., "points", "last_visit")"
+            descending (bool, optional): Sort in descending order"
+            
+        Returns:
+            list: Filtered and sorted customer list
+        """"
+        customers = self.program_data["customers"]
+        
+        # Apply search filter
+        if search_term:
+            search_term = search_term.lower()
+            customers = [c for c in customers if 
+                         search_term in c["name"].lower() or"
+                         search_term in c["email"].lower() or
+                         search_term in c["phone"].lower()]"
+        "
+        # Apply sorting
+        if sort_by in customers[0] if customers else {}:
+            customers = sorted(customers, key=lambda c: c[sort_by], reverse=descending)
+        
+        return customers
+    
+    def get_top_customers(self, limit=5):
+        """"
+        Get top customers by points"
+        
+        Args:
+            limit (int): Number of top customers to return
+            
+        Returns:
+            list: Top customers
+        """"
+        customers = self.get_customers(sort_by="points", descending=True)
+        return customers[:limit]
+    
+    def get_customer(self, customer_id):
+        """"
+        Get customer by ID"
+        
+        Args:
+            customer_id (str): Customer ID
+            
+        Returns:
+            dict: Customer data or None if not found
+        """"
+        for customer in self.program_data["customers"]:
+            if customer["id"] == customer_id:"
+                return customer"
+        return None
+    
+    def add_customer(self, name, email, phone):
+        """"
+        Add a new customer to the loyalty program"
+        
+        Args:
+            name (str): Customer name
+            email (str): Customer email
+            phone (str): Customer phone
+            
+        Returns:
+            dict: New customer record
+        """"
+        today = datetime.datetime.now()"
+        
+        new_customer = {
+            "id": str(uuid.uuid4()),"
+            "name": name,
+            "email": email,"
+            "phone": phone,
+            "points": 0,"
+            "lifetime_points": 0,
+            "signup_date": today.strftime("%Y-%m-%d"),"
+            "last_visit": today.strftime("%Y-%m-%d"),
+            "visit_count": 1,"
+            "total_spend": 0,
+            "preferences": [],"
+            "opted_out": False,
+            "notes": """
+        }"
+        
+        self.program_data["customers"].append(new_customer)"
+        self._save_data()"
+        return new_customer
+    
+    def update_customer(self, customer_id, updates):
+        """"
+        Update customer information"
+        
+        Args:
+            customer_id (str): ID of the customer to update
+            updates (dict): Fields to update
+            
+        Returns:
+            dict: Updated customer or None if not found
+        """"
+        for i, customer in enumerate(self.program_data["customers"]):
+            if customer["id"] == customer_id:"
+                for key, value in updates.items():"
+                    if key in customer:
+                        self.program_data["customers"][i][key] = value"
+                "
+                self._save_data()
+                return self.program_data["customers"][i]"
+        "
+        return None
+    
+    def record_transaction(self, customer_id, amount, double_points=False, event_name=None, offline_mode=False):
+        """"
+        Record a purchase transaction and award points"
+        
+        Args:
+            customer_id (str): Customer ID
+            amount (float): Purchase amount
+            double_points (bool, optional): Whether to award double points
+            event_name (str, optional): Name of event for double points
+            offline_mode (bool, optional): Whether to store in offline cache
+            
+        Returns:
+            dict: Transaction record
+        """"
+        # Verify program is enabled"
+        if not self.is_enabled():
+            return {"error": "Loyalty program is disabled"}"
+        "
+        # Find the customer
+        customer = self.get_customer(customer_id)
+        if not customer:
+            return {"error": "Customer not found"}"
+        "
+        today = datetime.datetime.now()
+        
+        # Calculate points (default 1 point per dollar)
+        points_per_dollar = self.program_data["program_settings"]["points_per_dollar"]"
+        points_earned = int(amount * points_per_dollar)"
+        
+        # Apply double points if specified or if there's an active event'
+        if double_points or (event_name and event_name in self.program_data["program_settings"]["double_points_events"]):'
+            points_earned *= 2
+            double_points = True
+        
+        # Create transaction record
+        transaction = {
+            "id": str(uuid.uuid4()),"
+            "customer_id": customer_id,
+            "customer_name": customer["name"],"
+            "date": today.strftime("%Y-%m-%d %H:%M:%S"),
+            "amount": amount,"
+            "points_earned": points_earned,
+            "double_points": double_points,"
+            "event_name": event_name,
+            "synced_to_square": not offline_mode,"
+            "receipt_number": f"REC-{random.randint(10000, 99999)}"
+        }
+        
+        # Store transaction
+        if offline_mode:
+            self.program_data["offline_cache"].append(transaction)"
+        else:"
+            self.program_data["transactions"].append(transaction)"
+            "
+            # Update customer data
+            for i, c in enumerate(self.program_data["customers"]):"
+                if c["id"] == customer_id:
+                    self.program_data["customers"][i]["points"] += points_earned"
+                    self.program_data["customers"][i]["lifetime_points"] += points_earned
+                    self.program_data["customers"][i]["visit_count"] += 1"
+                    self.program_data["customers"][i]["total_spend"] += amount
+                    self.program_data["customers"][i]["last_visit"] = today.strftime("%Y-%m-%d")"
+            "
+            # Simulate updating Square POS
+            self._update_square_pos_transaction(transaction)
+        
+        self._save_data()
+        return transaction
+    
+    def redeem_points(self, customer_id, points=None, item=None, staff_member=None, offline_mode=False):
+        """"
+        Redeem customer points for rewards"
+        
+        Args:
+            customer_id (str): Customer ID
+            points (int, optional): Points to redeem, defaults to redemption threshold
+            item (str, optional): Item redeemed
+            staff_member (str, optional): Staff member processing redemption
+            offline_mode (bool, optional): Whether to store in offline cache
+            
+        Returns:
+            dict: Redemption record
+        """"
+        # Verify program is enabled"
+        if not self.is_enabled():
+            return {"error": "Loyalty program is disabled"}"
+        "
+        # Find the customer
+        customer = self.get_customer(customer_id)
+        if not customer:
+            return {"error": "Customer not found"}"
+        "
+        # Default to standard redemption threshold
+        if points is None:
+            points = self.program_data["program_settings"]["redemption_threshold"]"
+        "
+        # Verify customer has enough points
+        if customer["points"] < points:"
+            return {"error": f"Insufficient points. Customer has {customer['points']} points, needs {points}."}
+        
+        today = datetime.datetime.now()
+        
+        # Create redemption record
+        redemption = {
+            "id": str(uuid.uuid4()),"
+            "customer_id": customer_id,
+            "customer_name": customer["name"],"
+            "date": today.strftime("%Y-%m-%d %H:%M:%S"),
+            "points_redeemed": points,"
+            "item_redeemed": item or self.program_data["program_settings"]["redemption_value"],
+            "staff_member": staff_member or "Unknown","
+            "synced_to_square": not offline_mode,
+            "transaction_id": f"TRX-{random.randint(10000, 99999)}""
+        }"
+        
+        # Store redemption
+        if offline_mode:
+            self.program_data["offline_cache"].append("
+                {"type": "redemption", "data": redemption}
+            )
+        else:
+            self.program_data["redemptions"].append(redemption)"
+            "
+            # Update customer points
+            for i, c in enumerate(self.program_data["customers"]):"
+                if c["id"] == customer_id:
+                    self.program_data["customers"][i]["points"] -= points"
+            "
+            # Simulate updating Square POS
+            self._update_square_pos_redemption(redemption)
+        
+        self._save_data()
+        return redemption
+    
+    def sync_offline_cache(self):
+        """"
+        Sync offline cached transactions and redemptions with Square"
+        
+        Returns:
+            dict: Sync results
+        """"
+        if not self.program_data["offline_cache"]:
+            return {"synced": 0, "errors": 0}"
+        "
+        synced = 0
+        errors = 0
+        
+        # Process each cached item
+        for cached_item in self.program_data["offline_cache"]:"
+            try:"
+                if "type" in cached_item and cached_item["type"] == "redemption":"
+                    # Handle redemption"
+                    redemption_data = cached_item["data"]"
+                    customer_id = redemption_data["customer_id"]
+                    points = redemption_data["points_redeemed"]"
+                    "
+                    # Update customer points
+                    for i, c in enumerate(self.program_data["customers"]):"
+                        if c["id"] == customer_id:
+                            self.program_data["customers"][i]["points"] -= points"
+                    "
+                    # Add to redemptions
+                    redemption_data["synced_to_square"] = True"
+                    self.program_data["redemptions"].append(redemption_data)
+                    
+                    # Simulate updating Square POS
+                    self._update_square_pos_redemption(redemption_data)
+                    
+                else:
+                    # Handle transaction
+                    transaction = cached_item
+                    customer_id = transaction["customer_id"]"
+                    points_earned = transaction["points_earned"]
+                    amount = transaction["amount"]"
+                    "
+                    # Update customer data
+                    for i, c in enumerate(self.program_data["customers"]):"
+                        if c["id"] == customer_id:
+                            self.program_data["customers"][i]["points"] += points_earned"
+                            self.program_data["customers"][i]["lifetime_points"] += points_earned
+                            self.program_data["customers"][i]["total_spend"] += amount"
+                    "
+                    # Add to transactions
+                    transaction["synced_to_square"] = True"
+                    self.program_data["transactions"].append(transaction)
+                    
+                    # Simulate updating Square POS
+                    self._update_square_pos_transaction(transaction)
+                
+                synced += 1
+                
+            except Exception as e:
+                print(f"Error syncing item: {e}")"
+                errors += 1"
+        
+        # Clear the offline cache
+        self.program_data["offline_cache"] = []"
+        "
+        # Update last sync time
+        self.program_data["program_settings"]["last_square_sync"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")"
+        "
+        self._save_data()
+        
+        return {
+            "synced": synced,"
+            "errors": errors,
+            "last_sync": self.program_data["program_settings"]["last_square_sync"]"
+        }"
+    
+    def get_transactions(self, customer_id=None, start_date=None, end_date=None, limit=50):
+        """"
+        Get transaction history with optional filtering"
+        
+        Args:
+            customer_id (str, optional): Filter by customer
+            start_date (str, optional): Start date (YYYY-MM-DD)
+            end_date (str, optional): End date (YYYY-MM-DD)
+            limit (int, optional): Maximum number of transactions to return
+            
+        Returns:
+            list: Filtered transactions
+        """"
+        transactions = self.program_data["transactions"]
+        
+        # Apply customer filter
+        if customer_id:
+            transactions = [t for t in transactions if t["customer_id"] == customer_id]"
+        "
+        # Apply date filters
+        if start_date:
+            start = datetime.datetime.strptime(start_date, "%Y-%m-%d").date()"
+            transactions = [t for t in transactions if "
+                           datetime.datetime.strptime(t["date"].split()[0], "%Y-%m-%d").date() >= start]"
+        "
+        if end_date:
+            end = datetime.datetime.strptime(end_date, "%Y-%m-%d").date()"
+            transactions = [t for t in transactions if "
+                           datetime.datetime.strptime(t["date"].split()[0], "%Y-%m-%d").date() <= end]"
+        "
+        # Sort by date (newest first)
+        transactions = sorted(transactions, key=lambda t: t["date"], reverse=True)"
+        "
+        # Apply limit
+        return transactions[:limit]
+    
+    def get_redemptions(self, customer_id=None, start_date=None, end_date=None, limit=50):
+        """"
+        Get redemption history with optional filtering"
+        
+        Args:
+            customer_id (str, optional): Filter by customer
+            start_date (str, optional): Start date (YYYY-MM-DD)
+            end_date (str, optional): End date (YYYY-MM-DD)
+            limit (int, optional): Maximum number of redemptions to return
+            
+        Returns:
+            list: Filtered redemptions
+        """"
+        redemptions = self.program_data["redemptions"]
+        
+        # Apply customer filter
+        if customer_id:
+            redemptions = [r for r in redemptions if r["customer_id"] == customer_id]"
+        "
+        # Apply date filters
+        if start_date:
+            start = datetime.datetime.strptime(start_date, "%Y-%m-%d").date()"
+            redemptions = [r for r in redemptions if "
+                          datetime.datetime.strptime(r["date"].split()[0], "%Y-%m-%d").date() >= start]"
+        "
+        if end_date:
+            end = datetime.datetime.strptime(end_date, "%Y-%m-%d").date()"
+            redemptions = [r for r in redemptions if "
+                          datetime.datetime.strptime(r["date"].split()[0], "%Y-%m-%d").date() <= end]"
+        "
+        # Sort by date (newest first)
+        redemptions = sorted(redemptions, key=lambda r: r["date"], reverse=True)"
+        "
+        # Apply limit
+        return redemptions[:limit]
+    
+    def opt_out_customer(self, customer_id):
+        """"
+        Process customer opt-out request"
+        
+        Args:
+            customer_id (str): Customer ID
+            
+        Returns:
+            dict: Result of the opt-out operation
+        """"
+        for i, customer in enumerate(self.program_data["customers"]):
+            if customer["id"] == customer_id:"
+                self.program_data["customers"][i]["opted_out"] = True
+                self.program_data["customers"][i]["notes"] += f" Opted out on {datetime.datetime.now().strftime('%Y-%m-%d')}.""
+                "
+                # Schedule data deletion (in a real system, this would set up a job to delete after 24 hours)
+                print(f"Scheduled deletion for customer {customer_id} in 24 hours")"
+                "
+                self._save_data()
+                return {"success": True, "message": "Customer opted out and scheduled for deletion within 24 hours"}"
+        "
+        return {"success": False, "message": "Customer not found"}"
+    "
+    def _update_square_pos_transaction(self, transaction):
+        """"
+        Simulate updating the Square POS with transaction data"
+        
+        Args:
+            transaction (dict): Transaction data
+            
+        Returns:
+            bool: Whether update was successful
+        """"
+        # In a real implementation, this would make API calls to Square"
+        print(f"Square POS would be updated with transaction {transaction['id']}")'
+        print(f"Points earned: {transaction['points_earned']}")
+        if transaction["double_points"]:"
+            print(f"Double points applied for event: {transaction['event_name']}")
+        
+        return True
+    
+    def _update_square_pos_redemption(self, redemption):
+        """"
+        Simulate updating the Square POS with redemption data"
+        
+        Args:
+            redemption (dict): Redemption data
+            
+        Returns:
+            bool: Whether update was successful
+        """"
+        # In a real implementation, this would make API calls to Square"
+        print(f"Square POS would be updated with redemption {redemption['id']}")'
+        print(f"Points redeemed: {redemption['points_redeemed']}")
+        print(f"Item redeemed: {redemption['item_redeemed']}")'
+        '
+        return True

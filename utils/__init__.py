@@ -4,3 +4,4 @@
 # Import utility modules
 from .data_processing import format_currency, calculate_percentage_change, parse_date
 from .visualization import get_color_scale, format_chart
+import logging
